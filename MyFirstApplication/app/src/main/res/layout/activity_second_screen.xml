@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SecondScreen"
+    style="@style/StyleScreen">
+
+    <ImageView
+        style="@style/LogoImg"/>
+
+    <TextView
+        android:id="@+id/title_ass_text_view"
+        style="@style/TitleASS"
+        android:text="@string/text_afs_title1" />
+
+    <TextView
+        android:id="@+id/userName_ass_text_view"
+        style="@style/TitleASS"
+        android:layout_toRightOf="@id/title_ass_text_view"
+        android:text="@string/text_ass_user_name"/>
+
+    <TextView
+        android:id="@+id/title2_ass_text_view"
+        style="@style/TitleASS"
+        android:layout_marginTop="@dimen/text_ass_margin_top_title2"
+        android:text="@string/text_ass_title2" />
+
+    <ImageView
+        android:id="@+id/nutrition_background_ass_image_view"
+        android:src="@drawable/fruits_ass_img1"
+        style="@style/BackgroundImg"/>
+
+    <LinearLayout
+        android:id="@+id/myth_ass_linear_view"
+        style="@style/LinearLayoutTextMythFactASS">
+
+        <TextView
+            android:id="@+id/myth1_ass_text_view"
+            style="@style/MythASS"
+            android:text="@string/text_ass_myth1" />
+
+        <TextView
+            android:id="@+id/myth2_ass_text_view"
+            style="@style/MythASS"
+            android:text="@string/text_ass_myth2"/>
+
+        <TextView
+            android:id="@+id/myth3_ass_text_view"
+            style="@style/MythASS"
+            android:text="@string/text_ass_myth3"/>
+
+        <TextView
+            android:id="@+id/myth4_ass_text_view"
+            style="@style/MythASS"
+            android:text="@string/text_ass_myth4"/>
+
+        <TextView
+            android:id="@+id/myth5_ass_text_view"
+            style="@style/MythASS"
+            android:text="@string/text_ass_myth5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myth_ass_btn_linear_view"
+        style="@style/LinearLayoutMythASS">
+
+        <ImageView
+            android:id="@+id/myth1_ass_image_view"
+            style="@style/MythImgASS"/>
+
+        <ImageView
+            android:id="@+id/myth2_ass_image_view"
+            style="@style/MythImgASS"/>
+
+        <ImageView
+            android:id="@+id/myth3_ass_image_view"
+            style="@style/MythImgASS"/>
+
+        <ImageView
+            android:id="@+id/myth4_ass_image_view"
+            style="@style/MythImgASS"/>
+
+        <ImageView
+            android:id="@+id/myth5_ass_image_view"
+            style="@style/MythImgASS"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fact_btn_linear_view"
+        style="@style/LinearLayoutFactASS">
+
+        <ImageView
+            android:id="@+id/fact1_ass_image_view"
+            style="@style/FactImgASS"/>
+
+        <ImageView
+            android:id="@+id/fact2_ass_image_view"
+            style="@style/FactImgASS"/>
+
+        <ImageView
+            android:id="@+id/fact3_ass_image_view"
+            style="@style/FactImgASS"/>
+
+        <ImageView
+            android:id="@+id/fact4_ass_image_view"
+            style="@style/FactImgASS"/>
+
+        <ImageView
+            android:id="@+id/fact5_ass_image_view"
+            style="@style/FactImgASS"/>
+    </LinearLayout>
+</RelativeLayout>

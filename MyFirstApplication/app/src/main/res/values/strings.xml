@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Nutrition</string>
+    <string name="myth_1_msg">"Eating breakfast causes appetite to open all day When I do not eat in the morning I can hold many hours without eating.But if I eat something in the morning - I'm hungry every day."</string>
+    <string name="myth_2_msg">"This carbohydrate fattening foods - those who want to lose weight it is best to avoid eating carbohydrates."</string>
+    <string name="myth_3_msg">"You can eat fruit without limitation, naturally, it is healthy and not fattening"</string>
+    <string name="myth_4_msg">"Each one must consume vitamin supplements"</string>
+    <string name="myth_5_msg">"Have to stop eating at 19:00 pm."</string>
+    <string name="fact_1_msg">"People who insist on eating breakfast, eating significantly less in the evening and night. People who insist on eating breakfast a smaller meal at noon."</string>
+    <string name="fact_2_msg">"Carbohydrates, especially those originating from whole grains and legumes, in addition to being nutritious and an important component of the diet, important for maintaining mood, prevent headaches, maintaining concentration, memory, restful sleep at night and to avoid a sense of despondency and depression. Complex carbohydrates soothe their hunger for hours in many cases eliminating the need for high-calorie shaved.."</string>
+    <string name="fact_3_msg">"Absolutely not true - Fruits contain vitamins and minerals and therefore have priority over the \"candy\", but it is important to remember that fruits sugary and consumption control without causing weight gain."</string>
+    <string name="fact_4_msg">"Absolutely not true - when your diet includes sufficient calories and consists of a rich variety of fruits, vegetables, whole grains,low fat dairy products, and protein, then you do not need vitamin supplements"</string>
+    <string name="fact_5_msg">"Not true - time is not significant, but the total daily calorie meals dispersed throughout the day. We recommend eating a snack such as a sandwich, salad, yogurt before going to sleep and not sleep in hunger."</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="text_afs_hello_title">Hello</string>
+    <string name="text_afs_question_title">Do you know everything about nutrition?</string>
+    <string name="text_afs_click">click to check it...:)</string>
+    <string name="text_afs_title1">5 things</string>
+    <string name="text_ass_user_name">userName</string>
+    <string name="text_ass_title2">didn\'t know about nutrition:</string>
+    <string name="text_ass_myth1">Breakfast opens the appetite</string>
+    <string name="text_ass_myth2">Carbohydrates are fattening</string>
+    <string name="text_ass_myth3">You can eat unlimited fruits</string>
+    <string name="text_ass_myth4">Vitamin supplements - a must!</string>
+    <string name="text_ass_myth5">Eating prohibited pm</string>
+</resources>

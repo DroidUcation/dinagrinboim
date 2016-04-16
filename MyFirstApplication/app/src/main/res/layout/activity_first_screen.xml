@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FirstScreen"
+    style="@style/StyleScreen">
+
+    <ImageView
+        android:id="@+id/logo_afs_image_view"
+        style="@style/LogoImg" />
+
+    <ImageView
+        android:id="@+id/background_afs_image_view"
+        style="@style/BackgroundImgAFS"/>
+
+    <TextView
+        android:id="@+id/hello_title_afs_text_view"
+        style="@style/HelloTitleAFS" />
+
+    <TextView
+        android:id="@+id/question_title_afs_text_view"
+        style="@style/TitleAFS" />
+
+    <EditText
+        android:id="@+id/edit_afs_text_view"
+        style="@style/EditTextAFS"/>
+
+    <TextView
+        android:id="@+id/checkBtn_afs_text_view"
+        style="@style/CheckTextAFS"/>
+
+    <ImageView
+        android:id="@+id/man_afs_image_view"
+        style="@style/ManImgAFS"/>
+</RelativeLayout>

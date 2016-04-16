@@ -1,0 +1,28 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="img_afs_logo_width">90dp</dimen>
+    <dimen name="img_afs_logo_height">70dp</dimen>
+    <dimen name="img_afs_background">100dp</dimen>
+    <dimen name="text_afs_padding_title">15dp</dimen>
+    <dimen name="text_afs_margin_top_title">30dp</dimen>
+    <dimen name="edit_afs_margin_left">8dp</dimen>
+    <dimen name="edit_afs_margin_top">38dp</dimen>
+    <dimen name="img_afs_man_width_height">48dp</dimen>
+    <dimen name="text_afs_check">20dp</dimen>
+    <dimen name="text_ass_padding_title">8dp</dimen>
+    <dimen name="text_ass_margin_top_title2">25dp</dimen>
+    <dimen name="text_ass_height_myth">0dp</dimen>
+    <dimen name="text_ass_text_size_myth">16sp</dimen>
+    <dimen name="linear_text_ass_margin">30dp</dimen>
+    <dimen name="myth_img_ass_width">48dp</dimen>
+    <dimen name="myth_img_ass_height">0dp</dimen>
+    <dimen name="linear_ass_margin_left_fact">15dp</dimen>
+    <dimen name="text_myth_fact">10dp</dimen>
+    <dimen name="img_myth_fact_width_height">100dp</dimen>
+    <dimen name="img2_margin_left">25dp</dimen>
+    <dimen name="text_check_afs_size">20sp</dimen>
+    <dimen name="linear_layout_ass_width">236dp</dimen>
+</resources>

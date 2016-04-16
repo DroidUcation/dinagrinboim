@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.myfirstapplication.Fact2Screen"
+    style="@style/StyleScreen">
+
+    <ImageView
+        android:id="@+id/logo_afs_image_view"
+        style="@style/LogoImg"/>
+
+    <ImageView
+        style="@style/BackgroundImg"
+        android:src="@drawable/cabohydrates_af2s" />
+
+    <TextView
+        android:id="@+id/screen_fact_text_view"
+        style="@style/TextMythFact"/>
+
+    <ImageView
+        android:id="@+id/img1_view"
+        android:src="@drawable/mythfact_af2s_img1"
+        style="@style/Img1MythFact"/>
+
+    <ImageView
+        android:id="@+id/img2_view"
+        android:src="@drawable/fact_af2s_img"
+        style="@style/Img2MythFact"/>
+
+    <ImageView
+        android:id="@+id/img3_view"
+        android:src="@drawable/mythfact_af2s_img"
+        style="@style/Img3MythFact"/>
+</RelativeLayout>

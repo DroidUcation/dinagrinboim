@@ -1,0 +1,198 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="LogoImg">
+        <item name="android:layout_width">@dimen/img_afs_logo_width</item>
+        <item name="android:layout_height">@dimen/img_afs_logo_height</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:alpha">0.35</item>
+        <item name="android:src">@drawable/title_img</item>
+    </style>
+
+    <style name="TitleASS">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">@dimen/text_ass_padding_title</item>
+    </style>
+
+    <style name="MythASS">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/text_ass_height_myth</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/text_ass_text_size_myth</item>
+        <item name="android:textColor">@color/colorGreen</item>
+    </style>
+
+    <style name="MythImgASS">
+        <item name="android:layout_width">@dimen/myth_img_ass_width</item>
+        <item name="android:layout_height">@dimen/myth_img_ass_height</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:src">@drawable/myth_ass_img</item>
+    </style>
+
+    <style name="FactImgASS">
+        <item name="android:layout_width">@dimen/myth_img_ass_width</item>
+        <item name="android:layout_height">@dimen/myth_img_ass_height</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:src">@drawable/fact_ass_img</item>
+    </style>
+
+    <style name="LinearLayoutASS">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_below">@id/title2_ass_text_view</item>
+    </style>
+
+    <style name="LinearLayoutFactASS">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/linear_ass_margin_left_fact</item>
+        <item name="android:layout_toRightOf">@id/myth_ass_btn_linear_view</item>
+        <item name="android:layout_marginBottom">@dimen/linear_text_ass_margin</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_below">@id/title2_ass_text_view</item>
+    </style>
+
+    <style name="LinearLayoutMythASS">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_toRightOf">@id/myth_ass_linear_view</item>
+        <item name="android:layout_marginBottom">@dimen/linear_text_ass_margin</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_below">@id/title2_ass_text_view</item>
+    </style>
+
+    <style name="LinearLayoutTextMythFactASS">
+        <item name="android:layout_width">@dimen/linear_layout_ass_width</item>
+        <item name="android:layout_marginTop">@dimen/linear_text_ass_margin</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_below">@id/title2_ass_text_view</item>
+    </style>
+
+    <style name="BackgroundImg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:alpha">0.65</item>
+    </style>
+
+    <style name="TextMythFact">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:padding">@dimen/text_myth_fact</item>
+        <item name="android:layout_below">@id/logo_afs_image_view</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="Img1MythFact">
+        <item name="android:layout_width">@dimen/img_myth_fact_width_height</item>
+        <item name="android:layout_height">@dimen/img_myth_fact_width_height</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="Img2MythFact">
+        <item name="android:layout_width">@dimen/img_myth_fact_width_height</item>
+        <item name="android:layout_height">@dimen/img_myth_fact_width_height</item>
+        <item name="android:layout_toRightOf">@id/img1_view</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginLeft">@dimen/img2_margin_left</item>
+    </style>
+
+    <style name="Img3MythFact">
+        <item name="android:layout_width">@dimen/img_myth_fact_width_height</item>
+        <item name="android:layout_height">@dimen/img_myth_fact_width_height</item>
+        <item name="android:layout_toRightOf">@id/img2_view</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginLeft">@dimen/img2_margin_left</item>
+    </style>
+
+    <style name="HelloTitleAFS">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/text_afs_padding_title</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:layout_marginTop">@dimen/text_afs_margin_top_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/text_afs_hello_title</item>
+    </style>
+
+    <style name="TitleAFS">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/text_afs_padding_title</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:layout_below">@id/hello_title_afs_text_view</item>
+        <item name="android:text">@string/text_afs_question_title</item>
+    </style>
+
+    <style name="BackgroundImgAFS">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:src">@drawable/child_afs_background_img</item>
+        <item name="android:layout_marginTop">@dimen/img_afs_background</item>
+    </style>
+
+    <style name="EditTextAFS">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Name</item>
+        <item name="android:layout_toRightOf">@id/hello_title_afs_text_view</item>
+        <item name="android:layout_marginLeft">@dimen/edit_afs_margin_left</item>
+        <item name="android:layout_marginTop">@dimen/edit_afs_margin_top</item>
+    </style>
+
+    <style name="CheckTextAFS">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textSize">@dimen/text_check_afs_size</item>
+        <item name="android:textColor">@color/colorGreen</item>
+        <item name="android:text">@string/text_afs_click</item>
+    </style>
+
+    <style name="ManImgAFS">
+        <item name="android:layout_width">@dimen/img_afs_man_width_height</item>
+        <item name="android:layout_height">@dimen/img_afs_man_width_height</item>
+        <item name="android:src">@drawable/man_afs_img</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_toLeftOf">@id/checkBtn_afs_text_view</item>
+    </style>
+
+    <style name="StyleScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+    </style>
+
+
+
+
+</resources>

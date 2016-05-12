@@ -26,6 +26,9 @@
         <activity android:name=".Fact3Screen" />
         <activity android:name=".Fact4Screen" />
         <activity android:name=".Fact5Screen"></activity>
+        <provider
+            android:authorities="com.example.android.myfirstapplication.FactsProvider"
+            android:name="com.example.android.myfirstapplication.FactsProvider"></provider>
     </application>
 
 </manifest>

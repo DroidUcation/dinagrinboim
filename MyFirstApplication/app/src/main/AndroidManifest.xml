@@ -26,9 +26,21 @@
         <activity android:name=".Fact3Screen" />
         <activity android:name=".Fact4Screen" />
         <activity android:name=".Fact5Screen"></activity>
+
         <provider
             android:authorities="com.example.android.myfirstapplication.FactsProvider"
             android:name="com.example.android.myfirstapplication.FactsProvider"></provider>
+
+        <receiver android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".FactsIntentService" />
+
     </application>
 
 </manifest>

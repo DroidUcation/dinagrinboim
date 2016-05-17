@@ -5,7 +5,7 @@
     <string name="myth_3_msg">"You can eat fruit without limitation, naturally, it is healthy and not fattening"</string>
     <string name="myth_4_msg">"Each one must consume vitamin supplements"</string>
     <string name="myth_5_msg">"Have to stop eating at 19:00 pm."</string>
-    <string name="fact_1_msg">"People who insist on eating breakfast, eating significantly less in the evening and night. People who insist on eating breakfast a smaller meal at noon."</string>
+    <string name="fact_1_msg">People who insist on eating breakfast, eating significantly less in the evening and night. People who insist on eating breakfast a smaller meal at noon.</string>
     <string name="fact_2_msg">"Carbohydrates, especially those originating from whole grains and legumes, in addition to being nutritious and an important component of the diet, important for maintaining mood, prevent headaches, maintaining concentration, memory, restful sleep at night and to avoid a sense of despondency and depression. Complex carbohydrates soothe their hunger for hours in many cases eliminating the need for high-calorie shaved.."</string>
     <string name="fact_3_msg">"Absolutely not true - Fruits contain vitamins and minerals and therefore have priority over the \"candy\", but it is important to remember that fruits sugary and consumption control without causing weight gain."</string>
     <string name="fact_4_msg">"Absolutely not true - when your diet includes sufficient calories and consists of a rich variety of fruits, vegetables, whole grains,low fat dairy products, and protein, then you do not need vitamin supplements"</string>
@@ -22,4 +22,10 @@
     <string name="text_ass_myth3">You can eat unlimited fruits</string>
     <string name="text_ass_myth4">Vitamin supplements - a must!</string>
     <string name="text_ass_myth5">Eating prohibited pm</string>
+    <string name="new_fact_1_msg">"new fact1"</string>
+    <string name="new_fact_2_msg">"new fact2"</string>
+    <string name="new_fact_3_msg">"new fact3"</string>
+    <string name="new_fact_4_msg">"new fact4"</string>
+    <string name="new_fact_5_msg">"new fact5"</string>
+    <string name="new_fact">Fact number %1$d, created on %2$s.</string>
 </resources>

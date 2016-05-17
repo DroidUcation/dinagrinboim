@@ -73,8 +73,7 @@ public class FactsProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        //TODO
-        return 0;
+        return db.delete(FactDBContract.FiveFactsEntry.TABLE_NAME, null, null);
     }
 
     @Override

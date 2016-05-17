@@ -14,7 +14,7 @@ public class Fact5Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fact5_screen);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         Uri uri = Uri.withAppendedPath(FactDBContract.CONTENT_URI,"5");
         Cursor cursor = getContentResolver().query(uri, null, null, null, null);

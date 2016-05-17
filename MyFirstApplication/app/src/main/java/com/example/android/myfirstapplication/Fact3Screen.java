@@ -14,7 +14,7 @@ public class Fact3Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fact3_screen);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         Uri uri = Uri.withAppendedPath(FactDBContract.CONTENT_URI,"3");
         Cursor cursor = getContentResolver().query(uri, null, null, null, null);

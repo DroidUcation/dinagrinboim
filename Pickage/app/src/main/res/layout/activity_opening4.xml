@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="app.pickage.com.pickage.Opening.Opening4"
+    style="@style/relativeLayout_style">
+
+    <ImageView
+        style="@style/background_opening_img_view"/>
+
+    <ImageView
+        android:id="@+id/opening4_img"
+        style="@style/img_opening_screen"
+        android:src="@drawable/img4"/>
+
+    <TextView
+        android:id="@+id/title1_o4s"
+        style="@style/title1_opening_text_view"
+        android:layout_below="@id/opening4_img"
+        android:text="@string/title2_activity_opening4"/>
+
+    <TextView
+        android:id="@+id/title2_o4s"
+        style="@style/title2_opening_text_view"
+        android:layout_below="@id/title1_o4s"
+        android:text="@string/title1_activity_opening4"/>
+</RelativeLayout>
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/bkimg"-->
+    <!--android:alpha="0.45"/>-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/opening4_img"-->
+    <!--android:layout_marginTop="120dp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:src="@drawable/img4" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/title1_o4s"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:textSize="20dp"-->
+    <!--android:textStyle="bold"-->
+    <!--android:textColor="#FFA500"-->
+    <!--android:layout_below="@id/opening4_img"-->
+    <!--android:text="Sending the package to messenger"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/title2_o4s"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_below="@id/title1_o4s"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:textSize="15dp"-->
+    <!--android:textColor="#191970"-->
+    <!--android:text="You can follow any time"/>-->

@@ -2,16 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.pickage.com.pickage.UserActivities.UserPersonalDetails">
+    tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation">
 
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation"/>
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation"/>
 
     <EditText
         android:id="@+id/to_edit_text"
@@ -29,5 +29,11 @@
         android:textStyle="bold"
         android:text="From:"/>
 
+    <TextView android:id="@+id/from_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text=""
+        android:textSize="16dip"/>
 
 </RelativeLayout>

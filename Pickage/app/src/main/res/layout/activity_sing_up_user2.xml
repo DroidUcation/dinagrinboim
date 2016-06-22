@@ -76,7 +76,8 @@
             </android.support.design.widget.TextInputLayout>
 
             <!-- Signup Button -->
-            <android.support.v7.widget.AppCompatButton
+            <!--<android.support.v7.widget.AppCompatButton-->
+            <Button
                 android:id="@+id/btn_continue_signup"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -98,4 +99,3 @@
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
-

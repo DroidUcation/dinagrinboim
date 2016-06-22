@@ -1,7 +1,5 @@
 package app.pickage.com.pickage.UserActivities;
 
-import android.widget.EditText;
-
 /**
  * Created by User on 02/06/2016.
  */

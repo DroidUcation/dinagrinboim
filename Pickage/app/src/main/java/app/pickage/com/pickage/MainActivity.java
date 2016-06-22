@@ -16,7 +16,6 @@ import app.pickage.com.pickage.Opening.Opening5;
 
 public class MainActivity extends FragmentActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,30 +57,3 @@ public class MainActivity extends FragmentActivity {
         }
     }
 }
-
-
-//import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.TextView;
-//
-//import app.pickage.com.pickage.Opening.Opening1;
-//
-//public class MainActivity extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        TextView nextScreen = (TextView) findViewById(R.id.title1_os);
-//        nextScreen.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                    Intent intent = new Intent(MainActivity.this, Opening1.class);
-//                    startActivity(intent);
-//            }
-//        });
-//    }
-//}

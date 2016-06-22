@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bkimg"
     tools:context="app.pickage.com.pickage.UserActivities.LoginUserActivity">
 
+    <ImageView
+        style="@style/background_opening_img_view"/>
 
-    <!-- Login progress -->
     <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
@@ -23,30 +23,28 @@
         android:fillViewport="true">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/messenger3"
-                android:layout_weight="1"/>
+                android:background="@drawable/messenger3" />
 
-            <TextView
+            <!--<TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/orange" />
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="350dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center"
-                android:layout_weight="1">
+                android:layout_weight="1">-->
 
-                <AutoCompleteTextView
-                    android:id="@+id/email"
+                <EditText
+                    android:id="@+id/email_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -54,14 +52,14 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-            </android.support.design.widget.TextInputLayout>
+          <!--  </android.support.design.widget.TextInputLayout>-->
 
-            <android.support.design.widget.TextInputLayout
+            <!--<android.support.design.widget.TextInputLayout
                 android:layout_width="350dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center"
-                android:layout_weight="1">
+                android:layout_weight="1">-->
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
@@ -74,7 +72,7 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-            </android.support.design.widget.TextInputLayout>
+          <!--  </android.support.design.widget.TextInputLayout>-->
 
             <Button
                 android:id="@+id/email_sign_in_button"
@@ -109,17 +107,17 @@
                 android:textColor="#008B8B"
                 android:layout_gravity="center"
                 android:layout_weight="1"/>
+
+            <TextView android:id="@+id/mes_signup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20dip"
+                android:textAllCaps="true"
+                android:text="I'm a driver"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/orange"/>
         </LinearLayout>
     </ScrollView>
-
-    <TextView android:id="@+id/mes_signup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20dip"
-        android:textAllCaps="true"
-        android:text="I'm a driver"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/orange"/>
 </RelativeLayout>

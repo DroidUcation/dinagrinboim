@@ -39,6 +39,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserActivities.UserCurrentLocation" />
+        <activity android:name=".UserActivities.UserChooseLocation"></activity>
 
         <provider
             android:name=".ContentProvider.UserContentProvider"
@@ -60,10 +61,10 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBCf2YQ-CQ7ulrp4xk9QolqoUYxu4RT-fE" />
+            android:value="AIzaSyASM5kM2h3tbhxbJbK3cYUJdTyDLLAX6ZU" />
 
         <activity
-            android:name="app.pickage.com.pickage.UserActivities.LoginUserActivity"
+            android:name=".UserActivities.LoginUserActivity"
             android:label="Login" />
         <activity
             android:name=".UserActivities.SingUpUserActivity"
@@ -74,7 +75,7 @@
         <uses-permission android:name="android.permission.INTERNET" />
 
         <activity android:name=".UserActivities.UserCreditCardDetails" />
-
+        <activity android:name=".UserActivities.UserChooseLocation"/>
     </application>
 
 </manifest>

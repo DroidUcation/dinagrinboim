@@ -27,7 +27,6 @@ public class Opening5 extends Fragment implements View.OnClickListener {
         Intent i = new Intent(getActivity(), LoginUserActivity.class);
         startActivity(i);
         //((Activity) getActivity()).overridePendingTransition(0,0);
-
     }
 }
 

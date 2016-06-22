@@ -50,17 +50,17 @@ public class DBHelper  extends SQLiteOpenHelper {
                     DBContract.PACKAGE_TBL +  " ( " +
                     DBContract.PACKAGE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     DBContract.PKG_ORIGIN__LONG + " DOUBLE, " +
-                    DBContract.PKG_ORIGIN_LAT + "DOUBLE, " +
+                    DBContract.PKG_ORIGIN_LAT + " DOUBLE, " +
                     DBContract.ORIGIN_PACKAGE + " TEXT, " +
                     DBContract.DESTINATION_PACKAGE + " TEXT, " +
                     DBContract.P_MESSENGER_ID + " INTEGER, " +
 
                     " FOREIGN KEY (" + DBContract.P_MESSENGER_ID + ") REFERENCES " +
-                    DBContract.MESSENGER_TBL + "(" + DBContract.MESSENGER_ID + "))" +
+                    DBContract.MESSENGER_TBL + "(" + DBContract.MESSENGER_ID + ")); ";
 
-                    DBContract.P_USER_ID + " INTEGER ," +
-                    " FOREIGN KEY (" + DBContract.P_USER_ID + ") REFERENCES " +
-                    DBContract.USER_TBL + "(" + DBContract.USER_ID + "));";
+//                    DBContract.P_USER_ID + " INTEGER, " +
+//                    " FOREIGN KEY (" + DBContract.P_USER_ID + ") REFERENCES " +
+//                    DBContract.USER_TBL + "(" + DBContract.USER_ID + "));";
 
 
     public DBHelper(Context context) {

@@ -1,23 +1,16 @@
 package app.pickage.com.pickage.UserActivities;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-
-//import com.google.android.gms.analytics.ecommerce.Product;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import app.pickage.com.pickage.ContentProvider.UserContentProvider;
 import app.pickage.com.pickage.DBHelpers.DBContract;
@@ -39,74 +32,35 @@ public class SingUpUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up_user2);
 
-//        nameEditText = (EditText) findViewById(R.id.input_name);
-//        emailEditText = (EditText) findViewById(R.id.input_email);
-//        passEditText = (EditText) findViewById(R.id.input_password);
-//        name = nameEditText.getText().toString();
-//        email = emailEditText.getText().toString();
-//        pass = passEditText.getText().toString();
-    }
-
-    // validating email id
-
-    private boolean isValidEmail(String email) {
-        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-    // validating password with retype password
-    private boolean isValidPassword(String pass) {
-        if (pass != null && pass.length() > 6) {
-            return true;
-        }
-        return false;
-    }
-
-    // validating name not null
-    private boolean isValidName(String name) {
-        if (name.trim().length() > 0 ){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean checkInput() {
         nameEditText = (EditText) findViewById(R.id.input_name_signup);
-        name = nameEditText.getText().toString();
-        if (!isValidName(name)) {
-            nameEditText.setError("Name filed is required");
-            return false;
-        }
+        nameEditText.addTextChangedListener(new AddListenerOnTextChange(this, nameEditText));
 
         emailEditText = (EditText) findViewById(R.id.input_email_signup);
-        email = emailEditText.getText().toString();
-        if (emailEditText.getText().toString().trim().length() == 0) {
-            emailEditText.setError("Email filed is required");
-            return false;
-        } else if (!isValidEmail(email)) {
-            emailEditText.setError("Invalid Email");
-            return false;
-        }
+        emailEditText.addTextChangedListener(new AddListenerOnTextChange(this, emailEditText));
 
         passEditText = (EditText) findViewById(R.id.input_password_signup);
-        pass = passEditText.getText().toString();
-        if (passEditText.getText().toString().trim().length() == 0) {
-            passEditText.setError("Password filed is required");
-            return false;
-        } else if (!isValidPassword(pass)) {
-            passEditText.setError("Invalid Password - password smoller then 6 char");
-            return false;
-        }
-        return true;
+        passEditText.addTextChangedListener(new AddListenerOnTextChange(this, passEditText));
     }
 
     public void continueSingUpBtn(View view) {
-        if (checkInput() == true) {
+        final String name = nameEditText.getText().toString();
+        if (name.trim().length() == 0 ) {
+            nameEditText.setError("Name filed is required");
+        }
+        final String email = emailEditText.getText().toString();
+        if (emailEditText.getText().toString().trim().length() == 0) {
+            emailEditText.setError("Email filed is required");
+        }
+        final String pass = passEditText.getText().toString();
+        if(passEditText.getText().toString().trim().length() == 0){
+            passEditText.setError("Password filed is required");
+        }
 
+        if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
+            Intent i = new Intent(SingUpUserActivity.this, UserPersonalDetails.class);
+            startActivity(i);
+        }
+    }
 
 
 
@@ -116,9 +70,9 @@ public class SingUpUserActivity extends AppCompatActivity {
 
 //            Intent i = new Intent(SingUpUserActivity.this, UserPersonalDetails.class);
 //            startActivity(i);
-
-        }
-    }
+//
+//        }
+//    }
 
     public void loginBtn(View view) {
         Intent i = new Intent(SingUpUserActivity.this, LoginUserActivity.class);

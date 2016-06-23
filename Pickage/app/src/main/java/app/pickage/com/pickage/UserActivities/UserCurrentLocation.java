@@ -1,16 +1,13 @@
 package app.pickage.com.pickage.UserActivities;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -58,7 +55,6 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         fromTxt = (TextView) findViewById(R.id.from_text_view);
-        fromTxt.setOnClickListener(this);
     }
 
 
@@ -118,17 +114,13 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
 
                 try {
                     addresses = geocoder.getFromLocation(mLastLocation.getLatitude(),  mLastLocation.getLongitude(), 1);
-                    if (addresses.size() > 0) {
-                        String address = addresses.get(0).getAddressLine(0);
-                        String city = addresses.get(0).getLocality();
-                        String state = addresses.get(0).getAdminArea();
-                        String country = addresses.get(0).getCountryName();
-                        String postalCode = addresses.get(0).getPostalCode();
-                        String knownName = addresses.get(0).getFeatureName();
-                        fromTxt.setText(address);
-                    } else {
-                        fromTxt.setText("Unknown Address");
-                    }
+                    String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                    String city = addresses.get(0).getLocality();
+                    String state = addresses.get(0).getAdminArea();
+                    String country = addresses.get(0).getCountryName();
+                    String postalCode = addresses.get(0).getPostalCode();
+                    String knownName = addresses.get(0).getFeatureName();
+                    fromTxt.setText(address);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -169,21 +161,8 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         buildGoogleApiClient();
     }
 
-    static final int FROM_REQUEST = 1;  // The request code
     @Override
     public void onClick(View v) {
-        Intent chooseLocationIntent = new Intent(UserCurrentLocation.this, UserChooseLocation.class);
-        startActivityForResult(chooseLocationIntent, FROM_REQUEST);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to
-        if (requestCode == FROM_REQUEST) {
-            // Make sure the request was successful
-            if (resultCode == RESULT_OK) {
-                fromTxt.setText(data.getStringExtra("FROM"));
-            }
-        }
     }
 }

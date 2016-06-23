@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
@@ -43,10 +45,11 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     private GoogleMap mMap;
     Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
-    private LocationRequest mLocationRequest;
-    String lat, lon;
     private static final int LOCATION_PERMISSION = 583;
     TextView fromTxt;
+    Marker fromMarker = null;
+    TextView toTxt;
+    Marker toMarker = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,11 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         mapFragment.getMapAsync(this);
         fromTxt = (TextView) findViewById(R.id.from_text_view);
         fromTxt.setOnClickListener(this);
+        fromTxt.setText("Unknown Address");
+        toTxt = (TextView) findViewById(R.id.to_text_view);
+        toTxt.setOnClickListener(this);
+        toTxt.setText("Add destination");
+        ((Button)findViewById(R.id.btn_continue_location)).setOnClickListener(this);
     }
 
 
@@ -109,9 +117,7 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
             if (mLastLocation != null) {
-                LatLng loc = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(loc).title("You are here!"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                fromMarker = drawLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), "You are here!");
                 Geocoder geocoder;
                 List<Address> addresses;
                 geocoder = new Geocoder(this, Locale.getDefault());
@@ -126,14 +132,25 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
                         String postalCode = addresses.get(0).getPostalCode();
                         String knownName = addresses.get(0).getFeatureName();
                         fromTxt.setText(address);
-                    } else {
-                        fromTxt.setText("Unknown Address");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    private Marker drawLocation(double latitude, double longitude, String title) {
+        LatLng loc = new LatLng(latitude, longitude);
+        Marker m = mMap.addMarker(new MarkerOptions().position(loc).title(title));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        return m;
+    }
+
+    private void removeLocation(Marker marker) {
+       if (marker != null)
+           marker.remove();
     }
 
     @Override
@@ -169,11 +186,24 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         buildGoogleApiClient();
     }
 
-    static final int FROM_REQUEST = 1;  // The request code
+    static final int FROM_REQUEST = 1;
+    static final int TO_REQUEST = 2;
     @Override
     public void onClick(View v) {
         Intent chooseLocationIntent = new Intent(UserCurrentLocation.this, UserChooseLocation.class);
-        startActivityForResult(chooseLocationIntent, FROM_REQUEST);
+        switch (v.getId()){
+            case R.id.from_text_view:
+                startActivityForResult(chooseLocationIntent, FROM_REQUEST);
+                break;
+            case R.id.to_text_view:
+                startActivityForResult(chooseLocationIntent, TO_REQUEST);
+                break;
+            case R.id.btn_continue_location:
+                // Fix UserChooseLocation.class
+                Intent searchMessangerIntent = new Intent(UserCurrentLocation.this, UserChooseLocation.class);
+                startActivity(searchMessangerIntent);
+                break;
+        }
     }
 
     @Override
@@ -182,8 +212,17 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         if (requestCode == FROM_REQUEST) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
-                fromTxt.setText(data.getStringExtra("FROM"));
+                fromTxt.setText(data.getStringExtra("NAME"));
+                removeLocation(fromMarker);
+                fromMarker = drawLocation(data.getDoubleExtra("LAT", 0), data.getDoubleExtra("LONG", 0), data.getStringExtra("NAME"));
+            }
+        } else {
+            if (resultCode == RESULT_OK) {
+                toTxt.setText(data.getStringExtra("NAME"));
+                removeLocation(toMarker);
+                toMarker = drawLocation(data.getDoubleExtra("LAT", 0), data.getDoubleExtra("LONG", 0), data.getStringExtra("NAME"));
             }
         }
+
     }
 }

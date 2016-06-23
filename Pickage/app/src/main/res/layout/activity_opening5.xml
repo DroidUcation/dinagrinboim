@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/opening5_img"
         style="@style/img_opening_screen"
-        android:src="@drawable/img5"/>
+        android:src="@drawable/open5"/>
 
     <TextView
         android:id="@+id/title1_o5s"
@@ -23,14 +23,6 @@
         style="@style/title2_opening_text_view"
         android:layout_below="@id/title1_o5s"
         android:text="@string/title1_activity_opening5"/>
-
-    <!--<Button-->
-        <!--android:id="@+id/btnext"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:text="NEXT"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignParentRight="true"/>-->
 
     <TextView
         android:id="@+id/btnext"

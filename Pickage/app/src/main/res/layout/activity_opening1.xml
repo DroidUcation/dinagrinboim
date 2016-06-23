@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="app.pickage.com.pickage.Opening.Opening2"
+    tools:context="app.pickage.com.pickage.Opening.Opening1"
     style="@style/relativeLayout_style">
 
     <ImageView
@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/opening1_img"
         style="@style/img_opening_screen"
-        android:src="@drawable/img1"/>
+        android:src="@drawable/open1"/>
 
     <TextView
         android:id="@+id/title2_o1s"

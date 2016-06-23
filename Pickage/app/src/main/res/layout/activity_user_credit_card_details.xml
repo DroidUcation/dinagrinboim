@@ -3,141 +3,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkimg"
     tools:context="app.pickage.com.pickage.UserActivities.UserCreditCardDetails">
 
-    <ImageView
-        style="@style/background_opening_img_view"/>
-
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
-    <ScrollView
-        android:id="@+id/login_form"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/number"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
+        <TextView
+            android:text="Number :"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/imglogo1"
-                android:src="@drawable/logo"
-                android:layout_width="100dp"
-                android:layout_height="72dp"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"/>
+        <EditText
+            android:id="@+id/editNumber"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:lines="1"
+            android:layout_marginRight="20dp"
+            android:maxLines="1" />
+    </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/credit_card_text_linear_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_below="@id/imglogo1"
-                android:layout_marginLeft="70dp">
+    <LinearLayout
+        android:id="@+id/type"
+        android:layout_below="@id/number"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="20dp"
-                    android:text="Number"/>
+        <TextView
+            android:text="Type :"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="Type"/>
+        <EditText
+            android:id="@+id/editType"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:lines="1"
+            android:layout_marginRight="20dp"
+            android:maxLines="1" />
+    </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="Name"/>
+    <LinearLayout
+        android:id="@+id/name"
+        android:layout_below="@id/type"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="Date"/>
+        <TextView
+            android:text="Name :"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="CSV"/>
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:inputType="text"
+            android:lines="1"
+            android:layout_marginRight="20dp"
+            android:maxLines="1" />
+    </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-            </LinearLayout>
+    <LinearLayout
+        android:id="@+id/date"
+        android:layout_below="@id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_below="@id/imglogo1"
-                android:layout_toRightOf="@id/credit_card_text_linear_layout"
-                android:layout_marginLeft="30dp">
+        <TextView
+            android:text="Date :"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="20dp" />
+        <EditText
+            android:id="@+id/editDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:inputType="text"
+            android:lines="1"
+            android:layout_marginRight="20dp"
+            android:maxLines="1" />
+    </LinearLayout>
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="20dp" />
+    <LinearLayout
+        android:id="@+id/csv"
+        android:layout_below="@id/date"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal" >
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="20dp" />
+        <TextView
+            android:text="CSV :"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="20dp" />
+        <EditText
+            android:id="@+id/editCsv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:inputType="text"
+            android:lines="1"
+            android:layout_marginRight="20dp"
+            android:maxLines="1" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="20dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1" />-->
-            </LinearLayout>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="next"
-                android:textAllCaps="true"
-                android:background="@color/orange"
-                android:onClick="check()"/>
-        </RelativeLayout>
-    </ScrollView>
+    </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/orange"
+        android:text="NEXT"/>
 </RelativeLayout>

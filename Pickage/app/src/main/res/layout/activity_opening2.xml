@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/opening2_img"
         style="@style/img_opening_screen"
-        android:src="@drawable/img2"/>
+        android:src="@drawable/open2"/>
 
     <TextView
         android:id="@+id/title1_o2s"

@@ -57,7 +57,7 @@ public class SingUpUserActivity extends AppCompatActivity {
         }
 
         if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
-            Intent i = new Intent(SingUpUserActivity.this, UserPersonalDetails.class);
+            Intent i = new Intent(SingUpUserActivity.this, UploadImg.class);
             startActivity(i);
         }
     }

@@ -29,84 +29,63 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@drawable/messenger3" />
-
-            <!--<TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/orange" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="350dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:layout_weight="1">-->
+                android:layout_weight="4"
+                android:background="@drawable/messenger3" />
 
                 <EditText
                     android:id="@+id/email_login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
 
-          <!--  </android.support.design.widget.TextInputLayout>-->
-
-            <!--<android.support.design.widget.TextInputLayout
-                android:layout_width="350dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:layout_weight="1">-->
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:hint="@string/prompt_password"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
 
-          <!--  </android.support.design.widget.TextInputLayout>-->
-
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_height="0dp"
+                android:layout_weight="0.7"
                 android:layout_marginTop="5dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:onClick="continueBtn"/>
 
             <TextView android:id="@+id/link_signup"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:text="No account yet? Create one"
                 android:gravity="center"
                 android:textSize="16dip"
                 android:textColor="#008B8B"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:onClick="createAccount"/>
-
-            <TextView
-                android:layout_width="350dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:textSize="16dip"
-                android:textColor="#008B8B"
-                android:layout_gravity="center"
-                android:layout_weight="1"/>
 
             <TextView android:id="@+id/mes_signup"
                 android:layout_width="fill_parent"

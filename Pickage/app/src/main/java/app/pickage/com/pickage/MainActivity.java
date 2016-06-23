@@ -14,6 +14,8 @@ import app.pickage.com.pickage.Opening.Opening3;
 import app.pickage.com.pickage.Opening.Opening4;
 import app.pickage.com.pickage.Opening.Opening5;
 
+import app.pickage.com.pickage.R;
+
 public class MainActivity extends FragmentActivity {
 
     @Override

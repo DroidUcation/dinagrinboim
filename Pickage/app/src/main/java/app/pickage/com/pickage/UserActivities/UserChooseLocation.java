@@ -1,5 +1,7 @@
 package app.pickage.com.pickage.UserActivities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +16,7 @@ import app.pickage.com.pickage.R;
 public class UserChooseLocation extends AppCompatActivity {
 
     private static final String TAG = UserChooseLocation.class.getSimpleName();
+    public Place place;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class UserChooseLocation extends AppCompatActivity {
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i(TAG, "Place: " + place.getName());
+                finito(place);
             }
 
             @Override
@@ -37,7 +41,14 @@ public class UserChooseLocation extends AppCompatActivity {
         });
     }
 
-    public void getFiveLastLocation(){
-
+    private void finito(Place place){
+        Intent data = new Intent();
+        data.putExtra("FROM", place.getName());
+        if (getParent() == null) {
+            setResult(Activity.RESULT_OK, data);
+        } else {
+            getParent().setResult(Activity.RESULT_OK, data);
+        }
+        finish();;
     }
 }

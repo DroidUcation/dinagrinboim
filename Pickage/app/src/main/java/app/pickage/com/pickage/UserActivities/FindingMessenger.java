@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import app.pickage.com.pickage.R;
 
-public class PindingMessenger extends AppCompatActivity {
+public class FindingMessenger extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pinding_messenger);
+        setContentView(R.layout.activity_finding_messenger);
     }
 }

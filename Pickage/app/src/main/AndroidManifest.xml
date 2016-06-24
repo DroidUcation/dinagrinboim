@@ -93,7 +93,7 @@
         <activity android:name=".UserActivities.FillPackageDetails"></activity>
         <activity android:name=".UserActivities.Feedback"
             android:label="Feedback"></activity>
-        <activity android:name=".UserActivities.PindingMessenger"
+        <activity android:name=".UserActivities.FindingMessenger"
             android:label="The messenger is comming to you"></activity>
     </application>
 

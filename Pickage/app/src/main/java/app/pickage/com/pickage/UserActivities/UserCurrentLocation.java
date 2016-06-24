@@ -199,8 +199,13 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
                 startActivityForResult(chooseLocationIntent, TO_REQUEST);
                 break;
             case R.id.btn_continue_location:
-                // Fix UserChooseLocation.class
-                Intent searchMessangerIntent = new Intent(UserCurrentLocation.this, UserChooseLocation.class);
+                Intent searchMessangerIntent = new Intent(UserCurrentLocation.this, FillPackageDetails.class);
+                searchMessangerIntent.putExtra("FROM_NAME", fromTxt.getText());
+                searchMessangerIntent.putExtra("FROM_LAT", fromMarker.getPosition().latitude);
+                searchMessangerIntent.putExtra("FROM_LONG", fromMarker.getPosition().longitude);
+                searchMessangerIntent.putExtra("TO_NAME", toTxt.getText());
+                searchMessangerIntent.putExtra("TO_LAT", toMarker.getPosition().latitude);
+                searchMessangerIntent.putExtra("TO_LONG", toMarker.getPosition().longitude);
                 startActivity(searchMessangerIntent);
                 break;
         }

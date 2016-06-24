@@ -34,14 +34,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text=""
-        android:textSize="16dip"/>
+        android:textSize="16dp"/>
 
     <TextView android:id="@+id/from_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/to_text_view"
         android:text=""
-        android:textSize="16dip"/>
+        android:textSize="16dp"/>
 
     <Button
         android:id="@+id/btn_continue_location"

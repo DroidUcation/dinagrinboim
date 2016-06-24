@@ -10,25 +10,32 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <!--
  The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
     -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:launchMode="standard"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -38,8 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserActivities.UserCurrentLocation" />
-        <activity android:name=".UserActivities.UserChooseLocation" />
 
         <provider
             android:name=".ContentProvider.UserContentProvider"
@@ -57,11 +62,11 @@
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyASM5kM2h3tbhxbJbK3cYUJdTyDLLAX6ZU" />
+            android:value="AIzaSyBc_Hyv_2-Z78gTkblJjCLl6lafO9tcW8E" />
 
         <activity
             android:name=".UserActivities.LoginUserActivity"
@@ -69,27 +74,27 @@
         <activity
             android:name=".UserActivities.SingUpUserActivity"
             android:label="Sing Up" />
+        <activity android:name=".UserActivities.UserCreditCardDetails" />
+        <activity android:name=".UserActivities.UserCurrentLocation">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <!--<activity android:name=".UserActivities.UserPlaceMap" />-->
+        <activity android:name=".UserActivities.UserChooseLocation">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-        <uses-feature
-            android:glEsVersion="0x00020000"
-            android:required="true" />
-
-        <activity android:name=".UserActivities.UserCreditCardDetails"
-            android:label="Credit card details"/>
-        <activity android:name=".UserActivities.UserChooseLocation" />
-        <activity android:name=".UserActivities.UserChooseLocation" />
-        <activity android:name=".UserActivities.UploadImg"></activity>
-
-        <uses-permission android:name="android.permission.CAMERA" />
-        <uses-feature android:name="android.hardware.camera" />
-        <uses-feature android:name="android.hardware.camera.autofocus" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".UserActivities.FillPackageDetails"></activity>
+        <activity android:name=".UserActivities.Feedback"
+            android:label="Feedback"></activity>
+        <activity android:name=".UserActivities.PindingMessenger"
+            android:label="The messenger is comming to you"></activity>
     </application>
 
 </manifest>

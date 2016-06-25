@@ -3,15 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bkimg"
+    android:background="@drawable/alphabkimg"
     tools:context="app.pickage.com.pickage.UserActivities.UserCreditCardDetails">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:orientation="vertical">
 
     <LinearLayout
@@ -19,6 +17,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -46,6 +46,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -73,6 +75,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -100,6 +104,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -128,6 +134,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginBottom="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -149,11 +157,23 @@
             android:maxLines="1" />
 
     </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/orange"
+            android:text="NEXT"/>
+
     </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/orange"
-        android:text="NEXT"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_navigate_next_black_24dp"/>
+
 </RelativeLayout>

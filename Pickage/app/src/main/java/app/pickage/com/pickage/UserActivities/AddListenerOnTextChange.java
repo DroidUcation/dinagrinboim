@@ -39,6 +39,14 @@ public class AddListenerOnTextChange implements TextWatcher {
         return false;
     }
 
+    private boolean isValidContactOrigionPackage(String contactOrigionPackage) {
+        String CONTACT_ORIGION_PACKAGE = "^\\+[0-9]{10,13}$";
+
+        Pattern pattern = Pattern.compile(CONTACT_ORIGION_PACKAGE);
+        Matcher matcher = pattern.matcher(contactOrigionPackage);
+        return matcher.matches();
+    }
+
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
     }
@@ -70,6 +78,18 @@ public class AddListenerOnTextChange implements TextWatcher {
                     final String pass = mEdittextview.getText().toString();
                     if (!isValidPassword(pass)) {
                         mEdittextview.setError("Invalid Password - password smoller then 6 char");
+                    }
+                    break;
+                case R.id.editContactOrigionPackage:
+                    final String ContactOrigionPackage = mEdittextview.getText().toString();
+                    if (!isValidContactOrigionPackage(ContactOrigionPackage)) {
+                        mEdittextview.setError("Invalid Contact Origion Package");
+                    }
+                    break;
+                case R.id.editContactDestinationPackage:
+                    final String ContactDestinationPackage = mEdittextview.getText().toString();
+                    if (!isValidContactOrigionPackage(ContactDestinationPackage)) {
+                        mEdittextview.setError("Invalid Contact Destination Package");
                     }
                     break;
             }

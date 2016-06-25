@@ -93,7 +93,7 @@
                 android:gravity="center"
                 android:textSize="20dip"
                 android:textAllCaps="true"
-                android:text="I'm a driver"
+                android:text="I'm a messenger"
                 android:layout_marginTop="15dp"
                 android:layout_alignParentBottom="true"
                 android:background="@color/orange"/>

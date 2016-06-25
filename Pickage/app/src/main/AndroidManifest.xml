@@ -90,11 +90,17 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".UserActivities.FillPackageDetails"></activity>
+        <activity android:name=".UserActivities.FillPackageDetails">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".UserActivities.Feedback"
             android:label="Feedback"></activity>
         <activity android:name=".UserActivities.FindingMessenger"
-            android:label="The messenger is comming to you"></activity>
+            android:label="Messenger coming your way"></activity>
     </application>
 
 </manifest>

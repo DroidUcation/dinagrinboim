@@ -49,16 +49,26 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="11dp"/>
 
             <EditText
-                android:id="@+id/editTime"
+                android:id="@+id/tvTime"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:lines="1"
-                android:maxLines="1" />
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+            <Button
+                android:id="@+id/btnChangeTime"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="7dp"
+                android:layout_height="wrap_content"
+                android:text="Change Time" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,16 +91,24 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="11dp"/>
 
             <EditText
                 android:id="@+id/editFrom"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:lines="1"
-                android:maxLines="1" />
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="7dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -109,7 +127,7 @@
                 android:src="@drawable/ic_control_point_black_24dp"/>
 
             <TextView
-                android:text="Add contact :"
+                android:text="Add origion contact :"
                 android:textSize="11dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -117,13 +135,20 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editAdd1"
+                android:id="@+id/editContactOrigionPackage"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="phone"
                 android:lines="1"
                 android:maxLines="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -146,16 +171,24 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="11dp"/>
 
             <EditText
                 android:id="@+id/editTo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:inputType="text"
-                android:lines="1"
-                android:maxLines="1" />
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="7dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -174,7 +207,7 @@
                 android:src="@drawable/ic_control_point_black_24dp"/>
 
             <TextView
-                android:text="Add contact :"
+                android:text="Add destination contact :"
                 android:textSize="11dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -182,13 +215,20 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editAdd2"
+                android:id="@+id/editContactDestinationPackage"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:lines="1"
                 android:maxLines="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -211,7 +251,8 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="11dp"/>
 
             <EditText
                 android:id="@+id/editPyment"
@@ -221,6 +262,13 @@
                 android:inputType="text"
                 android:lines="1"
                 android:maxLines="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -243,7 +291,8 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="11dp"/>
 
             <EditText
                 android:id="@+id/editComment"
@@ -256,6 +305,13 @@
                 android:gravity="top|left"
                 android:maxLines="10"
                 android:scrollbars="vertical" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
     </ScrollView>

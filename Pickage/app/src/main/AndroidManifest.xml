@@ -74,21 +74,27 @@
         <activity
             android:name=".UserActivities.SingUpUserActivity"
             android:label="Sing Up" />
-        <activity android:name=".UserActivities.UserCreditCardDetails" />
+        <activity
+            android:name=".UserActivities.UserCreditCardDetails"
+            android:label="Credit card details" />
         <activity android:name=".UserActivities.UserCurrentLocation">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <!--<activity android:name=".UserActivities.UserPlaceMap" />-->
+        <!-- <activity android:name=".UserActivities.UserPlaceMap" /> -->
         <activity android:name=".UserActivities.UserChooseLocation">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".UserActivities.FillPackageDetails">
             <intent-filter>
@@ -97,10 +103,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserActivities.Feedback"
-            android:label="Feedback"></activity>
-        <activity android:name=".UserActivities.FindingMessenger"
-            android:label="Messenger coming your way"></activity>
+        <activity
+            android:name=".UserActivities.Feedback"
+            android:label="Feedback" />
+        <activity
+            android:name=".UserActivities.FindingMessenger"
+            android:label="Messenger coming your way" />
+        <activity android:name=".UserActivities.UploadImg" />
+        <activity android:name=".MessengerActivities.OpeningMessenger" />
+        <activity android:name=".MessengerActivities.MessengerPersonalDetails" />
+        <activity android:name=".MessengerActivities.UploadMessImg" />
+        <activity android:name=".MessengerActivities.getUserPackage" />
+        <activity android:name=".MessengerActivities.MessengerDestinationPath"></activity>
     </application>
 
 </manifest>

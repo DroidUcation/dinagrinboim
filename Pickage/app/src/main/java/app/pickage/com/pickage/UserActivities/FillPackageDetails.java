@@ -2,11 +2,15 @@ package app.pickage.com.pickage.UserActivities;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import app.pickage.com.pickage.R;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import android.app.Activity;
 import android.app.Dialog;
@@ -23,11 +27,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.android.gms.maps.model.LatLng;
+
+
+import android.content.Intent;
+import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+
 public class FillPackageDetails extends AppCompatActivity {
 
     private TextView tvDisplayTime;
     private TimePicker timePicker1;
-    private Button btnChangeTime;
+    //    private Button btnChangeTime;
+    private EditText tvTime;
+    TextView textViewContactPhoneNum;
+    // private static final int PICK_CONTACT = 1000;
+
+    public static final int PICK_CONTACT = 100;
 
     private int hour;
     private int minute;
@@ -52,13 +68,12 @@ public class FillPackageDetails extends AppCompatActivity {
         editFrom.setText(data.getStringExtra("FROM_NAME"));
         editTo.setText(data.getStringExtra("TO_NAME"));
 
-        editFrom.setText(data.getStringExtra("FROM_NAME"));
-        editTo.setText(data.getStringExtra("TO_NAME"));
-
         contactOrigionPackage = (EditText) findViewById(R.id.editContactOrigionPackage);
         contactOrigionPackage.addTextChangedListener(new AddListenerOnTextChange(this, contactOrigionPackage));
         contactDestinationPackage = (EditText) findViewById(R.id.editContactDestinationPackage);
         contactDestinationPackage.addTextChangedListener(new AddListenerOnTextChange(this, contactDestinationPackage));
+
+        textViewContactPhoneNum = (TextView) findViewById(R.id.editContactOrigionPackage);
     }
 
     // display current time
@@ -82,8 +97,8 @@ public class FillPackageDetails extends AppCompatActivity {
     }
 
     public void addListenerOnButton() {
-        btnChangeTime = (Button) findViewById(R.id.btnChangeTime);
-        btnChangeTime.setOnClickListener(new OnClickListener() {
+        tvTime = (EditText) findViewById(R.id.tvTime);
+        tvTime.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -91,6 +106,15 @@ public class FillPackageDetails extends AppCompatActivity {
 
             }
         });
+//        btnChangeTime = (Button) findViewById(R.id.btnChangeTime);
+//        btnChangeTime.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                showDialog(TIME_DIALOG_ID);
+//
+//            }
+//        });
     }
 
     @Override
@@ -99,7 +123,7 @@ public class FillPackageDetails extends AppCompatActivity {
             case TIME_DIALOG_ID:
                 // set time picker as current time
                 return new TimePickerDialog(this,
-                        timePickerListener, hour, minute,false);
+                        timePickerListener, hour, minute, false);
         }
         return null;
     }
@@ -143,10 +167,61 @@ public class FillPackageDetails extends AppCompatActivity {
         return true;
     }
 
-    public void continueBtn(View view) {
-        if(isValidPackageDeatails(view)){
-            //Intent i = new Intent(LoginUserActivity.this, UserCurrentLocation.class);
-            //startActivity(i);
+    private void orderMessengerBtn(View view) {
+        if (isValidPackageDeatails(view)) {
+            Intent i = new Intent(FillPackageDetails.this, FindingMessenger.class);
+            startActivity(i);
+        }
+    }
+
+    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
+        int Radius = 6371;// radius of earth in Km
+        double lat1 = StartP.latitude;
+        double lat2 = EndP.latitude;
+        double lon1 = StartP.longitude;
+        double lon2 = EndP.longitude;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(lat1))
+                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
+                * Math.sin(dLon / 2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        double valueResult = Radius * c;
+        double km = valueResult / 1;
+        DecimalFormat newFormat = new DecimalFormat("####");
+        int kmInDec = Integer.valueOf(newFormat.format(km));
+        double meter = valueResult % 1000;
+        int meterInDec = Integer.valueOf(newFormat.format(meter));
+        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
+                + " Meter   " + meterInDec);
+
+        return Radius * c;
+    }
+
+
+    //Todo when button is clicked
+    public void pickAContactNumber(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+        startActivityForResult(intent, PICK_CONTACT);
+    }
+
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+
+        switch (reqCode) {
+            case (PICK_CONTACT):
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri contactData = data.getData();
+                    Cursor phone = getContentResolver().query(contactData, null, null, null, null);
+                    if (phone.moveToFirst()) {
+                        String contactNumberName = phone.getString(phone.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                        // Todo something when contact number selected
+                        textViewContactPhoneNum.setText("Name: " + contactNumberName);
+                    }
+                }
+                break;
         }
     }
 }

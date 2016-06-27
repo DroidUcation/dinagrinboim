@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivities.FindingMessenger">
+    tools:context="app.pickage.com.pickage.MessengerActivities.getUserPackage">
 
     <ImageView
-        android:id="@+id/messengerImgPhoto"
+        android:id="@+id/userImgPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -22,51 +22,25 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_toLeftOf="@id/messengerImgPhoto"
+        android:layout_toLeftOf="@id/userImgPhoto"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/messengerName"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Name :"
+                android:text="Origion :"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:textSize="10dp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editMessengerName"
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/messengerPhone"
-            android:layout_below="@id/messengerName"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:text="Phone :"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editMessengerPhone"
+                android:id="@+id/editOrigionPackageForMess"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
@@ -77,22 +51,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/messengerCardType"
-            android:layout_below="@id/editMessengerPhone"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Car type :"
+                android:text="Origion content :"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:textSize="10dp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editMessengerCardType"
+                android:id="@+id/editOrigionContentForMess"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
@@ -100,6 +73,56 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:text="Destination:"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editDestinationPackageForMess"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:text="Destination contect :"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editDestinationContectForMess"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
         </LinearLayout>
     </LinearLayout>
 
@@ -125,14 +148,13 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/editmessengerAboutTime"
+            android:id="@+id/editTimeMessGetPackage"
             android:layout_width="wrap_content"
             android:text="00"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/editmessengerAboutTimeMinutes"
             android:layout_width="wrap_content"
             android:text="minutes"
             android:layout_marginLeft="20dp"
@@ -148,5 +170,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/orange"
+        android:text="get package"/>
+
+
 
 </RelativeLayout>

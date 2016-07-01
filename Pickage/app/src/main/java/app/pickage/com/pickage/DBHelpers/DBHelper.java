@@ -35,11 +35,13 @@ public class DBHelper  extends SQLiteOpenHelper {
                     DBContract.MESSENGER_TBL +  " ( " +
                     DBContract.MESSENGER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     DBContract.MESSENGER_MAIL + " TEXT, " +
-                    DBContract.MESSENGER_PASSSWORD + " TEXT, " +
+                    DBContract.MESSENGER_PASSWORD + " TEXT, " +
                     DBContract.MESSENGER_PHONE + " TEXT, " +
                     DBContract.MESSENGER_NAME + " TEXT, " +
                     DBContract.MESSENGER_IMG + " TEXT, " + //TEXT IS URL OF IMG
                     DBContract.MESSENGER_CAR_TYPE + " TEXT " +
+                    DBContract.MESSENGER_LAT + " TEXT " +
+                    DBContract.MESSENGER_LONG + " TEXT " +
             ");";
                    // DBContract.MESSENGER_PACKAGE_ID + " INTEGER ," +
                    // " FOREIGN KEY (" + DBContract.MESSENGER_PACKAGE_ID + ") REFERENCES " +
@@ -49,7 +51,7 @@ public class DBHelper  extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_PACKAGE = " CREATE TABLE " +
                     DBContract.PACKAGE_TBL +  " ( " +
                     DBContract.PACKAGE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    DBContract.PKG_ORIGIN__LONG + " DOUBLE, " +
+                    DBContract.PKG_ORIGIN_LONG + " DOUBLE, " +
                     DBContract.PKG_ORIGIN_LAT + " DOUBLE, " +
                     DBContract.ORIGIN_PACKAGE + " TEXT, " +
                     DBContract.DESTINATION_PACKAGE + " TEXT, " +

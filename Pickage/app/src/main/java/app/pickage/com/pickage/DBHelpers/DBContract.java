@@ -19,7 +19,7 @@ public class DBContract implements BaseColumns {
     public static final String PACKAGE_ID = "packageID";
     public static final String ORIGIN_PACKAGE = "userFillOriginPackage";
     public static final String DESTINATION_PACKAGE = "userFillDestinationPackage";
-    public static final String PKG_ORIGIN__LONG = "packageOriginLong";
+    public static final String PKG_ORIGIN_LONG = "packageOriginLong";
     public static final String PKG_ORIGIN_LAT = "packageOriginLat";
 
 
@@ -36,7 +36,7 @@ public class DBContract implements BaseColumns {
     public static final String USER_CREDIT_CARD_NAME = "userCreditCardName";
     public static final String USER_CREDIT_CARD_DATE = "userCreditCardDate";
     public static final String USER_CREDIT_CARD_CSV = "userCreditCardCSV";
-    public static final String USER_FEEDBACK = "userFidbek";
+    public static final String USER_FEEDBACK = "userFeedback";
     //public static final String USER_PACKAGE_ID = PACKAGE_ID;
 
 
@@ -44,11 +44,13 @@ public class DBContract implements BaseColumns {
     public static final String MESSENGER_TBL = "MessengerTBL";
     public static final String MESSENGER_ID = "messengerID";
     public static final String MESSENGER_MAIL = "messengerMail";
-    public static final String MESSENGER_PASSSWORD = "messengerPasswoed";
+    public static final String MESSENGER_PASSWORD = "messengerPasswoed";
     public static final String MESSENGER_PHONE = "messengerPhone";
     public static final String MESSENGER_NAME = "messengerName";
     public static final String MESSENGER_IMG = "messengerImg";
     public static final String MESSENGER_CAR_TYPE = "messengerCarType";
+    public static final String MESSENGER_LAT = "messengerLat";
+    public static final String MESSENGER_LONG = "messengerLong";
     //public static final String MESSENGER_PACKAGE_ID = PACKAGE_ID;
 
 

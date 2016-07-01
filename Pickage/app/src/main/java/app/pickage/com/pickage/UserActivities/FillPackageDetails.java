@@ -8,6 +8,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import app.pickage.com.pickage.MessengerActivities.FindMessangerIntentService;
 import app.pickage.com.pickage.R;
 
 import java.text.DecimalFormat;
@@ -34,7 +35,7 @@ import android.content.Intent;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 
-public class FillPackageDetails extends AppCompatActivity {
+public class FillPackageDetails extends AppCompatActivity implements View.OnClickListener{
 
     private TextView tvDisplayTime;
     private TimePicker timePicker1;
@@ -74,6 +75,9 @@ public class FillPackageDetails extends AppCompatActivity {
         contactDestinationPackage.addTextChangedListener(new AddListenerOnTextChange(this, contactDestinationPackage));
 
         textViewContactPhoneNum = (TextView) findViewById(R.id.editContactOrigionPackage);
+
+        Button btnOrderMessanger = (Button) findViewById(R.id.btnOrderMessanger);
+        btnOrderMessanger.setOnClickListener(this);
     }
 
     // display current time
@@ -167,12 +171,21 @@ public class FillPackageDetails extends AppCompatActivity {
         return true;
     }
 
-    private void orderMessengerBtn(View view) {
-        if (isValidPackageDeatails(view)) {
-            Intent i = new Intent(FillPackageDetails.this, FindingMessenger.class);
-            startActivity(i);
-        }
+    @Override
+    public void onClick(View v) {
+        Intent service = new Intent(FillPackageDetails.this, FindMessangerIntentService.class);
+        Intent data = getIntent();
+        service.putExtras(data);
+        startService(service);
     }
+//    public void orderMessengerBtn(View view) {
+////        if (isValidPackageDeatails(view)) {
+//            Intent service = new Intent(FillPackageDetails.this, FindMessangerIntentService.class);
+//            startService(service);
+////            Intent i = new Intent(FillPackageDetails.this, FindingMessenger.class);
+////            startActivity(i);
+////        }
+//    }
 
     public double CalculationByDistance(LatLng StartP, LatLng EndP) {
         int Radius = 6371;// radius of earth in Km

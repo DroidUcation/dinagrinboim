@@ -199,14 +199,18 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
                 startActivityForResult(chooseLocationIntent, TO_REQUEST);
                 break;
             case R.id.btn_continue_location:
-                Intent searchMessangerIntent = new Intent(UserCurrentLocation.this, FillPackageDetails.class);
-                searchMessangerIntent.putExtra("FROM_NAME", fromTxt.getText());
-                searchMessangerIntent.putExtra("FROM_LAT", fromMarker.getPosition().latitude);
-                searchMessangerIntent.putExtra("FROM_LONG", fromMarker.getPosition().longitude);
-                searchMessangerIntent.putExtra("TO_NAME", toTxt.getText());
-                searchMessangerIntent.putExtra("TO_LAT", toMarker.getPosition().latitude);
-                searchMessangerIntent.putExtra("TO_LONG", toMarker.getPosition().longitude);
-                startActivity(searchMessangerIntent);
+                if (fromMarker != null && toMarker != null) {
+                    Intent searchMessangerIntent = new Intent(UserCurrentLocation.this, FillPackageDetails.class);
+                    searchMessangerIntent.putExtra("FROM_NAME", fromTxt.getText().toString());
+                    searchMessangerIntent.putExtra("FROM_LAT", fromMarker.getPosition().latitude);
+                    searchMessangerIntent.putExtra("FROM_LONG", fromMarker.getPosition().longitude);
+                    searchMessangerIntent.putExtra("TO_NAME", toTxt.getText().toString());
+                    searchMessangerIntent.putExtra("TO_LAT", toMarker.getPosition().latitude);
+                    searchMessangerIntent.putExtra("TO_LONG", toMarker.getPosition().longitude);
+                    startActivity(searchMessangerIntent);
+                } else {
+                    toTxt.setError("Add destination is required");
+                }
                 break;
         }
     }

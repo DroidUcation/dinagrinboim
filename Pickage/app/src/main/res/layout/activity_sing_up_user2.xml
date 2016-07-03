@@ -96,6 +96,11 @@
                 android:textColor="#FFA500"
                 android:textSize="16dip"
                 android:onClick="loginBtn"/>
+
+            <TextView
+                android:id="@+id/testLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

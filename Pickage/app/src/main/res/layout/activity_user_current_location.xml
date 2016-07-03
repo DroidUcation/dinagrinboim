@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="11dp"/>
+            android:textSize="17dp"/>
 
         <EditText
             android:id="@+id/from_text_view"
@@ -89,7 +89,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="11dp"/>
+            android:textSize="17dp"/>
 
         <EditText
             android:id="@+id/to_text_view"

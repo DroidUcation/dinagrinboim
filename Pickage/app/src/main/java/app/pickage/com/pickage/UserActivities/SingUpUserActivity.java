@@ -62,7 +62,7 @@ public class SingUpUserActivity extends AppCompatActivity {
         if(passEditText.getText().toString().trim().length() == 0){
             passEditText.setError("Password filed is required");
         }
-        //insertMessenger();
+        insertMessenger();
         getMessengerFromDB(); // for check insert messenger
 
         if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){

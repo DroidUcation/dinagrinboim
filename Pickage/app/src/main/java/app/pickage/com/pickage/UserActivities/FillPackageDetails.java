@@ -1,14 +1,13 @@
 package app.pickage.com.pickage.UserActivities;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import app.pickage.com.pickage.MessengerActivities.FindMessangerIntentService;
+import app.pickage.com.pickage.MessengerActivities.FindMessengerIntentService;
 import app.pickage.com.pickage.R;
 
 import java.text.DecimalFormat;
@@ -16,24 +15,16 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.google.android.gms.maps.model.LatLng;
-
-
-import android.content.Intent;
-import android.provider.ContactsContract;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 public class FillPackageDetails extends AppCompatActivity implements View.OnClickListener{
 
@@ -41,10 +32,11 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     private TimePicker timePicker1;
     //    private Button btnChangeTime;
     private EditText tvTime;
-    TextView textViewContactPhoneNum;
+//    TextView textViewContactPhoneNum;
     // private static final int PICK_CONTACT = 1000;
 
-    public static final int PICK_CONTACT = 100;
+    public static final int PICK_CONTACT_ORIGIN = 100;
+    public static final int PICK_CONTACT_DEST = 101;
 
     private int hour;
     private int minute;
@@ -74,10 +66,14 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         contactDestinationPackage = (EditText) findViewById(R.id.editContactDestinationPackage);
         contactDestinationPackage.addTextChangedListener(new AddListenerOnTextChange(this, contactDestinationPackage));
 
-        textViewContactPhoneNum = (TextView) findViewById(R.id.editContactOrigionPackage);
+//        textViewContactPhoneNum = (TextView) findViewById(R.id.editContactOrigionPackage);
 
         Button btnOrderMessanger = (Button) findViewById(R.id.btnOrderMessanger);
         btnOrderMessanger.setOnClickListener(this);
+        ImageView addOriginContactNumPhone = (ImageView) findViewById(R.id.addOriginContactNumPhone);
+        addOriginContactNumPhone.setOnClickListener(this);
+        ImageView addDestContactNumPhone = (ImageView) findViewById(R.id.addDestContactNumPhone);
+        addDestContactNumPhone.setOnClickListener(this);
     }
 
     // display current time
@@ -160,7 +156,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     private boolean isValidPackageDeatails(View view) {
         final String phone = contactOrigionPackage.getText().toString();
         if (contactOrigionPackage.getText().toString().trim().length() == 0) {
-            contactOrigionPackage.setError("Add origion contact filed is required");
+            contactOrigionPackage.setError("Add origin contact filed is required");
             return false;
         }
         final String phoneDestination = contactDestinationPackage.getText().toString();
@@ -173,19 +169,26 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        Intent service = new Intent(FillPackageDetails.this, FindMessangerIntentService.class);
-        Intent data = getIntent();
-        service.putExtras(data);
-        startService(service);
+        Intent intent;
+        switch (v.getId()){
+            case R.id.btnOrderMessanger:
+                if (isValidPackageDeatails(v)) {
+                    intent = new Intent(FillPackageDetails.this, FindMessengerIntentService.class);
+                    Intent data = getIntent();
+                    intent.putExtras(data);
+                    startService(intent);
+                }
+                break;
+            case R.id.addOriginContactNumPhone:
+                intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(intent, PICK_CONTACT_ORIGIN);
+                break;
+            case R.id.addDestContactNumPhone:
+                intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(intent, PICK_CONTACT_DEST);
+                break;
+        }
     }
-//    public void orderMessengerBtn(View view) {
-////        if (isValidPackageDeatails(view)) {
-//            Intent service = new Intent(FillPackageDetails.this, FindMessangerIntentService.class);
-//            startService(service);
-////            Intent i = new Intent(FillPackageDetails.this, FindingMessenger.class);
-////            startActivity(i);
-////        }
-//    }
 
     public double CalculationByDistance(LatLng StartP, LatLng EndP) {
         int Radius = 6371;// radius of earth in Km
@@ -212,29 +215,43 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         return Radius * c;
     }
 
-
-    //Todo when button is clicked
-    public void pickAContactNumber(View view) {
-        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-        startActivityForResult(intent, PICK_CONTACT);
-    }
-
     @Override
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
 
         switch (reqCode) {
-            case (PICK_CONTACT):
+            case (PICK_CONTACT_ORIGIN):
                 if (resultCode == Activity.RESULT_OK) {
-                    Uri contactData = data.getData();
-                    Cursor phone = getContentResolver().query(contactData, null, null, null, null);
-                    if (phone.moveToFirst()) {
-                        String contactNumberName = phone.getString(phone.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                        // Todo something when contact number selected
-                        textViewContactPhoneNum.setText("Name: " + contactNumberName);
-                    }
+                    contactOrigionPackage.setText(getPhoneNumber(data));
+                }
+                break;
+            case PICK_CONTACT_DEST:
+                if (resultCode == Activity.RESULT_OK) {
+                    contactDestinationPackage.setText(getPhoneNumber(data));
                 }
                 break;
         }
+    }
+
+    private String getPhoneNumber(Intent data) {
+        Uri contactData = data.getData();
+        Cursor contact = getContentResolver().query(contactData, null, null, null, null);
+        String cNumber = null;
+        if (contact.moveToFirst()) {
+            String contactNumberName = contact.getString(contact.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            String id = contact.getString(contact.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+            String hasPhone = contact.getString(contact.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+
+            if (hasPhone.equalsIgnoreCase("1")) {
+                Cursor phones = getContentResolver().query(
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
+                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,
+                        null, null);
+                phones.moveToFirst();
+                cNumber = phones.getString(phones.getColumnIndex("data1"));
+                System.out.println("number is: "+cNumber);
+            }
+        }
+        return cNumber;
     }
 }

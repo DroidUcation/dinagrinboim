@@ -108,16 +108,15 @@
             android:focusableInTouchMode="true">
 
             <ImageView
-                android:id="@+id/add_contact_num_phone"
+                android:id="@+id/addOriginContactNumPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_control_point_black_24dp"
-                android:onClick="pickAContactNumber"/>
+                android:src="@drawable/ic_control_point_black_24dp"/>
 
             <TextView
-                android:text="Add origion contact :"
+                android:text="Add origin contact :"
                 android:textSize="11dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -180,6 +179,7 @@
             android:focusableInTouchMode="true">
 
             <ImageView
+                android:id="@+id/addDestContactNumPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -2,34 +2,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="app.pickage.com.pickage.Opening.Opening"
+    android:background="@drawable/feedback"
     style="@style/relativeLayout_style">
 
+   <TextView
+       android:id="@+id/app_title"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="170dp"
+       android:textSize="30dp"
+       android:textColor="@color/orange"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="15dp"
+       android:textStyle="italic"
+       android:textAllCaps="true"
+       android:layout_centerHorizontal="true"
+       android:text="The application that makes your life eazy"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_title"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="italic"
+            android:text="PackMe immediately"/>
+
         <ImageView
-            style="@style/background_opening_img_view"/>
+        android:id="@+id/logo_img"
+        style="@style/img_logo_opening_app"
+        android:src="@drawable/packmelogo"/>
 
-        <TextView
-            android:id="@+id/title1_os"
-            style="@style/title_text_view"
-            android:textStyle="bold"
-            android:textSize="@dimen/activity_title1_open"
-            android:textColor="@color/orange"
-            android:text="@string/title1_activity_opening"/>
+    <!--<ImageView-->
+            <!--style="@style/background_opening_img_view"/>-->
 
-        <TextView
-            android:id="@+id/title2_os"
-            style="@style/title_text_view"
-            android:layout_below="@id/title1_os"
-            android:textSize="@dimen/activity_title2_open"
-            android:textColor="@color/blue"
-            android:text="@string/title2_activity_opening"/>
+        <!--<TextView-->
+            <!--android:id="@+id/title1_os"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="150dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="@dimen/activity_title1_open"-->
+            <!--android:textColor="@color/orange"-->
+            <!--android:text="@string/title1_activity_opening"/>-->
 
-        <TextView
-            android:id="@+id/title3_os"
-            style="@style/description_app_text_view"
-            android:text="@string/text_activity_opening"/>
+        <!--<TextView-->
+            <!--android:id="@+id/title2_os"-->
+            <!--style="@style/title_text_view"-->
+            <!--android:layout_below="@id/title1_os"-->
+            <!--android:textSize="@dimen/activity_title2_open"-->
+            <!--android:textColor="@color/blue"-->
+            <!--android:text="@string/title2_activity_opening"/>-->
 
-        <ImageView
-            android:id="@+id/logo_img"
-            style="@style/img_logo_opening_app"
-            android:src="@drawable/logo"/>
+        <!--<TextView-->
+            <!--android:id="@+id/title3_os"-->
+            <!--style="@style/description_app_text_view"-->
+            <!--android:text="@string/text_activity_opening"/>-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/logo_img"-->
+            <!--style="@style/img_logo_opening_app"-->
+            <!--android:src="@drawable/packmelogo"/>-->
 </RelativeLayout>

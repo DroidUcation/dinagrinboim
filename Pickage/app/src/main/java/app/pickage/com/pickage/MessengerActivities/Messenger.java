@@ -23,6 +23,12 @@ public class Messenger {
         this.messengerCarType = messengerCarType;
     }
 
+    public Messenger(String messengerName, String messengerMail, String messengerPassword) {
+        this.messengerName = messengerName;
+        this.messengerMail = messengerMail;
+        this.messengerPassword = messengerPassword;
+    }
+
     public int getMessengerID() {
         return messengerID;
     }

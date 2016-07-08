@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     tools:context="app.pickage.com.pickage.UserActivities.LoginUserActivity">
 
-    <ImageView
-        style="@style/background_opening_img_view"/>
+    <!--<ImageView-->
+        <!--style="@style/background_opening_img_view"/>-->
 
     <ProgressBar
         android:id="@+id/login_progress"
@@ -98,6 +98,7 @@
                 android:text="I'm a messenger"
                 android:layout_marginTop="15dp"
                 android:layout_alignParentBottom="true"
+                android:onClick="isMessengerBtnContinue"
                 android:background="@color/orange"/>
         </LinearLayout>
     </ScrollView>

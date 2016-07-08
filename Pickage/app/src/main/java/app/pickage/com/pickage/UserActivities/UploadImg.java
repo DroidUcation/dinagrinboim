@@ -20,22 +20,40 @@ import android.app.AlertDialog;
         import android.view.Menu;
         import android.view.View;
         import android.widget.Button;
-        import android.widget.ImageView;
-        import java.io.File;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.File;
         import java.io.FileNotFoundException;
         import java.io.FileOutputStream;
         import java.io.IOException;
         import java.io.OutputStream;
+import java.net.URL;
 
 public class UploadImg extends AppCompatActivity {
 
+    EditText phoneEditText;
     ImageView viewImage;
     Button b;
+
+    // [START declare_database_ref]
+    private DatabaseReference mDatabase;
+// [END declare_database_ref]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_img);
+
+        // [START initialize_database_ref]
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // [END initialize_database_ref]
+
+        phoneEditText = (EditText) findViewById(R.id.input_phone);
 
         b=(Button)findViewById(R.id.btnSelectPhoto);
         viewImage=(ImageView)findViewById(R.id.viewImage);
@@ -144,7 +162,20 @@ public class UploadImg extends AppCompatActivity {
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
                // Log.w("path of image from gallery...", picturePath+"");
                 viewImage.setImageBitmap(thumbnail);
+
+
+//                User user = new User(phoneEditText.getText().toString(), URL.viewImage);
+//                saveImgUserOnFireBase(user);
             }
         }
+    }
+
+    public void saveImgUserOnFireBase(User user) {
+        Firebase.setAndroidContext(this);
+        Firebase ref = new Firebase("https://packme-ea467.firebaseio.com/users");
+        //Storing values to firebase
+        ref = ref.push();
+        ref.setValue(user);
+        String userKey = ref.getKey();
     }
 }

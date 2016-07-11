@@ -13,23 +13,6 @@
         android:layout_height="match_parent"
         tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation"/>
 
-    <!--<EditText-->
-    <!--android:id="@+id/to_edit_text"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:textStyle="bold"-->
-    <!--android:text="To:"/>-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/from_edit_text"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_above="@id/to_edit_text"-->
-    <!--android:textStyle="bold"-->
-    <!--android:text="From:"/>-->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -121,28 +104,4 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/ic_navigate_next_black_24dp"/>
-
-    <!--<TextView android:id="@+id/to_text_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:text=""-->
-        <!--android:textSize="16dp"/>-->
-
-    <!--<TextView android:id="@+id/from_text_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_above="@id/to_text_view"-->
-        <!--android:text=""-->
-        <!--android:textSize="16dp"/>-->
-
-    <!--<Button-->
-        <!--android:id="@+id/btn_continue_location"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="24dp"-->
-        <!--android:layout_marginBottom="24dp"-->
-        <!--android:padding="12dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:text="Continue"/>-->
 </RelativeLayout>

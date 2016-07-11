@@ -79,14 +79,12 @@ public class SingUpUserActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        if(intent.getBooleanExtra("isMessenger", Boolean.parseBoolean("false"))){
+        if(intent.getBooleanExtra("isMessenger", false)){
             User user = new User(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
             saveUserOnFireBase(user);
         }
 
-
-
-        else if(intent.getBooleanExtra("isMessenger", Boolean.parseBoolean("true"))){
+        else if(intent.getBooleanExtra("isMessenger", true)){
             Messenger messenger = new Messenger(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
             saveMessengerOnFireBase(messenger);
             insertMessenger();
@@ -155,6 +153,7 @@ public class SingUpUserActivity extends AppCompatActivity {
                 ((EditText) findViewById(R.id.input_password_signup)).getText().toString());
         Uri uri = getContentResolver().insert(UserContentProvider.CONTENT_URI, values);
     }
+
     private void getUserFromDB() {
         Uri uri = Uri.withAppendedPath(UserContentProvider.CONTENT_URI, "user");
         Cursor c = getContentResolver().query(UserContentProvider.CONTENT_URI, null, null, null, null);

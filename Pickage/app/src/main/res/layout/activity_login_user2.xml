@@ -5,9 +5,6 @@
     android:layout_height="match_parent"
     tools:context="app.pickage.com.pickage.UserActivities.LoginUserActivity">
 
-    <!--<ImageView-->
-        <!--style="@style/background_opening_img_view"/>-->
-
     <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"

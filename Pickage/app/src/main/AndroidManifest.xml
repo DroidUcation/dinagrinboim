@@ -75,7 +75,7 @@
             android:label="Login" />
         <activity
             android:name=".UserActivities.SingUpUserActivity"
-            android:label="Sing Up" />
+            android:label="Sign Up" />
         <activity
             android:name=".UserActivities.UserCreditCardDetails"
             android:label="Credit card details" />
@@ -121,5 +121,4 @@
         <service android:name=".MessengerActivities.FindMessengerIntentService" />
 
     </application>
-
-</manifest>
+    </manifest>

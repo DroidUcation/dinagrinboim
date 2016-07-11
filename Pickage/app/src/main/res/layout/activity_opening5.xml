@@ -26,13 +26,12 @@
 
     <TextView
         android:id="@+id/btnext"
+        android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NEXT"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
         android:textColor="@color/turquoise"
         android:textSize="15dp"/>
 </RelativeLayout>

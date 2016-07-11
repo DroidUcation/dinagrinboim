@@ -12,14 +12,6 @@
         android:layout_centerInParent="true"
         android:src="@drawable/packages"/>
 
-    <!--<ImageView-->
-        <!--android:id="@+id/messPackgeImg"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_marginTop="30dp"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:src="@drawable/messpackage"/>-->
-
     <TextView
         android:id="@+id/thereAre"
         android:layout_width="wrap_content"
@@ -55,13 +47,10 @@
         android:textSize="20dp"
         android:text="packages waiting for you .."/>
 
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sing up"
         android:background="@color/orange"
         android:layout_alignParentBottom="true"/>
-
-
 </RelativeLayout>

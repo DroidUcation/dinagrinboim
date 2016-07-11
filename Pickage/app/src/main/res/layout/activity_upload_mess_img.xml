@@ -83,7 +83,5 @@
             android:textSize="16dip"
             android:onClick="loginBtn"
             android:layout_alignParentBottom="true"/>
-
     </LinearLayout>
-
 </RelativeLayout>

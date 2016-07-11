@@ -36,7 +36,6 @@
                 android:layout_marginBottom="20dp"
                 android:layout_gravity="center_horizontal" />
 
-            <!--  Name Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +60,6 @@
                     android:hint="Email" />
             </android.support.design.widget.TextInputLayout>
 
-            <!-- Password Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,8 +72,6 @@
                     android:hint="Password"/>
             </android.support.design.widget.TextInputLayout>
 
-            <!-- Signup Button -->
-            <!--<android.support.v7.widget.AppCompatButton-->
             <Button
                 android:id="@+id/btn_mess_continue_signup"
                 android:layout_width="fill_parent"
@@ -97,5 +93,4 @@
                 android:onClick="loginBtn"/>
         </LinearLayout>
     </ScrollView>
-
 </RelativeLayout>

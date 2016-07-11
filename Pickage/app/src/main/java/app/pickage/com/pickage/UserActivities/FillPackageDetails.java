@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -45,6 +46,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
 
     private EditText contactOrigionPackage;
     private EditText contactDestinationPackage;
+    private ProgressBar progressbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
 
         TextView editFrom = (TextView) findViewById(R.id.editFrom);
         TextView editTo = (TextView) findViewById(R.id.editTo);
+        progressbar = (ProgressBar) findViewById(R.id.progressbar);
         Intent data = getIntent();
 
         editFrom.setText(data.getStringExtra("FROM_NAME"));
@@ -177,6 +180,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
                     Intent data = getIntent();
                     intent.putExtras(data);
                     startService(intent);
+                    //progressbar.setVisibility(View.VISIBLE);
                 }
                 break;
             case R.id.addOriginContactNumPhone:

@@ -5,18 +5,28 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.location.Location;
-import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 
 import app.pickage.com.pickage.ContentProvider.MessengerContentProvider;
 import app.pickage.com.pickage.DBHelpers.DBContract;
 import app.pickage.com.pickage.R;
+import app.pickage.com.pickage.UserActivities.User;
 
 /**
  * Created by משפחת אוביץ on 28/06/2016.
@@ -26,9 +36,16 @@ public class FindMessengerIntentService extends IntentService {
     final int NOTIFICATION_ID = 1;
     String fromName = null;
 
+    Messenger messengerFB;
+    Messenger currentMessenger;
+
     public FindMessengerIntentService() {
         super("FindMessengerIntentService");
     }
+
+    // [START declare_database_ref]
+    private DatabaseReference mDatabase;
+    // [END declare_database_ref]
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -37,6 +54,16 @@ public class FindMessengerIntentService extends IntentService {
         fromName = intent.getStringExtra("FROM_NAME");
 //        Uri uri = Uri.withAppendedPath(MessengerContentProvider.CONTENT_URI,"1");
 //        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+
+        // [START initialize_database_ref]
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // [END initialize_database_ref]
+
+        getMessengersDetailsFromFireBase();
+        if(messengerFB!= null) {
+            Toast.makeText(getBaseContext(), "Hello " + messengerFB.getMessengerName(), Toast.LENGTH_LONG).show();
+        }
+
         Cursor cursor = getContentResolver().query(MessengerContentProvider.CONTENT_URI, null, null, null, null);
 
         double latMessenger;
@@ -59,6 +86,29 @@ public class FindMessengerIntentService extends IntentService {
             cursor.close();
         }
         sendNotification();
+    }
+
+    public void getMessengersDetailsFromFireBase(){
+//        Firebase.setAndroidContext(this);
+//        Firebase ref = new Firebase("https://packme-ea467.firebaseio.com/messengers");
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // Get Post object and use the values to update the UI
+//                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
+//                // ...
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // Getting Post failed, log a message
+//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                // ...
+//            }
+//        };
+//        mPostReference.addValueEventListener(postListener);
+
+        Query recentPostsQuery = mDatabase.child("messengers") .limitToFirst(3);
     }
 
     public PendingIntent createPendingIntent() {
@@ -90,4 +140,5 @@ public class FindMessengerIntentService extends IntentService {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, n);
     }
+
 }

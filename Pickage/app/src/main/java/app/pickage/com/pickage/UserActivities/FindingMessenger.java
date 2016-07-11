@@ -24,9 +24,5 @@ public class FindingMessenger extends AppCompatActivity {
     }
 
     private void getMessengerDetails(EditText getMessengerName, EditText getMessengerPhone, EditText getMessengerCardType) {
-
-
     }
-
-
 }

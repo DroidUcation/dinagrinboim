@@ -12,6 +12,10 @@ public class Messenger {
     private String messengerName;
     private String messengerImg;
     private String messengerCarType;
+    private double messengerLat;
+    private double messengerLong;
+
+    public Messenger(){}
 
     public Messenger(int messengerID,String messengerMail,String messengerPhone,String messengerName,
                      String messengerImg,String messengerCarType){
@@ -83,5 +87,21 @@ public class Messenger {
 
     public void setMessengerCarType(String messengerCarType) {
         this.messengerCarType = messengerCarType;
+    }
+
+    public double getMessengerLat() {
+        return messengerLat;
+    }
+
+    public void setMessengerLat(double messengerLat) {
+        this.messengerLat = messengerLat;
+    }
+
+    public double getMessengerLong() {
+        return messengerLong;
+    }
+
+    public void setMessengerLong(double messengerLong) {
+        this.messengerLong = messengerLong;
     }
 }

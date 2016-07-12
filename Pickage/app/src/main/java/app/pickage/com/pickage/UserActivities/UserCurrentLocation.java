@@ -45,6 +45,7 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     private GoogleMap mMap;
     Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
+    private LocationRequest mLocationRequest;
     private static final int LOCATION_PERMISSION = 583;
     TextView fromTxt;
     Marker fromMarker = null;
@@ -56,6 +57,12 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_current_location);
         buildGoogleApiClient();
+
+        mLocationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(10 * 1000)        // 10 seconds, in milliseconds
+                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -67,6 +74,7 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         toTxt.setOnClickListener(this);
         toTxt.setText("Add destination");
         ((Button)findViewById(R.id.btn_continue_location)).setOnClickListener(this);
+
     }
 
 
@@ -99,6 +107,15 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        if (mGoogleApiClient.isConnected()) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         mGoogleApiClient.disconnect();
@@ -116,25 +133,29 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     private void GetLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            if (mLastLocation != null) {
-                fromMarker = drawLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), "You are here!");
-                Geocoder geocoder;
-                List<Address> addresses;
-                geocoder = new Geocoder(this, Locale.getDefault());
+            if (mLastLocation == null) {
+                LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+            } else {
+                if (fromMarker == null) {
+                    fromMarker = drawLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), "You are here!");
+                    Geocoder geocoder;
+                    List<Address> addresses;
+                    geocoder = new Geocoder(this, Locale.getDefault());
 
-                try {
-                    addresses = geocoder.getFromLocation(mLastLocation.getLatitude(),  mLastLocation.getLongitude(), 1);
-                    if (addresses.size() > 0) {
-                        String address = addresses.get(0).getAddressLine(0);
-                        String city = addresses.get(0).getLocality();
-                        String state = addresses.get(0).getAdminArea();
-                        String country = addresses.get(0).getCountryName();
-                        String postalCode = addresses.get(0).getPostalCode();
-                        String knownName = addresses.get(0).getFeatureName();
-                        fromTxt.setText(address);
+                    try {
+                        addresses = geocoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 1);
+                        if (addresses.size() > 0) {
+                            String address = addresses.get(0).getAddressLine(0);
+                            String city = addresses.get(0).getLocality();
+                            String state = addresses.get(0).getAdminArea();
+                            String country = addresses.get(0).getCountryName();
+                            String postalCode = addresses.get(0).getPostalCode();
+                            String knownName = addresses.get(0).getFeatureName();
+                            fromTxt.setText(address);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }

@@ -2,16 +2,22 @@ package app.pickage.com.pickage.UserActivities;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.location.Location;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import app.pickage.com.pickage.AppConst;
 import app.pickage.com.pickage.MessengerActivities.FindMessengerIntentService;
+import app.pickage.com.pickage.MessengerActivities.Messenger;
+import app.pickage.com.pickage.PackageActivities.Package;
 import app.pickage.com.pickage.R;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -26,6 +32,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class FillPackageDetails extends AppCompatActivity implements View.OnClickListener{
 
@@ -48,10 +59,19 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     private EditText contactDestinationPackage;
     private ProgressBar progressbar;
 
+    private DatabaseReference mDatabase;
+
+    double latPackage;
+    double longPackage;
+    String fromName;
+    String toName;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_package_details);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         setCurrentTimeOnView();
         addListenerOnButton();
@@ -63,6 +83,10 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
 
         editFrom.setText(data.getStringExtra("FROM_NAME"));
         editTo.setText(data.getStringExtra("TO_NAME"));
+        fromName = data.getStringExtra("FROM_NAME");
+        toName = data.getStringExtra("TO_NAME");
+        latPackage = data.getDoubleExtra("FROM_LAT", 0);
+        longPackage = data.getDoubleExtra("FROM_LONG", 0);
 
         contactOrigionPackage = (EditText) findViewById(R.id.editContactOrigionPackage);
         contactOrigionPackage.addTextChangedListener(new AddListenerOnTextChange(this, contactOrigionPackage));
@@ -176,11 +200,15 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         switch (v.getId()){
             case R.id.btnOrderMessanger:
                 if (isValidPackageDeatails(v)) {
+                    Package p = new Package(0, longPackage, latPackage, fromName, toName, null, AppConst.myKey, "INITIAL");
+                    String packageKey = savePackageOnFireBase(p);
                     intent = new Intent(FillPackageDetails.this, FindMessengerIntentService.class);
                     Intent data = getIntent();
                     intent.putExtras(data);
+                    intent.putExtra("PACKAGE_KEY", packageKey);
                     startService(intent);
                     //progressbar.setVisibility(View.VISIBLE);
+
                 }
                 break;
             case R.id.addOriginContactNumPhone:
@@ -258,4 +286,11 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         }
         return cNumber;
     }
+
+    private String savePackageOnFireBase(Package pPackage) {
+        String packageKey = mDatabase.child("packages").push().getKey();
+        mDatabase.child("packages").child(packageKey).setValue(pPackage);
+        return packageKey;
+    }
 }
+

@@ -1,7 +1,5 @@
 package app.pickage.com.pickage.PackageActivities;
 
-import app.pickage.com.pickage.DBHelpers.DBContract;
-
 /**
  * Created by User on 05/06/2016.
  */
@@ -12,11 +10,12 @@ public class Package {
     private double pkgOriginLat;
     private String originPackage;
     private String destinationPackage;
-    private int pMessengerID;
-    private int pUserID;
+    private String pMessengerID;
+    private String pUserID;
+    private String packageStatus;
 
     public Package(int packageID,double pkgOriginLong,double pkgOriginLat,String originPackage,
-                   String destinationPackage,int pMessengerID,int pUserID){
+                   String destinationPackage,String pMessengerID,String pUserID, String packageStatus){
         this.packageID = packageID;
         this.pkgOriginLong = pkgOriginLong;
         this.pkgOriginLat = pkgOriginLat;
@@ -24,6 +23,7 @@ public class Package {
         this.destinationPackage = destinationPackage;
         this.pMessengerID = pMessengerID;
         this.pUserID = pUserID;
+        this.packageStatus = packageStatus;
     }
 
     public int getPackageID() {
@@ -66,19 +66,27 @@ public class Package {
         this.destinationPackage = destinationPackage;
     }
 
-    public int getpMessengerID() {
+    public String getpMessengerID() {
         return pMessengerID;
     }
 
-    public void setpMessengerID(int pMessengerID) {
+    public void setpMessengerID(String pMessengerID) {
         this.pMessengerID = pMessengerID;
     }
 
-    public int getpUserID() {
+    public String getpUserID() {
         return pUserID;
     }
 
-    public void setpUserID(int pUserID) {
+    public void setpUserID(String pUserID) {
         this.pUserID = pUserID;
+    }
+
+    public String getPackageStatus() {
+        return packageStatus;
+    }
+
+    public void setPackageStatus(String packageStatus) {
+        this.packageStatus = packageStatus;
     }
 }

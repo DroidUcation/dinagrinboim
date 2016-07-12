@@ -43,7 +43,7 @@ public class UserChooseLocation extends AppCompatActivity {
 
     private void finito(Place place){
         Intent data = new Intent();
-        data.putExtra("NAME", place.getName());
+        data.putExtra("NAME", place.getAddress());
         data.putExtra("LAT", place.getLatLng().latitude);
         data.putExtra("LONG", place.getLatLng().longitude);
         if (getParent() == null) {

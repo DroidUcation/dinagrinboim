@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.pickage.com.pickage.AppConst;
 import app.pickage.com.pickage.ContentProvider.MessengerContentProvider;
 import app.pickage.com.pickage.ContentProvider.UserContentProvider;
 import app.pickage.com.pickage.DBHelpers.DBContract;
@@ -37,20 +38,14 @@ public class SingUpUserActivity extends AppCompatActivity {
 
     private TextView testLogin;
 
-    // [START declare_database_ref]
     private DatabaseReference mDatabase;
-// [END declare_database_ref]
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up_user2);
 
-        // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        // [END initialize_database_ref]
-
 
         nameEditText = (EditText) findViewById(R.id.input_name_signup);
         nameEditText.addTextChangedListener(new AddListenerOnTextChange(this, nameEditText));
@@ -79,17 +74,16 @@ public class SingUpUserActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        if(intent.getBooleanExtra("isMessenger", false)){
-            User user = new User(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
-            saveUserOnFireBase(user);
-        }
-
-        else if(intent.getBooleanExtra("isMessenger", true)){
+        if(intent.getBooleanExtra("isMessenger", true)){
             Messenger messenger = new Messenger(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
             saveMessengerOnFireBase(messenger);
             insertMessenger();
             getMessengerFromDB(); // for check insert messenger
+        }  else {
+            User user = new User(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
+            saveUserOnFireBase(user);
         }
+
 
         if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
             Intent i = new Intent(SingUpUserActivity.this, UploadImg.class);
@@ -98,21 +92,29 @@ public class SingUpUserActivity extends AppCompatActivity {
     }
 
     public void saveUserOnFireBase(User user) {
-        Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://packme-ea467.firebaseio.com/users");
-        //Storing values to firebase
-        ref = ref.push();
-        ref.setValue(user);
-        String userKey = ref.getKey();
+//        Firebase.setAndroidContext(this);
+//        Firebase ref = new Firebase("https://packme-ea467.firebaseio.com/users");
+//        //Storing values to firebase
+//        ref = ref.push();
+//        ref.setValue(user);
+//        String userKey = ref.getKey();
+
+        String userKey = mDatabase.child("users").push().getKey();
+        mDatabase.child("users").child(userKey).setValue(user);
+        AppConst.myKey = userKey;
     }
 
     public void saveMessengerOnFireBase(Messenger messenger) {
-        Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://packme-ea467.firebaseio.com/messengers");
-        //Storing values to firebase
-        ref = ref.push();
-        ref.setValue(messenger);
-        String userKey = ref.getKey();
+//        Firebase.setAndroidContext(this);
+//        Firebase ref = new Firebase("https://packme-ea467.firebaseio.com/messengers");
+//        //Storing values to firebase
+//        ref = ref.push();
+//        ref.setValue(messenger);
+//        String userKey = ref.getKey();
+
+        String userKey = mDatabase.child("messengers").push().getKey();
+        mDatabase.child("messengers").child(userKey).setValue(messenger);
+        AppConst.myKey = userKey;
     }
 
     public void insertMessenger(){

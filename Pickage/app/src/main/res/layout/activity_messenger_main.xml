@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MessengerActivities.MessengerMainActivity">
+
+    <ImageView
+        style="@style/background_opening_img_view"/>
+
+    <ImageView
+        android:id="@+id/logomess"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/logomess"/>
+
+    <TextView
+        android:id="@+id/title_home_page_messs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/orange"
+        android:textSize="25dp"
+        android:textAllCaps="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textStyle="italic"
+        android:text="Hi, take a break"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="cursive"
+        android:textColor="@color/blue"
+        android:layout_below="@id/title_home_page_messs"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="25dp"
+        android:text="We will send you notification when package will be already for transfer"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="35dp"
+        android:textColor="@color/blue"
+        android:fontFamily="cursive"
+        android:layout_toRightOf="@id/logomess"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:text="Fast, efficient and cheap..."/>
+
+</RelativeLayout>

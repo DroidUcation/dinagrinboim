@@ -10,25 +10,21 @@ import android.content.Intent;
 import android.location.Location;
 import android.support.v4.app.NotificationCompat;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import app.pickage.com.pickage.R;
 import app.pickage.com.pickage.UserActivities.Feedback;
-import app.pickage.com.pickage.UserActivities.FillPackageDetails;
 import app.pickage.com.pickage.UserActivities.FindingMessenger;
 
 /**
- * Created by משפחת אוביץ on 28/06/2016.
+ * Created by Yeudit&Dina
  */
 public class FindMessengerIntentService extends IntentService {
 

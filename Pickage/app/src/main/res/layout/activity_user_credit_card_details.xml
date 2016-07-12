@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="number"
             android:lines="1"
             android:layout_marginRight="20dp"
             android:maxLines="1" />
@@ -121,7 +121,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:inputType="text"
+            android:inputType="date"
             android:lines="1"
             android:layout_marginRight="20dp"
             android:maxLines="1" />
@@ -151,7 +151,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:inputType="text"
+            android:inputType="number"
             android:lines="1"
             android:layout_marginRight="20dp"
             android:maxLines="1" />
@@ -163,6 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/orange"
+            android:onClick="creditCardDetailsBtnNext"
             android:text="NEXT"/>
 
     </LinearLayout>

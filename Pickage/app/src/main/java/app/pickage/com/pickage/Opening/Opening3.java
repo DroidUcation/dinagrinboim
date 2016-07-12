@@ -17,29 +17,3 @@ public class Opening3 extends Fragment {
         return v;
     }
 }
-
-//import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.ImageView;
-//
-//import app.pickage.com.pickage.R;
-//
-//public class Opening3 extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_opening3);
-//
-//        ImageView nextScreen = (ImageView) findViewById(R.id.opening3_img);
-//        nextScreen.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Opening3.this, Opening4.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
-//}

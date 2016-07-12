@@ -54,7 +54,15 @@ public class SingUpUserActivity extends AppCompatActivity {
 
         passEditText = (EditText) findViewById(R.id.input_password_signup);
         passEditText.addTextChangedListener(new AddListenerOnTextChange(this, passEditText));
+
+        // [START initialize_database_ref]
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // [END initialize_database_ref]
     }
+
+
+
+
 
     public void continueSingUpBtn(View view) {
         final String name = nameEditText.getText().toString();
@@ -70,10 +78,13 @@ public class SingUpUserActivity extends AppCompatActivity {
             passEditText.setError("Password filed is required");
         }
             User user = new User(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
-            saveUserOnFireBase(user);
+            String userKey = mDatabase.child("users").push().getKey();
+            mDatabase.child("users").child(userKey).setValue(user);
+            AppConst.myKey = userKey;
 
         if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
             Intent i = new Intent(SingUpUserActivity.this, UploadImg.class);
+            i.putExtra("USER_KEY",userKey);
             startActivity(i);
         }
     }
@@ -99,9 +110,9 @@ public class SingUpUserActivity extends AppCompatActivity {
 //        ref.setValue(messenger);
 //        String userKey = ref.getKey();
 
-        String userKey = mDatabase.child("messengers").push().getKey();
-        mDatabase.child("messengers").child(userKey).setValue(messenger);
-        AppConst.myKey = userKey;
+        String messengerKey = mDatabase.child("messengers").push().getKey();
+        mDatabase.child("messengers").child(messengerKey).setValue(messenger);
+        AppConst.myKey = messengerKey;
     }
 
     public void insertMessenger(){
@@ -148,11 +159,14 @@ public class SingUpUserActivity extends AppCompatActivity {
         }
 
         Messenger messenger = new Messenger(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
-            saveMessengerOnFireBase(messenger);
+            String messengerKey = mDatabase.child("messengers").push().getKey();
+            mDatabase.child("messengers").child(messengerKey).setValue(messenger);
+            AppConst.myKey = messengerKey;
             insertMessenger();
 
         if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
             Intent i = new Intent(SingUpUserActivity.this, UploadMessImg.class);
+            i.putExtra("MESSENGER_KEY", messengerKey);
             startActivity(i);
         }
     }

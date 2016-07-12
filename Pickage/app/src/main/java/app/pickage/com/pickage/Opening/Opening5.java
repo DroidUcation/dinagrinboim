@@ -26,23 +26,5 @@ public class Opening5 extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         Intent i = new Intent(getActivity(), LoginUserActivity.class);
         startActivity(i);
-        //((Activity) getActivity()).overridePendingTransition(0,0);
     }
 }
-
-
-
-
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//
-//import app.pickage.com.pickage.R;
-//
-//public class Opening5 extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_opening5);
-//    }
-//}

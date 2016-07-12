@@ -3,6 +3,8 @@ package app.pickage.com.pickage.UserActivities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import app.pickage.com.pickage.MessengerActivities.Messenger;
+import app.pickage.com.pickage.MessengerActivities.UploadMessImg;
 import app.pickage.com.pickage.R;
 
 import android.app.AlertDialog;
@@ -24,8 +26,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
         import java.io.FileNotFoundException;
@@ -39,6 +44,8 @@ public class UploadImg extends AppCompatActivity {
     EditText phoneEditText;
     ImageView viewImage;
     Button b;
+    String keyUser;
+    User nearestUser;
 
     // [START declare_database_ref]
     private DatabaseReference mDatabase;
@@ -57,6 +64,8 @@ public class UploadImg extends AppCompatActivity {
 
         b=(Button)findViewById(R.id.btnSelectPhoto);
         viewImage=(ImageView)findViewById(R.id.viewImage);
+        Intent intent = getIntent();
+        keyUser = intent.getStringExtra("USER_KEY");
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,15 +74,10 @@ public class UploadImg extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds options to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-
     public void ContinueBTN(View view){
+        mDatabase.child("users").child(keyUser).child("pUserPhone").setValue(phoneEditText.getText().toString());
         Intent i = new Intent(UploadImg.this, UserCreditCardDetails.class);
+        i.putExtra("USER_KEY", keyUser);
         startActivity(i);
     }
 
@@ -160,22 +164,12 @@ public class UploadImg extends AppCompatActivity {
                 String picturePath = c.getString(columnIndex);
                 c.close();
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-               // Log.w("path of image from gallery...", picturePath+"");
                 viewImage.setImageBitmap(thumbnail);
-
-
-//                User user = new User(phoneEditText.getText().toString(), URL.viewImage);
-//                saveImgUserOnFireBase(user);
             }
         }
     }
-
-    public void saveImgUserOnFireBase(User user) {
-        Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://packme-ea467.firebaseio.com/users");
-        //Storing values to firebase
-        ref = ref.push();
-        ref.setValue(user);
-        String userKey = ref.getKey();
+    public void loginBtn(View view) {
+        Intent i = new Intent(UploadImg.this, LoginUserActivity.class);
+        startActivity(i);
     }
 }

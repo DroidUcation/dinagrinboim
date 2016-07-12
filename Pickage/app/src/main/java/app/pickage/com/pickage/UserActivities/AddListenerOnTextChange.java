@@ -77,7 +77,7 @@ public class AddListenerOnTextChange implements TextWatcher {
                 case R.id.input_password_signup:
                     final String pass = mEdittextview.getText().toString();
                     if (!isValidPassword(pass)) {
-                        mEdittextview.setError("Invalid Password - password smoller then 6 char");
+                        mEdittextview.setError("Invalid Password - password smoller then 7 char");
                     }
                     break;
 //                case R.id.editContactOrigionPackage:

@@ -42,7 +42,7 @@
         android:layout_below="@id/title_home_page_messs"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:text="We will send you notification when package will be already for transfer"/>
 
     <TextView
@@ -56,7 +56,7 @@
         android:fontFamily="cursive"
         android:layout_toRightOf="@id/logomess"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="15dp"
         android:text="Fast, efficient and cheap..."/>
 
 </RelativeLayout>

@@ -171,12 +171,28 @@
         android:layout_height="match_parent"
         tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation"/>
 
-    <Button
-        android:id="@+id/btnGetPackage"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/orange"
-        android:text="get package"/>
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnGetPackage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:text="get package"/>
+
+        <Button
+            android:id="@+id/btnDiclinePackage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:text="Dicline"/>
+    </LinearLayout>
 </RelativeLayout>

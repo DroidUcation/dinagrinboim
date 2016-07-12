@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import app.pickage.com.pickage.MessengerActivities.MessengerMainActivity;
 import app.pickage.com.pickage.R;
 
 public class LoginUserActivity extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class LoginUserActivity extends AppCompatActivity {
         passEditText = (EditText) findViewById(R.id.password);
         passEditText.addTextChangedListener(new AddListenerOnTextChange(this, passEditText));
 
-        isMessenger = (TextView) findViewById(R.id.mes_signup);
+        isMessenger = (TextView) findViewById(R.id.mess_login);
     }
 
     private boolean isValidLoginInput(View view) {
@@ -54,13 +55,13 @@ public class LoginUserActivity extends AppCompatActivity {
 
     public void createAccount(View view) {
         Intent i = new Intent(LoginUserActivity.this, SingUpUserActivity.class);
-        i.putExtra("isMessenger", false);
+       // i.putExtra("isMessenger", false);
         startActivity(i);
     }
 
-    public void isMessengerBtnContinue(View view) {
-        Intent i = new Intent(LoginUserActivity.this, SingUpUserActivity.class);
-        i.putExtra("isMessenger", true);
+    public void isMessengerLoginBtn(View view) {
+        Intent i = new Intent(LoginUserActivity.this, MessengerMainActivity.class);
+       // i.putExtra("isMessenger", true);
         startActivity(i);
     }
 }

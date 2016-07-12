@@ -92,10 +92,28 @@
                 android:textSize="16dip"
                 android:onClick="loginBtn"/>
 
-            <TextView
-                android:id="@+id/testLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <TextView android:id="@+id/mess_login"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20dip"
+                android:textAllCaps="true"
+                android:text="I'm a messenger"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentBottom="true"
+                android:onClick="isMessengerLoginBtn"
+                android:background="@color/orange"/>
         </LinearLayout>
     </ScrollView>
+    <TextView android:id="@+id/mess_signup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20dip"
+        android:textAllCaps="true"
+        android:text="I'm a messenger"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentBottom="true"
+        android:onClick="isMessengerSignUpBtn"
+        android:background="@color/orange"/>
 </RelativeLayout>

@@ -23,6 +23,7 @@ import app.pickage.com.pickage.ContentProvider.MessengerContentProvider;
 import app.pickage.com.pickage.ContentProvider.UserContentProvider;
 import app.pickage.com.pickage.DBHelpers.DBContract;
 import app.pickage.com.pickage.MessengerActivities.Messenger;
+import app.pickage.com.pickage.MessengerActivities.UploadMessImg;
 import app.pickage.com.pickage.R;
 
 public class SingUpUserActivity extends AppCompatActivity {
@@ -35,8 +36,6 @@ public class SingUpUserActivity extends AppCompatActivity {
     private String pass;
 
     private List<User> userList = new ArrayList<>();
-
-    private TextView testLogin;
 
     private DatabaseReference mDatabase;
 
@@ -55,8 +54,6 @@ public class SingUpUserActivity extends AppCompatActivity {
 
         passEditText = (EditText) findViewById(R.id.input_password_signup);
         passEditText.addTextChangedListener(new AddListenerOnTextChange(this, passEditText));
-
-        testLogin = (TextView) findViewById(R.id.testLogin);
     }
 
     public void continueSingUpBtn(View view) {
@@ -72,18 +69,8 @@ public class SingUpUserActivity extends AppCompatActivity {
         if(passEditText.getText().toString().trim().length() == 0){
             passEditText.setError("Password filed is required");
         }
-
-        Intent intent = getIntent();
-        if(intent.getBooleanExtra("isMessenger", true)){
-            Messenger messenger = new Messenger(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
-            saveMessengerOnFireBase(messenger);
-            insertMessenger();
-            getMessengerFromDB(); // for check insert messenger
-        }  else {
             User user = new User(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
             saveUserOnFireBase(user);
-        }
-
 
         if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
             Intent i = new Intent(SingUpUserActivity.this, UploadImg.class);
@@ -128,16 +115,6 @@ public class SingUpUserActivity extends AppCompatActivity {
             ((EditText) findViewById(R.id.input_password_signup)).getText().toString());
         Uri uri = getContentResolver().insert(MessengerContentProvider.CONTENT_URI, values);
     }
-    private void getMessengerFromDB() {
-        Uri uri = Uri.withAppendedPath(MessengerContentProvider.CONTENT_URI, "messenger");
-        Cursor c = getContentResolver().query(MessengerContentProvider.CONTENT_URI, null, null, null, null);
-        if (c != null && c.moveToFirst()) {
-            do{
-                testLogin.setText(c.getString(c.getColumnIndex(DBContract.MESSENGER_NAME)));
-            }
-            while (c.moveToNext());
-        }
-    }
 
     public void loginBtn(View view) {
         Intent i = new Intent(SingUpUserActivity.this, LoginUserActivity.class);
@@ -156,14 +133,27 @@ public class SingUpUserActivity extends AppCompatActivity {
         Uri uri = getContentResolver().insert(UserContentProvider.CONTENT_URI, values);
     }
 
-    private void getUserFromDB() {
-        Uri uri = Uri.withAppendedPath(UserContentProvider.CONTENT_URI, "user");
-        Cursor c = getContentResolver().query(UserContentProvider.CONTENT_URI, null, null, null, null);
-        if (c != null && c.moveToFirst()) {
-            do{
-                testLogin.setText(c.getString(c.getColumnIndex(DBContract.USER_NAME)));
-            }
-            while (c.moveToNext());
+    public void isMessengerSignUpBtn(View view){
+        final String name = nameEditText.getText().toString();
+        if (name.trim().length() == 0 ) {
+            nameEditText.setError("Name filed is required");
+        }
+        final String email = emailEditText.getText().toString();
+        if (emailEditText.getText().toString().trim().length() == 0) {
+            emailEditText.setError("Email filed is required");
+        }
+        final String pass = passEditText.getText().toString();
+        if(passEditText.getText().toString().trim().length() == 0){
+            passEditText.setError("Password filed is required");
+        }
+
+        Messenger messenger = new Messenger(nameEditText.getText().toString(),emailEditText.getText().toString(),passEditText.getText().toString());
+            saveMessengerOnFireBase(messenger);
+            insertMessenger();
+
+        if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
+            Intent i = new Intent(SingUpUserActivity.this, UploadMessImg.class);
+            startActivity(i);
         }
     }
 }

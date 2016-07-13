@@ -9,18 +9,24 @@ public class Package {
     private double pkgOriginLong;
     private double pkgOriginLat;
     private String originPackage;
+    private String originContact;
     private String destinationPackage;
+    private String destinationContact;
     private String pMessengerID;
     private String pUserID;
     private String packageStatus;
 
-    public Package(int packageID,double pkgOriginLong,double pkgOriginLat,String originPackage,
-                   String destinationPackage,String pMessengerID,String pUserID, String packageStatus){
+    public Package(){}
+
+    public Package(int packageID,double pkgOriginLong,double pkgOriginLat,String originPackage,String originContact,
+                   String destinationPackage,String destinationContact,String pMessengerID,String pUserID, String packageStatus){
         this.packageID = packageID;
         this.pkgOriginLong = pkgOriginLong;
         this.pkgOriginLat = pkgOriginLat;
         this.originPackage = originPackage;
+        this.originContact = originContact;
         this.destinationPackage = destinationPackage;
+        this.destinationContact = destinationContact;
         this.pMessengerID = pMessengerID;
         this.pUserID = pUserID;
         this.packageStatus = packageStatus;
@@ -88,5 +94,21 @@ public class Package {
 
     public void setPackageStatus(String packageStatus) {
         this.packageStatus = packageStatus;
+    }
+
+    public String getOriginContact() {
+        return originContact;
+    }
+
+    public void setOriginContact(String originContact) {
+        this.originContact = originContact;
+    }
+
+    public String getDestinationContact() {
+        return destinationContact;
+    }
+
+    public void setDestinationContact(String destinationContact) {
+        this.destinationContact = destinationContact;
     }
 }

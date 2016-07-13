@@ -116,10 +116,11 @@
         <activity android:name=".MessengerActivities.UploadMessImg" />
         <activity android:name=".MessengerActivities.GetUserPackage" />
         <activity android:name=".MessengerActivities.MessengerDestinationPath" />
+        <activity android:name=".MessengerActivities.MessengerMainActivity"/>
 
-        <service android:name=".MessengerActivities.FindMessengerIntentService" />
+        <service android:name=".UserActivities.FindMessengerIntentService" />
 
-        <activity android:name=".MessengerActivities.MessengerMainActivity"></activity>
+        <service android:name=".MessengerActivities.MessengerNewPackageIntentService" />
     </application>
 
 </manifest>

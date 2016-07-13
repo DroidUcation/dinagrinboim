@@ -43,7 +43,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textSize="20dp"
-        android:text="We will send you notification when package will be already for transfer"/>
+        android:text="We will send you a notification when the package will be ready for transfer"/>
 
     <TextView
         android:layout_width="wrap_content"

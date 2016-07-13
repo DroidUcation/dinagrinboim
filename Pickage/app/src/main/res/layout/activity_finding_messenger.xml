@@ -92,7 +92,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editMessengerCardType"
+                android:id="@+id/editMessengerCarType"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"

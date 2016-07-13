@@ -19,7 +19,7 @@ public class FindingMessenger extends AppCompatActivity implements OnMapReadyCal
 
     EditText getMessengerName;
     EditText getMessengerPhone;
-    EditText getMessengerCardType;
+    EditText getMessengerCarType;
     double mLat;
     double mLong;
 
@@ -32,7 +32,7 @@ public class FindingMessenger extends AppCompatActivity implements OnMapReadyCal
 
         getMessengerName = (EditText) findViewById(R.id.editMessengerName);
         getMessengerPhone = (EditText) findViewById(R.id.editMessengerPhone);
-        getMessengerCardType = (EditText) findViewById(R.id.editMessengerCardType);
+        getMessengerCarType = (EditText) findViewById(R.id.editMessengerCarType);
         getMessengerDetails(getIntent());
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -43,7 +43,7 @@ public class FindingMessenger extends AppCompatActivity implements OnMapReadyCal
     private void getMessengerDetails(Intent data) {
         getMessengerName.setText(data.getStringExtra("M_NAME"));
         getMessengerPhone.setText(data.getStringExtra("M_PHONE"));
-        getMessengerCardType.setText(data.getStringExtra("M_CAR"));
+        getMessengerCarType.setText(data.getStringExtra("M_CAR"));
         mLat = data.getDoubleExtra("M_LAT", 0);
         mLong = data.getDoubleExtra("M_LONG", 0);
 //        findMessengerIntent.putExtra("M_IMG", nearestMessenger.getMessengerImg());

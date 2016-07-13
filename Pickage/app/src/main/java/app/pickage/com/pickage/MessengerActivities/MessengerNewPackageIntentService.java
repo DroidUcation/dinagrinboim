@@ -33,8 +33,14 @@ public class MessengerNewPackageIntentService extends IntentService {
 
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                         Package pPackage = dataSnapshot.getValue(Package.class);
-                        if (pPackage.getpMessengerID() != null && pPackage.getpMessengerID().equals(AppConst.myKey)) {
+                        if (pPackage.getpMessengerID() != null && pPackage.getpMessengerID().equals(AppConst.myKey)
+                                && pPackage.getPackageStatus().equals("INITIAL")) {
                             Intent getUserPackageIntent = new Intent(getBaseContext(), GetUserPackage.class);
                             getUserPackageIntent.putExtra("PACKAGE_KEY", dataSnapshot.getKey());
                             getUserPackageIntent.putExtra("FROM_NAME", pPackage.getOriginPackage());
@@ -46,11 +52,6 @@ public class MessengerNewPackageIntentService extends IntentService {
                             getUserPackageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             getApplication().startActivity(getUserPackageIntent);
                         }
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
                     }
 
                     @Override

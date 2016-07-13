@@ -15,7 +15,7 @@
         android:src="@drawable/user12"/>
 
     <LinearLayout
-        android:id="@+id/messengerDetails"
+        android:id="@+id/messngerDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -32,7 +32,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Origin :"
+                android:text="Origion :"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Origin contact :"
+                android:text="Origion content :"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Destination contact :"
+                android:text="Destination contect :"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="app.pickage.com.pickage.MessengerActivities.GetUserPackage"/>
+        tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -179,20 +179,20 @@
 
         <Button
             android:id="@+id/btnGetPackage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:layout_alignParentBottom="true"
-            android:background="@color/orange"
-            android:text="Get Package"/>
-
-        <Button
-            android:id="@+id/btnDeclinePackage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:text="Decline"/>
+            android:text="get package"/>
+
+        <Button
+            android:id="@+id/btnDiclinePackage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:text="Dicline"/>
     </LinearLayout>
 </RelativeLayout>

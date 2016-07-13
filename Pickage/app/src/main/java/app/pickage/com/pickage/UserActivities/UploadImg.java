@@ -168,8 +168,4 @@ public class UploadImg extends AppCompatActivity {
             }
         }
     }
-    public void loginBtn(View view) {
-        Intent i = new Intent(UploadImg.this, LoginUserActivity.class);
-        startActivity(i);
-    }
 }

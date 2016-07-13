@@ -47,9 +47,13 @@ public class LoginUserActivity extends AppCompatActivity {
     }
 
     public void continueBtn(View view) {
-        if(isValidLoginInput(view)){
+        if (isValidLoginInput(view)) {
             Intent i = new Intent(LoginUserActivity.this, UserCurrentLocation.class);
             startActivity(i);
+        } else if (emailEditText.getText().toString().isEmpty()) {
+            emailEditText.setError("Email filed is required");
+        } else if (passEditText.getText().toString().isEmpty()) {
+            passEditText.setError("Password filed is required");
         }
     }
 
@@ -60,8 +64,14 @@ public class LoginUserActivity extends AppCompatActivity {
     }
 
     public void isMessengerLoginBtn(View view) {
-        Intent i = new Intent(LoginUserActivity.this, MessengerMainActivity.class);
-       // i.putExtra("isMessenger", true);
-        startActivity(i);
+        if(isValidLoginInput(view)){
+            Intent i = new Intent(LoginUserActivity.this, MessengerMainActivity.class);
+            // i.putExtra("isMessenger", true);
+            startActivity(i);
+        }else if(emailEditText.getText().toString().isEmpty()){
+            emailEditText.setError("Email filed is required");
+        }else if(passEditText.getText().toString().isEmpty()){
+            passEditText.setError("Password filed is required");
+        }
     }
 }

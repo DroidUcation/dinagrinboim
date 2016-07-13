@@ -6,6 +6,11 @@
     android:background="@drawable/alphabkimg"
     tools:context="app.pickage.com.pickage.UserActivities.UserCreditCardDetails">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,8 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:padding="15dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -46,8 +50,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:padding="15dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -75,8 +78,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:padding="15dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -104,8 +106,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:padding="15dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -133,9 +134,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:padding="15dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -155,25 +154,25 @@
             android:lines="1"
             android:layout_marginRight="20dp"
             android:maxLines="1" />
-
     </LinearLayout>
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
             android:layout_alignParentBottom="true"
             android:background="@color/orange"
             android:onClick="creditCardDetailsBtnNext"
             android:text="NEXT"/>
-
     </LinearLayout>
+    </ScrollView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:layout_marginRight="20dp"
         android:src="@drawable/ic_navigate_next_black_24dp"/>
 </RelativeLayout>

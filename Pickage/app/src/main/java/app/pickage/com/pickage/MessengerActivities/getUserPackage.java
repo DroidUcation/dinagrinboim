@@ -42,7 +42,7 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_get_user_package);
         Button btnGetPackage = (Button) findViewById(R.id.btnGetPackage);
         btnGetPackage.setOnClickListener(this);
-        Button btnDeclinePackage = (Button) findViewById(R.id.btnDeclinePackage);
+        Button btnDeclinePackage = (Button) findViewById(R.id.btnDiclinePackage);
         btnDeclinePackage.setOnClickListener(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -89,7 +89,7 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
                 intent.putExtra("PACKAGE_KEY", keyPackage);
                 startActivity(intent);
                 break;
-            case R.id.btnDeclinePackage:
+            case R.id.btnDiclinePackage:
                 mDatabase.child("packages").child(keyPackage).child("packageStatus").setValue("DECLINE");
                 break;
         }

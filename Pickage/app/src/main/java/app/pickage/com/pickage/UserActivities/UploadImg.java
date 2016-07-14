@@ -75,7 +75,7 @@ public class UploadImg extends AppCompatActivity {
     }
 
     public void ContinueBTN(View view){
-        mDatabase.child("users").child(keyUser).child("pUserPhone").setValue(phoneEditText.getText().toString());
+        mDatabase.child("users").child(keyUser).child("userPhone").setValue(phoneEditText.getText().toString());
         Intent i = new Intent(UploadImg.this, UserCreditCardDetails.class);
         i.putExtra("USER_KEY", keyUser);
         startActivity(i);

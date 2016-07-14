@@ -68,8 +68,8 @@ public class UploadMessImg extends AppCompatActivity {
     }
 
     public void ContinueBTN(View view){
-        mDatabase.child("messengers").child(keyMessenger).child("pMessengerPhone").setValue(phoneEditText.getText().toString());
-        mDatabase.child("messengers").child(keyMessenger).child("pMessengerCarType").setValue(carTypeEditText.getText().toString());
+        mDatabase.child("messengers").child(keyMessenger).child("messengerPhone").setValue(phoneEditText.getText().toString());
+        mDatabase.child("messengers").child(keyMessenger).child("messengerCarType").setValue(carTypeEditText.getText().toString());
         Intent i = new Intent(UploadMessImg.this, LoginUserActivity.class);
         i.putExtra("MESSENGER_KEY", keyMessenger);
         startActivity(i);

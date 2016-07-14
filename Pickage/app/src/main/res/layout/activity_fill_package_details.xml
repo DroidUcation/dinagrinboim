@@ -223,7 +223,7 @@
                 android:textSize="11dp"/>
 
             <EditText
-                android:id="@+id/editPyment"
+                android:id="@+id/editPayment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"

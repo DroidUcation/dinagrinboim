@@ -1,12 +1,14 @@
 package app.pickage.com.pickage.UserActivities;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,11 +45,17 @@ import app.pickage.com.pickage.R;
 public class UserCurrentLocation extends FragmentActivity implements View.OnClickListener,
         OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
+    private static final int LOCATION_PERMISSION = 583;
+
+    static final int FROM_REQUEST = 1;
+    static final int TO_REQUEST = 2;
+    static final int ENABLE_GPS_REQUEST = 3;
+
     private GoogleMap mMap;
     Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
-    private static final int LOCATION_PERMISSION = 583;
+
     TextView fromTxt;
     Marker fromMarker = null;
     TextView toTxt;
@@ -134,13 +143,21 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
             if (mLastLocation == null) {
-                LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+                LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+                if (service.isProviderEnabled(LocationManager.GPS_PROVIDER))
+                    LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+                else
+                    buildAlertMessageNoGps();
             } else {
                 if (fromMarker == null) {
                     fromMarker = drawLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), "You are here!");
                     Geocoder geocoder;
                     List<Address> addresses;
-                    geocoder = new Geocoder(this, Locale.getDefault());
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        geocoder = new Geocoder(this, Locale.forLanguageTag("en-us"));
+                    } else{
+                        geocoder = new Geocoder(this, Locale.getDefault());
+                    }
 
                     try {
                         addresses = geocoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 1);
@@ -192,6 +209,24 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     private void SetDefaultLocation() {
     }
 
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), ENABLE_GPS_REQUEST);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                }).setCancelable(true);
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     @Override
     public void onConnectionSuspended(int i) {
 
@@ -207,8 +242,6 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         buildGoogleApiClient();
     }
 
-    static final int FROM_REQUEST = 1;
-    static final int TO_REQUEST = 2;
     @Override
     public void onClick(View v) {
         Intent chooseLocationIntent = new Intent(UserCurrentLocation.this, UserChooseLocation.class);
@@ -238,20 +271,27 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to
-        if (requestCode == FROM_REQUEST) {
-            // Make sure the request was successful
-            if (resultCode == RESULT_OK) {
-                fromTxt.setText(data.getStringExtra("NAME"));
-                removeLocation(fromMarker);
-                fromMarker = drawLocation(data.getDoubleExtra("LAT", 0), data.getDoubleExtra("LONG", 0), data.getStringExtra("NAME"));
-            }
-        } else {
-            if (resultCode == RESULT_OK) {
-                toTxt.setText(data.getStringExtra("NAME"));
-                removeLocation(toMarker);
-                toMarker = drawLocation(data.getDoubleExtra("LAT", 0), data.getDoubleExtra("LONG", 0), data.getStringExtra("NAME"));
-            }
+
+        switch (requestCode) {
+            case FROM_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    fromTxt.setText(data.getStringExtra("NAME"));
+                    removeLocation(fromMarker);
+                    fromMarker = drawLocation(data.getDoubleExtra("LAT", 0), data.getDoubleExtra("LONG", 0), data.getStringExtra("NAME"));
+                }
+                break;
+            case TO_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    toTxt.setText(data.getStringExtra("NAME"));
+                    removeLocation(toMarker);
+                    toMarker = drawLocation(data.getDoubleExtra("LAT", 0), data.getDoubleExtra("LONG", 0), data.getStringExtra("NAME"));
+                }
+                break;
+            case ENABLE_GPS_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    GetLocation();
+                }
+                break;
         }
 
     }

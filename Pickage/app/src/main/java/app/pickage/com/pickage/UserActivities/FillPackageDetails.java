@@ -51,6 +51,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     private EditText contactOrigionPackage;
     private EditText contactDestinationPackage;
     private ProgressBar progressbar;
+    private EditText editPayment;
 
     private DatabaseReference mDatabase;
 
@@ -85,15 +86,24 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         contactOrigionPackage.addTextChangedListener(new AddListenerOnTextChange(this, contactOrigionPackage));
         contactDestinationPackage = (EditText) findViewById(R.id.editContactDestinationPackage);
         contactDestinationPackage.addTextChangedListener(new AddListenerOnTextChange(this, contactDestinationPackage));
+        editPayment = (EditText) findViewById(R.id.editPayment);
+        setPayment();
 
 //        textViewContactPhoneNum = (TextView) findViewById(R.id.editContactOrigionPackage);
 
-        Button btnOrderMessanger = (Button) findViewById(R.id.btnOrderMessanger);
-        btnOrderMessanger.setOnClickListener(this);
+        Button btnOrderMessenger = (Button) findViewById(R.id.btnOrderMessanger);
+        btnOrderMessenger.setOnClickListener(this);
         ImageView addOriginContactNumPhone = (ImageView) findViewById(R.id.addOriginContactNumPhone);
         addOriginContactNumPhone.setOnClickListener(this);
         ImageView addDestContactNumPhone = (ImageView) findViewById(R.id.addDestContactNumPhone);
         addDestContactNumPhone.setOnClickListener(this);
+    }
+
+    private void setPayment() {
+        if (fromName.split(",")[1].equals(toName.split(",")[1]))
+            editPayment.setText("30");
+        else
+            editPayment.setText("60");
     }
 
     // display current time

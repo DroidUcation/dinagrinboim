@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.pickage.com.pickage.UserActivities.SingUpUserActivity">
+    tools:context=".UserActivities.SignUpActivity">
 
     <ImageView
         style="@style/background_opening_img_view"/>
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapWords"
-                    android:hint="Name" />
+                    android:hint="@string/name_sign_up_activity" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:hint="Email" />
+                    android:hint="@string/email_sign_up_activity" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -69,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="Password"/>
+                    android:hint="@string/password_sign_up_activity"/>
             </android.support.design.widget.TextInputLayout>
 
             <Button
@@ -79,14 +79,14 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:padding="12dp"
-                android:text="Continue"
+                android:text="@string/continue_btn_sign_up_activity"
                 android:onClick="continueSingUpBtn"/>
 
             <TextView android:id="@+id/link_login"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:text="Already a member? Login"
+                android:text="@string/link_login_sign_up_activity"
                 android:gravity="center"
                 android:textColor="#FFA500"
                 android:textSize="16dip"
@@ -111,7 +111,7 @@
         android:gravity="center"
         android:textSize="20dip"
         android:textAllCaps="true"
-        android:text="I'm a messenger"
+        android:text="@string/is_messenger_sign_up_activity"
         android:layout_marginTop="15dp"
         android:layout_alignParentBottom="true"
         android:onClick="isMessengerSignUpBtn"

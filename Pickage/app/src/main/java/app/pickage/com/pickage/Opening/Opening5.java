@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import app.pickage.com.pickage.R;
-import app.pickage.com.pickage.UserActivities.LoginUserActivity;
+import app.pickage.com.pickage.UserActivities.LoginActivity;
 
 public class Opening5 extends Fragment implements View.OnClickListener {
 
@@ -24,7 +24,7 @@ public class Opening5 extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(getActivity(), LoginUserActivity.class);
+        Intent i = new Intent(getActivity(), LoginActivity.class);
         startActivity(i);
     }
 }

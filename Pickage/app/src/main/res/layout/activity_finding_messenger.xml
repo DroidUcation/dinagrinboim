@@ -33,7 +33,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Name :"
+                android:text="@string/name_finding_messenger"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Phone :"
+                android:text="@string/phone_finding_messenger"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Car type :"
+                android:text="@string/car_type_finding_messenger"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
             android:src="@drawable/ic_access_time_black_24dp"/>
 
         <TextView
-            android:text="Time :"
+            android:text="@string/time_finding_messenger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -134,7 +134,7 @@
         <TextView
             android:id="@+id/editmessengerAboutTimeMinutes"
             android:layout_width="wrap_content"
-            android:text="minutes"
+            android:text="@string/minutes_finding_messenger"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content" />
     </LinearLayout>

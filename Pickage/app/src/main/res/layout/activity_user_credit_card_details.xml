@@ -26,7 +26,7 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:text="Number :"
+            android:text="@string/number_credit_card_details_activity"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:text="Type :"
+            android:text="@string/type_credit_card_details_activity"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginLeft="20dp"
@@ -82,7 +82,7 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:text="Name :"
+            android:text="@string/name_credit_card_details_activity"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:text="Date :"
+            android:text="@string/date_credit_card_details_activity"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:text="CSV :"
+            android:text="@string/csv_credit_card_details_activity"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -163,7 +163,8 @@
             android:layout_alignParentBottom="true"
             android:background="@color/orange"
             android:onClick="creditCardDetailsBtnNext"
-            android:text="NEXT"/>
+            android:textAllCaps="true"
+            android:text="@string/next_btn_credit_card_details_activity"/>
     </LinearLayout>
     </ScrollView>
 

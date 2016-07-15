@@ -30,7 +30,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
-        android:text="The application that\nmakes your life eazy"/>
+        android:text="@string/first_title_opening"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
         android:fontFamily="cursive"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:text="Just PackMe!"/>
+        android:text="@string/second_title_opening"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,5 +57,5 @@
         android:layout_toRightOf="@id/logomess"
         android:textStyle="bold"
         android:textSize="15dp"
-        android:text="Fast, efficient and cheap..."/>
+        android:text="@string/third_title_opening"/>
 </RelativeLayout>

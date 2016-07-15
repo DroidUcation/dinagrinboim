@@ -31,7 +31,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:textStyle="italic"
-        android:text="Hi, take a break"/>
+        android:text="@string/title_messenger_main"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textSize="20dp"
-        android:text="We will send you a notification when the package will be ready for transfer"/>
+        android:text="@string/text_messenger_main"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,6 +57,5 @@
         android:layout_toRightOf="@id/logomess"
         android:textStyle="bold"
         android:textSize="15dp"
-        android:text="Fast, efficient and cheap..."/>
-
+        android:text="@string/second_title_messenger_main"/>
 </RelativeLayout>

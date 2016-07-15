@@ -30,8 +30,6 @@
  The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
     -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
-    <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -70,57 +68,31 @@
             android:value="AIzaSyBc_Hyv_2-Z78gTkblJjCLl6lafO9tcW8E" />
 
         <activity
-            android:name=".UserActivities.LoginUserActivity"
+            android:name=".UserActivities.LoginActivity"
             android:label="Login" />
         <activity
-            android:name=".UserActivities.SingUpUserActivity"
+            android:name=".UserActivities.SignUpActivity"
             android:label="Sign Up" />
         <activity
             android:name=".UserActivities.UserCreditCardDetails"
             android:label="Credit card details" />
         <activity android:name=".UserActivities.UserCurrentLocation">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
-        <!-- <activity android:name=".UserActivities.UserPlaceMap" /> -->
         <activity android:name=".UserActivities.UserChooseLocation">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".UserActivities.FillPackageDetails">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".UserActivities.FillPackageDetails"></activity>
         <activity
-            android:name=".UserActivities.Feedback"
+            android:name=".UserActivities.FeedbackUser"
             android:label="Feedback" />
         <activity
             android:name=".UserActivities.FindingMessenger"
-            android:label="Messenger coming your way" />
-        <activity android:name=".UserActivities.UploadImg" />
-        <activity android:name=".MessengerActivities.OpeningMessenger" />
-        <activity android:name=".MessengerActivities.MessengerPersonalDetails" />
+            android:label="Messenger is coming your way" />
+        <activity android:name=".UserActivities.UploadUserImg" />
         <activity android:name=".MessengerActivities.UploadMessImg" />
         <activity android:name=".MessengerActivities.GetUserPackage" />
         <activity android:name=".MessengerActivities.MessengerDestinationPath" />
         <activity android:name=".MessengerActivities.MessengerMainActivity"/>
-
         <service android:name=".UserActivities.FindMessengerIntentService" />
-
         <service android:name=".MessengerActivities.MessengerNewPackageIntentService" />
     </application>
-
 </manifest>

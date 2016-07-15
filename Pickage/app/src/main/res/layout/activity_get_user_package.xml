@@ -32,7 +32,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Origion :"
+                android:text="@string/origin_get_user_package"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Origion content :"
+                android:text="@string/origin_contact_get_user_package"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Destination:"
+                android:text="@string/destination_get_user_package"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:text="Destination contect :"
+                android:text="@string/destination_contact_get_user_package"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
             android:src="@drawable/ic_access_time_black_24dp"/>
 
         <TextView
-            android:text="Time :"
+            android:text="@string/time_get_user_package"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -156,7 +156,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:text="minutes"
+            android:text="@string/minutes_get_user_package"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -184,7 +184,7 @@
             android:textAllCaps="true"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:text="get package"/>
+            android:text="@string/get_package_btn_get_user_package"/>
 
         <Button
             android:id="@+id/btnDiclinePackage"
@@ -193,6 +193,6 @@
             android:textAllCaps="true"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:text="Dicline"/>
+            android:text="@string/decline_btn_get_user_package"/>
     </LinearLayout>
 </RelativeLayout>

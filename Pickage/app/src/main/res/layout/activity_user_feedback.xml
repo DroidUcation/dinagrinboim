@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/feedback"
-    tools:context="app.pickage.com.pickage.UserActivities.Feedback">
+    tools:context=".UserActivities.FeedbackUser">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -16,7 +16,6 @@
         android:gravity="center"
         android:layout_centerInParent="true"
         android:orientation="vertical" >
-
 
         <ImageView
             android:id="@+id/vi"
@@ -29,7 +28,7 @@
             android:id="@+id/lblRateMe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The package arrived \nthe destination"
+            android:text="@string/title_user_feedback"
             android:layout_marginTop="10dp"
             android:textColor="@color/orange"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -43,7 +42,6 @@
             android:layout_marginTop="10dp"
             android:rating="2.0" />
 
-
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
@@ -55,7 +53,7 @@
                 android:id="@+id/lblResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Result : "
+                android:text="@string/result_user_feedback"
                 android:textSize="15dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -65,7 +63,6 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-
         </LinearLayout>
 
         <Button
@@ -74,6 +71,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="10dp"
-            android:text="Send feedback" />
+            android:text="@string/send_user_feedback" />
     </LinearLayout>
 </RelativeLayout>

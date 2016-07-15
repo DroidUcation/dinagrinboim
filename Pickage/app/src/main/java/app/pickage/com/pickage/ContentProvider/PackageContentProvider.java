@@ -17,7 +17,7 @@ import app.pickage.com.pickage.DBHelpers.DBContract;
 import app.pickage.com.pickage.DBHelpers.DBHelper;
 
 /**
- * Created by User on 30/05/2016.
+ * Created by Din&Yeudit on 30/05/2016.
  */
 public class PackageContentProvider extends ContentProvider {
     private static final String PROVIDER_NAME = "app.pickage.com.pickage.ContentProvider.PackageContentProvider";
@@ -42,7 +42,6 @@ public class PackageContentProvider extends ContentProvider {
         Context context = getContext();
         dbHelper = new DBHelper(context);
         sqLiteDatabase = dbHelper.getWritableDatabase();
-        //dbHelper.onUpgrade(sqLiteDatabase, 1, 2); // call on upgrade for recreating DB
         return (sqLiteDatabase == null) ? false : true;
     }
 
@@ -51,7 +50,7 @@ public class PackageContentProvider extends ContentProvider {
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();//mafeila db
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(DBContract.PACKAGE_TBL);
         switch (uriMatcher.match(uri)) {
             case PACKAGE:
@@ -62,9 +61,6 @@ public class PackageContentProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
         }
-//        if(!TextUtils.isEmpty(sortOrder)){
-//            sortOrder = SharingInfoContract.ProductsEntry.CREATED_AT + " DESC"; //Sort by modified date as default
-//        }
         Cursor c = qb.query(sqLiteDatabase, projection, selection, selectionArgs, null, null, sortOrder);
         c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
@@ -106,7 +102,7 @@ public class PackageContentProvider extends ContentProvider {
             case PACKAGE_ID:
                 delCount = sqLiteDatabase.delete(
                         DBContract.PACKAGE_TBL,
-                        getUriIdCondition(uri, selection), //Get where condition
+                        getUriIdCondition(uri, selection),
                         selectionArgs);
                 break;
             default:
@@ -123,12 +119,11 @@ public class PackageContentProvider extends ContentProvider {
                 updateCount = sqLiteDatabase.update(
                         DBContract.PACKAGE_TBL,
                         values,
-                        getUriIdCondition(uri, selection), //Get where condition
+                        getUriIdCondition(uri, selection),
                         selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
-
         }
         return updateCount;
     }
@@ -149,72 +144,3 @@ public class PackageContentProvider extends ContentProvider {
         return where;
     }
 }
-//    private static final String PROVIDER_NAME = "app.pickage.com.pickage.ContentProvider.PackageContentProvider";
-//
-//    public static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/package");
-//    private static final int PACKAGE = 1;
-//    private static final int PACKAGE_ID = 2;
-//    private static final UriMatcher uriMatcher = getUriMatcher();
-//
-//    private SQLiteDatabase sqLiteDatabase;
-//    private DBHelper dbHelper;
-//
-//    private static UriMatcher getUriMatcher() {
-//        UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-//        uriMatcher.addURI(PROVIDER_NAME, "package", PACKAGE);
-//        uriMatcher.addURI(PROVIDER_NAME, "package/#", PACKAGE_ID);
-//        return uriMatcher;
-//    }
-//
-//
-//    @Override
-//    public boolean onCreate() {
-//        Context context = getContext();
-//        dbHelper = new DBHelper(context);
-//        sqLiteDatabase = dbHelper.getWritableDatabase();
-//        //dbHelper.onUpgrade(sqLiteDatabase, 1, 2); // call on upgrade for recreating DB
-//        return (sqLiteDatabase != null);
-//    }
-//
-//    @Nullable
-//    @Override
-//    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-//        SQLiteQueryBuilder sqLiteQueryBuilder = new SQLiteQueryBuilder();
-//        sqLiteQueryBuilder.setTables(DBContract.PACKAGE_TBL);
-//        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, projection, selection,
-//                selectionArgs, null, null, sortOrder);
-//        cursor.setNotificationUri(getContext().getContentResolver(), uri);
-//
-//        return cursor;
-//    }
-//
-//    @Nullable
-//    @Override
-//    public String getType(Uri uri) {
-//        switch (uriMatcher.match(uri)) {
-//            case PACKAGE:
-//                return "vnd.android.cursor.dir/vnd.app.pickage.com.pickage.ContentProvider.PackageContentProvider.package";
-//            case PACKAGE_ID:
-//                return "vnd.android.cursor.item/vnd.app.pickage.com.pickage.ContentProvider.PackageContentProvider.package";
-//
-//        }
-//        return "";    }
-//
-//    @Nullable
-//    @Override
-//    public Uri insert(Uri uri, ContentValues values) {
-//        long rowID = sqLiteDatabase.insert(DBContract.PACKAGE_TBL, "", values);
-//        Uri _uri = ContentUris.withAppendedId(uri, rowID);
-//        getContext().getContentResolver().notifyChange(_uri, null);
-//        return _uri;
-//    }
-//
-//    @Override
-//    public int delete(Uri uri, String selection, String[] selectionArgs) {
-//        return sqLiteDatabase.delete(DBContract.PACKAGE_TBL,selection,selectionArgs);
-//    }
-//
-//    @Override
-//    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-//        return 0;
-//    }

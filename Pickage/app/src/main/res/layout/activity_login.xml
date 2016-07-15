@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.pickage.com.pickage.UserActivities.LoginUserActivity">
+    tools:context=".UserActivities.LoginActivity">
 
     <ProgressBar
         android:id="@+id/login_progress"
@@ -79,7 +79,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                android:text="No account yet? Create one"
+                android:text="@string/create_account_login_activity"
                 android:gravity="center"
                 android:textSize="16dip"
                 android:textColor="#008B8B"
@@ -92,7 +92,7 @@
                 android:gravity="center"
                 android:textSize="20dip"
                 android:textAllCaps="true"
-                android:text="I'm a messenger"
+                android:text="@string/is_messenger_login_activity"
                 android:layout_marginTop="15dp"
                 android:layout_alignParentBottom="true"
                 android:onClick="isMessengerLoginBtn"

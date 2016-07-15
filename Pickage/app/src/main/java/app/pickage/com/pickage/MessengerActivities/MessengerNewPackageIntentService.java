@@ -8,14 +8,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import app.pickage.com.pickage.AppConst;
 import app.pickage.com.pickage.PackageActivities.Package;
-import app.pickage.com.pickage.UserActivities.Feedback;
 
 /**
- * Created by משפחת אוביץ on 12/07/2016.
+ * Created by Din&Yeudit 12/07/2016.
  */
 public class MessengerNewPackageIntentService extends IntentService {
 
@@ -70,6 +68,5 @@ public class MessengerNewPackageIntentService extends IntentService {
                     }
                 }
         );
-
     }
 }

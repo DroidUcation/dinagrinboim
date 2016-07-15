@@ -29,13 +29,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
-            android:text="The package was delivered"/>
+            android:text="@string/delivered_messenger_destination_path"/>
 
         <Button
             android:id="@+id/btnDeliverFailed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
-            android:text="The package wasn't delivered"/>
+            android:text="@string/not_delivered_messenger_destination_path"/>
     </LinearLayout>
 </RelativeLayout>

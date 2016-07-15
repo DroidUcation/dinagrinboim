@@ -3,43 +3,32 @@ package app.pickage.com.pickage.UserActivities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import app.pickage.com.pickage.MessengerActivities.Messenger;
-import app.pickage.com.pickage.MessengerActivities.UploadMessImg;
 import app.pickage.com.pickage.R;
 
 import android.app.AlertDialog;
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.database.Cursor;
-        import android.graphics.Bitmap;
-        import android.graphics.BitmapFactory;
-        import android.net.Uri;
-        import android.os.Bundle;
-        import android.app.Activity;
-        import android.os.Environment;
-        import android.provider.MediaStore;
-        import android.util.Log;
-        import android.view.Menu;
-        import android.view.View;
-        import android.widget.Button;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.firebase.client.Firebase;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
-        import java.io.FileNotFoundException;
-        import java.io.FileOutputStream;
-        import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
         import java.io.OutputStream;
-import java.net.URL;
 
-public class UploadImg extends AppCompatActivity {
+public class UploadUserImg extends AppCompatActivity {
 
     EditText phoneEditText;
     ImageView viewImage;
@@ -49,12 +38,12 @@ public class UploadImg extends AppCompatActivity {
 
     // [START declare_database_ref]
     private DatabaseReference mDatabase;
-// [END declare_database_ref]
+   // [END declare_database_ref]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_img);
+        setContentView(R.layout.activity_upload_user_img);
 
         // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -76,7 +65,7 @@ public class UploadImg extends AppCompatActivity {
 
     public void ContinueBTN(View view){
         mDatabase.child("users").child(keyUser).child("userPhone").setValue(phoneEditText.getText().toString());
-        Intent i = new Intent(UploadImg.this, UserCreditCardDetails.class);
+        Intent i = new Intent(UploadUserImg.this, UserCreditCardDetails.class);
         i.putExtra("USER_KEY", keyUser);
         startActivity(i);
     }
@@ -85,7 +74,7 @@ public class UploadImg extends AppCompatActivity {
 
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(UploadImg.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(UploadUserImg.this);
         builder.setTitle("Add Photo!");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override

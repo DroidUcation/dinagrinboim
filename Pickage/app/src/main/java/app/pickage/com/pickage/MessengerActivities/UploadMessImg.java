@@ -26,9 +26,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import app.pickage.com.pickage.R;
-import app.pickage.com.pickage.UserActivities.LoginUserActivity;
+import app.pickage.com.pickage.UserActivities.LoginActivity;
 import app.pickage.com.pickage.UserActivities.User;
-import app.pickage.com.pickage.UserActivities.UserCreditCardDetails;
 
 public class UploadMessImg extends AppCompatActivity {
 
@@ -41,7 +40,7 @@ public class UploadMessImg extends AppCompatActivity {
 
     // [START declare_database_ref]
     private DatabaseReference mDatabase;
-// [END declare_database_ref]
+   // [END declare_database_ref]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +69,7 @@ public class UploadMessImg extends AppCompatActivity {
     public void ContinueBTN(View view){
         mDatabase.child("messengers").child(keyMessenger).child("messengerPhone").setValue(phoneEditText.getText().toString());
         mDatabase.child("messengers").child(keyMessenger).child("messengerCarType").setValue(carTypeEditText.getText().toString());
-        Intent i = new Intent(UploadMessImg.this, LoginUserActivity.class);
+        Intent i = new Intent(UploadMessImg.this, LoginActivity.class);
         i.putExtra("MESSENGER_KEY", keyMessenger);
         startActivity(i);
     }

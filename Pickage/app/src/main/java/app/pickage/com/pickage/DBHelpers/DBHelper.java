@@ -1,14 +1,11 @@
 package app.pickage.com.pickage.DBHelpers;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static android.R.attr.id;
-
 /**
- * Created by User on 26/05/2016.
+ * Created by Din&Yeudit on 26/05/2016.
  */
 public class DBHelper  extends SQLiteOpenHelper {
 
@@ -26,10 +23,6 @@ public class DBHelper  extends SQLiteOpenHelper {
                     DBContract.USER_CREDIT_CARD_CSV + " INTEGER, " +
                     DBContract.USER_FEEDBACK + " TEXT " +
             ");";
-                    //DBContract.USER_PACKAGE_ID + " INTEGER ," +
-                   //" FOREIGN KEY (" + DBContract.USER_PACKAGE_ID + ") REFERENCES " +
-                   //  DBContract.PACKAGE_TBL + "(" + DBContract.PACKAGE_ID + "));";
-
 
     private static final String SQL_CREATE_TABLE_MESSENGER = " CREATE TABLE " +
                     DBContract.MESSENGER_TBL +  " ( " +
@@ -43,10 +36,6 @@ public class DBHelper  extends SQLiteOpenHelper {
                     DBContract.MESSENGER_LAT + " TEXT " +
                     DBContract.MESSENGER_LONG + " TEXT " +
             ");";
-                   // DBContract.MESSENGER_PACKAGE_ID + " INTEGER ," +
-                   // " FOREIGN KEY (" + DBContract.MESSENGER_PACKAGE_ID + ") REFERENCES " +
-                   //DBContract.PACKAGE_TBL + "(" + DBContract.PACKAGE_ID + "));";
-
 
     private static final String SQL_CREATE_TABLE_PACKAGE = " CREATE TABLE " +
                     DBContract.PACKAGE_TBL +  " ( " +
@@ -56,14 +45,8 @@ public class DBHelper  extends SQLiteOpenHelper {
                     DBContract.ORIGIN_PACKAGE + " TEXT, " +
                     DBContract.DESTINATION_PACKAGE + " TEXT, " +
                     DBContract.P_MESSENGER_ID + " INTEGER, " +
-
                     " FOREIGN KEY (" + DBContract.P_MESSENGER_ID + ") REFERENCES " +
                     DBContract.MESSENGER_TBL + "(" + DBContract.MESSENGER_ID + ")); ";
-
-//                    DBContract.P_USER_ID + " INTEGER, " +
-//                    " FOREIGN KEY (" + DBContract.P_USER_ID + ") REFERENCES " +
-//                    DBContract.USER_TBL + "(" + DBContract.USER_ID + "));";
-
 
     public DBHelper(Context context) {
         super(context, DBContract.DATABASE_NAME, null, DBContract.DATABASE_VERSION);
@@ -85,21 +68,4 @@ public class DBHelper  extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_DROP_DATABASE + DBContract.PACKAGE_TBL);
         onCreate(db);
     }
-
-//    //check it
-//    public long insertUserContact(){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//
-//        // insert row
-//        long id = db.insert(DBContract.USER_TBL, null, values);
-//        return id;
-//    }
-//
-//    // closing database
-//    public void closeDB() {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        if (db != null && db.isOpen())
-//            db.close();
-//    }
 }

@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import app.pickage.com.pickage.MessengerActivities.MessengerMainActivity;
 import app.pickage.com.pickage.R;
 
-public class LoginUserActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passEditText;
@@ -21,7 +20,7 @@ public class LoginUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_user2);
+        setContentView(R.layout.activity_login);
 
         emailEditText = (EditText) findViewById(R.id.email_login);
         emailEditText.addTextChangedListener(new AddListenerOnTextChange(this, emailEditText));
@@ -48,7 +47,7 @@ public class LoginUserActivity extends AppCompatActivity {
 
     public void continueBtn(View view) {
         if (isValidLoginInput(view)) {
-            Intent i = new Intent(LoginUserActivity.this, UserCurrentLocation.class);
+            Intent i = new Intent(LoginActivity.this, UserCurrentLocation.class);
             startActivity(i);
         } else if (emailEditText.getText().toString().isEmpty()) {
             emailEditText.setError("Email filed is required");
@@ -58,15 +57,13 @@ public class LoginUserActivity extends AppCompatActivity {
     }
 
     public void createAccount(View view) {
-        Intent i = new Intent(LoginUserActivity.this, SingUpUserActivity.class);
-       // i.putExtra("isMessenger", false);
+        Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(i);
     }
 
     public void isMessengerLoginBtn(View view) {
         if(isValidLoginInput(view)){
-            Intent i = new Intent(LoginUserActivity.this, MessengerMainActivity.class);
-            // i.putExtra("isMessenger", true);
+            Intent i = new Intent(LoginActivity.this, MessengerMainActivity.class);
             startActivity(i);
         }else if(emailEditText.getText().toString().isEmpty()){
             emailEditText.setError("Email filed is required");

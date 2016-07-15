@@ -3,9 +3,6 @@ package app.pickage.com.pickage.UserActivities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import app.pickage.com.pickage.R;
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,7 +11,9 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Feedback extends AppCompatActivity {
+import app.pickage.com.pickage.R;
+
+public class FeedbackUser extends AppCompatActivity {
 
     private RatingBar ratingBar;
     private TextView txtRatingValue;
@@ -23,11 +22,10 @@ public class Feedback extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedback);
+        setContentView(R.layout.activity_user_feedback);
 
         addListenerOnRatingBar();
         addListenerOnButton();
-
     }
 
     public void addListenerOnRatingBar() {
@@ -42,7 +40,6 @@ public class Feedback extends AppCompatActivity {
                                         boolean fromUser) {
 
                 txtRatingValue.setText(String.valueOf(rating));
-
             }
         });
     }
@@ -58,7 +55,7 @@ public class Feedback extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(Feedback.this,
+                Toast.makeText(FeedbackUser.this,
                         String.valueOf(ratingBar.getRating()),
                         Toast.LENGTH_SHORT).show();
             }

@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="Car type" />
+                android:hint="@string/car_type_upload_img_mess_activity" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -68,6 +68,6 @@
             android:padding="12dp"
             android:layout_below="@id/viewImage"
             android:onClick="ContinueBTN"
-            android:text="Continue" />
+            android:text="@string/continue_btn_upload_img_mess_activity" />
     </LinearLayout>
 </RelativeLayout>

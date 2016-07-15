@@ -46,7 +46,6 @@ public class FindingMessenger extends AppCompatActivity implements OnMapReadyCal
         getMessengerCarType.setText(data.getStringExtra("M_CAR"));
         mLat = data.getDoubleExtra("M_LAT", 0);
         mLong = data.getDoubleExtra("M_LONG", 0);
-//        findMessengerIntent.putExtra("M_IMG", nearestMessenger.getMessengerImg());
     }
 
     @Override

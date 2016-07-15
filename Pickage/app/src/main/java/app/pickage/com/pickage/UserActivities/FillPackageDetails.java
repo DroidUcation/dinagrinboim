@@ -35,10 +35,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
 
     private TextView tvDisplayTime;
     private TimePicker timePicker1;
-    //    private Button btnChangeTime;
     private EditText tvTime;
-//    TextView textViewContactPhoneNum;
-    // private static final int PICK_CONTACT = 1000;
 
     public static final int PICK_CONTACT_ORIGIN = 100;
     public static final int PICK_CONTACT_DEST = 101;
@@ -89,8 +86,6 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         editPayment = (EditText) findViewById(R.id.editPayment);
         setPayment();
 
-//        textViewContactPhoneNum = (TextView) findViewById(R.id.editContactOrigionPackage);
-
         Button btnOrderMessenger = (Button) findViewById(R.id.btnOrderMessanger);
         btnOrderMessenger.setOnClickListener(this);
         ImageView addOriginContactNumPhone = (ImageView) findViewById(R.id.addOriginContactNumPhone);
@@ -100,7 +95,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     }
 
     private void setPayment() {
-        if (fromName.split(",")[1].equals(toName.split(",")[1]))
+        if (fromName.split(",")[1].contains(toName.split(",")[1]))
             editPayment.setText("30");
         else
             editPayment.setText("60");
@@ -110,7 +105,6 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     public void setCurrentTimeOnView() {
 
         tvDisplayTime = (TextView) findViewById(R.id.tvTime);
-//        timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
 
         final Calendar c = Calendar.getInstance();
         hour = c.get(Calendar.HOUR_OF_DAY);
@@ -120,10 +114,6 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         tvDisplayTime.setText(
                 new StringBuilder().append(pad(hour))
                         .append(":").append(pad(minute)));
-
-        // set current time into timepicker
-//        timePicker1.setCurrentHour(hour);
-//        timePicker1.setCurrentMinute(minute);
     }
 
     public void addListenerOnButton() {
@@ -136,15 +126,6 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
 
             }
         });
-//        btnChangeTime = (Button) findViewById(R.id.btnChangeTime);
-//        btnChangeTime.setOnClickListener(new OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                showDialog(TIME_DIALOG_ID);
-//
-//            }
-//        });
     }
 
     @Override
@@ -168,10 +149,6 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
                     // set current time into textview
                     tvDisplayTime.setText(new StringBuilder().append(pad(hour))
                             .append(":").append(pad(minute)));
-
-                    // set current time into timepicker
-//                    timePicker1.setCurrentHour(hour);
-//                    timePicker1.setCurrentMinute(minute);
 
                 }
             };
@@ -211,7 +188,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
                     intent.putExtras(data);
                     intent.putExtra("PACKAGE_KEY", packageKey);
                     startService(intent);
-                    //progressbar.setVisibility(View.VISIBLE);
+                    progressbar.setVisibility(View.VISIBLE);
 
                 }
                 break;
@@ -224,31 +201,6 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
                 startActivityForResult(intent, PICK_CONTACT_DEST);
                 break;
         }
-    }
-
-    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
-        int Radius = 6371;// radius of earth in Km
-        double lat1 = StartP.latitude;
-        double lat2 = EndP.latitude;
-        double lon1 = StartP.longitude;
-        double lon2 = EndP.longitude;
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLon = Math.toRadians(lon2 - lon1);
-        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-                + Math.cos(Math.toRadians(lat1))
-                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
-                * Math.sin(dLon / 2);
-        double c = 2 * Math.asin(Math.sqrt(a));
-        double valueResult = Radius * c;
-        double km = valueResult / 1;
-        DecimalFormat newFormat = new DecimalFormat("####");
-        int kmInDec = Integer.valueOf(newFormat.format(km));
-        double meter = valueResult % 1000;
-        int meterInDec = Integer.valueOf(newFormat.format(meter));
-        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
-                + " Meter   " + meterInDec);
-
-        return Radius * c;
     }
 
     @Override
@@ -297,4 +249,3 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
         return packageKey;
     }
 }
-

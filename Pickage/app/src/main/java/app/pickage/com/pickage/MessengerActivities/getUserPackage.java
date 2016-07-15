@@ -93,7 +93,6 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
                 mDatabase.child("packages").child(keyPackage).child("packageStatus").setValue("DECLINE");
                 break;
         }
-//        sendNotification();
     }
 
     public PendingIntent createPendingIntent() {
@@ -123,5 +122,4 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, n);
     }
-
 }

@@ -1,7 +1,7 @@
 package app.pickage.com.pickage.UserActivities;
 
 /**
- * Created by User on 02/06/2016.
+ * Created by Din&Yeudit on 02/06/2016.
  */
 public class User {
 

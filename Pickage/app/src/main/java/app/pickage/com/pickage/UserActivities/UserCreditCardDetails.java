@@ -3,9 +3,6 @@ package app.pickage.com.pickage.UserActivities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
@@ -25,7 +22,7 @@ public class UserCreditCardDetails extends AppCompatActivity{
 
     // [START declare_database_ref]
     private DatabaseReference mDatabase;
-// [END declare_database_ref]
+    // [END declare_database_ref]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +48,7 @@ public class UserCreditCardDetails extends AppCompatActivity{
         mDatabase.child("users").child(keyUser).child("pUsercreditCardName").setValue(creditCardName.getText().toString());
         mDatabase.child("users").child(keyUser).child("pUsercreditCardDate").setValue(creditCardDate.getText().toString());
         mDatabase.child("users").child(keyUser).child("pUsercreditCardCSV").setValue(creditCardCSV.getText().toString());
-        Intent intent = new Intent(UserCreditCardDetails.this, LoginUserActivity.class);
+        Intent intent = new Intent(UserCreditCardDetails.this, LoginActivity.class);
         startActivity(intent);
     }
 }

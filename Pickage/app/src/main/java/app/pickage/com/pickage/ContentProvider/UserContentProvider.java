@@ -18,7 +18,7 @@ import app.pickage.com.pickage.DBHelpers.DBContract;
 import app.pickage.com.pickage.DBHelpers.DBHelper;
 
 /**
- * Created by User on 30/05/2016.
+ * Created by Din&Yeudit on 30/05/2016.
  */
 public class UserContentProvider extends ContentProvider{
 
@@ -44,7 +44,6 @@ public class UserContentProvider extends ContentProvider{
         Context context = getContext();
         dbHelper = new DBHelper(context);
         sqLiteDatabase = dbHelper.getWritableDatabase();
-        //dbHelper.onUpgrade(sqLiteDatabase, 1, 2); // call on upgrade for recreating DB
         return (sqLiteDatabase == null) ? false : true;
     }
 
@@ -53,7 +52,7 @@ public class UserContentProvider extends ContentProvider{
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();//mafeila db
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(DBContract.USER_TBL);
         switch (uriMatcher.match(uri)) {
             case USER:
@@ -64,9 +63,6 @@ public class UserContentProvider extends ContentProvider{
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
         }
-//        if(!TextUtils.isEmpty(sortOrder)){
-//            sortOrder = SharingInfoContract.ProductsEntry.CREATED_AT + " DESC"; //Sort by modified date as default
-//        }
         Cursor c = qb.query(sqLiteDatabase, projection, selection, selectionArgs, null, null, sortOrder);
         c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
@@ -107,7 +103,7 @@ public class UserContentProvider extends ContentProvider{
             case USER_ID:
                 delCount = sqLiteDatabase.delete(
                         DBContract.USER_TBL,
-                        getUriIdCondition(uri, selection), //Get where condition
+                        getUriIdCondition(uri, selection),
                         selectionArgs);
                 break;
             default:
@@ -150,90 +146,3 @@ public class UserContentProvider extends ContentProvider{
         return where;
     }
 }
-
-//    static final String PROVIDER_NAME = "app.pickage.com.pickage.UserContentProvider";
-//    public static final Uri CONTENT_USER_URI =
-//            Uri.parse("content://"+ PROVIDER_NAME + "/userURI");
-//
-//    static final int USER = 1;
-//    static final int USER_ID = 2;
-//
-//    private SQLiteDatabase db;
-//
-//    private static final UriMatcher uriMatcher;
-//    static {
-//        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-//        uriMatcher.addURI(PROVIDER_NAME, "userURI", USER);
-//        uriMatcher.addURI(PROVIDER_NAME, "userURI/#", USER_ID);
-//    }
-//
-//    @Override
-//    public boolean onCreate() {
-//        Context context = getContext();
-//        DBHelper dbHelper = new DBHelper(context);
-//        /** * Create a write able database which will trigger its * creation if it doesn't already exist. */
-//        db = dbHelper.getWritableDatabase();
-//
-//        return (db == null) ? false : true;
-//    }
-//
-//    @Nullable
-//    @Override
-//    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-//        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-//        qb.setTables(DBContract.USER_TBL);
-//        switch (uriMatcher.match(uri)) {
-//            case USER:
-//                break;
-//            case USER_ID:
-//                //qb.appendWhere(DBContract.USER_ID + "=" + uri.getPathSegments().get(Integer.parseInt(DBContract.USER_ID)));
-//                qb.appendWhere(DBContract.USER_ID + "=" + uri.getPathSegments().get(1));
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Unknown URI " + uri);
-//        }
-//        Cursor c = qb.query(db, projection, selection, selectionArgs, null, null, sortOrder);
-//        return c;
-//    }
-//
-//    @Nullable
-//    @Override
-//    public String getType(Uri uri){
-//        switch (uriMatcher.match(uri)) {
-//            case USER:
-//                return "vnd.android.cursor.dir/vnd.app.pickage.com.pickage.provider.images";
-//            case USER_ID:
-//                return "vnd.android.cursor.item/vnd.app.pickage.com.pickage..provider.images";
-//
-//        }
-//        return "";
-//    }
-//
-//    @Nullable
-//    @Override
-//    public Uri insert(Uri uri, ContentValues values) {
-//        int uriType = uriMatcher.match(uri);
-//        db = DBHelper.getWritableDatabase();
-//        long id = 0;
-//
-//        switch(uriType){
-//            case Fact :
-//                id = db.insert(FactDBContract.FiveFactsEntry.TABLE_NAME,null,values);
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Unknown URI: " + uri);
-//        }
-//        getContext().getContentResolver().notifyChange(uri, null);
-//        return ContentUris.withAppendedId(uri, id);
-//    }
-//
-//    @Override
-//    public int delete(Uri uri, String selection, String[] selectionArgs) {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-//        return 0;
-//    }
-//}

@@ -33,7 +33,7 @@
             android:src="@drawable/ic_location_on_black_24dp"/>
 
         <TextView
-            android:text="From :"
+            android:text="@string/from_user_current_location_activity"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             android:src="@drawable/ic_location_on_black_24dp"/>
 
         <TextView
-            android:text="To :"
+            android:text="@string/to_user_current_location_activity"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -93,8 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/orange"
-            android:text="Continue"/>
-
+            android:text="@string/continue_btn_user_current_location_activity"/>
 </LinearLayout>
 
     <ImageView

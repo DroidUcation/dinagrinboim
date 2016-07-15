@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.pickage.com.pickage.R;
-import app.pickage.com.pickage.UserActivities.Feedback;
+import app.pickage.com.pickage.UserActivities.FeedbackUser;
 import app.pickage.com.pickage.UserActivities.FindingMessenger;
 
 /**
@@ -61,7 +61,6 @@ public class FindMessengerIntentService extends IntentService {
 
                         if (messengers != null) {
                             for (String key : messengers.keySet()) {
-//                                messenger = messengers.get(key);
                                 messenger = dataSnapshot.child(key).getValue(Messenger.class);
                                 double latMessenger = messenger.getMessengerLat();
                                 double longMessenger = messenger.getMessengerLong();
@@ -73,13 +72,11 @@ public class FindMessengerIntentService extends IntentService {
                                 }
                             }
                             mDatabase.child("packages").child(keyPackage).child("pMessengerID").setValue(tempKey);
-//                            sendNotification();
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-//                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
                     }
                 });
 
@@ -102,7 +99,7 @@ public class FindMessengerIntentService extends IntentService {
                             getApplication().startActivity(findMessengerIntent);
                             break;
                         case "FINISH":
-                            Intent feedbackIntent = new Intent(getBaseContext(), Feedback.class);
+                            Intent feedbackIntent = new Intent(getBaseContext(), FeedbackUser.class);
                             feedbackIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             getApplication().startActivity(feedbackIntent);
                             break;
@@ -112,37 +109,8 @@ public class FindMessengerIntentService extends IntentService {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-//                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
             }
         });
-
-
-//        Uri uri = Uri.withAppendedPath(MessengerContentProvider.CONTENT_URI,"1");
-//        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-//        Cursor cursor = getContentResolver().query(MessengerContentProvider.CONTENT_URI, null, null, null, null);
-//
-//        double latMessenger;
-//        double longMessenger;
-//        float[] results = null;
-//        float tempRes = Float.MAX_VALUE;
-//        int position = 0;
-//
-//
-//
-//        if(cursor != null) {
-//            while (cursor.moveToNext()) {
-//                latMessenger = cursor.getDouble(cursor.getColumnIndex(DBContract.MESSENGER_LAT));
-//                longMessenger = cursor.getDouble(cursor.getColumnIndex(DBContract.MESSENGER_LONG));
-//                Location.distanceBetween(latPackage, longPackage, latMessenger, longMessenger, results);
-//                if (results[0] < tempRes) {
-//                    position = cursor.getPosition();
-//                    tempRes = results[0];
-//                }
-//            }
-//            cursor.moveToPosition(position);
-//            cursor.close();
-//        }
-//        sendNotification();
     }
 
     private float getDistance(double latMessenger , double longMessenger) {

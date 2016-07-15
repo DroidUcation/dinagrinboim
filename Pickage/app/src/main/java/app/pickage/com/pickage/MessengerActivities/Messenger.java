@@ -1,7 +1,7 @@
 package app.pickage.com.pickage.MessengerActivities;
 
 /**
- * Created by User on 05/06/2016.
+ * Created by Din&Yeudit on 05/06/2016.
  */
 public class Messenger {
 

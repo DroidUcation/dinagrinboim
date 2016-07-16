@@ -51,9 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         passEditText = (EditText) findViewById(R.id.input_password_signup);
         passEditText.addTextChangedListener(new AddListenerOnTextChange(this, passEditText));
 
-        // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        // [END initialize_database_ref]
     }
 
     public void continueSingUpBtn(View view) {

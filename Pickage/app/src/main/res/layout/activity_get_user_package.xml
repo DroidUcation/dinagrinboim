@@ -187,7 +187,7 @@
             android:text="@string/get_package_btn_get_user_package"/>
 
         <Button
-            android:id="@+id/btnDiclinePackage"
+            android:id="@+id/btnDeclinePackage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"

@@ -98,6 +98,8 @@ public class FindMessengerIntentService extends IntentService {
                             findMessengerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             getApplication().startActivity(findMessengerIntent);
                             break;
+                        case "DECLINE":
+                            break;
                         case "FINISH":
                             Intent feedbackIntent = new Intent(getBaseContext(), FeedbackUser.class);
                             feedbackIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

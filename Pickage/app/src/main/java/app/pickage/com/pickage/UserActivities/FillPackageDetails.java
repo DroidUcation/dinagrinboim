@@ -3,6 +3,7 @@ package app.pickage.com.pickage.UserActivities;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;
@@ -189,6 +191,14 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
                     intent.putExtra("PACKAGE_KEY", packageKey);
                     startService(intent);
                     progressbar.setVisibility(View.VISIBLE);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        Log.w("App","Progress thread cannot sleep");
+                    }
+                    Toast.makeText(FillPackageDetails.this,
+                            String.valueOf("Unfortunately, There is no available messengers in your area./n Please try later... "),
+                            Toast.LENGTH_SHORT).show();
 
                 }
                 break;

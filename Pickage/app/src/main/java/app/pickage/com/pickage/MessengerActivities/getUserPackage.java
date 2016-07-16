@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -42,7 +43,7 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_get_user_package);
         Button btnGetPackage = (Button) findViewById(R.id.btnGetPackage);
         btnGetPackage.setOnClickListener(this);
-        Button btnDeclinePackage = (Button) findViewById(R.id.btnDiclinePackage);
+        Button btnDeclinePackage = (Button) findViewById(R.id.btnDeclinePackage);
         btnDeclinePackage.setOnClickListener(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -89,8 +90,13 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
                 intent.putExtra("PACKAGE_KEY", keyPackage);
                 startActivity(intent);
                 break;
-            case R.id.btnDiclinePackage:
+            case R.id.btnDeclinePackage:
+                Toast.makeText(GetUserPackage.this,
+                        String.valueOf("Please contact with the sender."),
+                        Toast.LENGTH_SHORT).show();
                 mDatabase.child("packages").child(keyPackage).child("packageStatus").setValue("DECLINE");
+                Intent i = new Intent(GetUserPackage.this, MessengerMainActivity.class);
+                startActivity(i);
                 break;
         }
     }

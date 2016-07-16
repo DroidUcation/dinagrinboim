@@ -26,7 +26,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-        import java.io.OutputStream;
+import java.io.OutputStream;
 
 public class UploadUserImg extends AppCompatActivity {
 
@@ -36,18 +36,14 @@ public class UploadUserImg extends AppCompatActivity {
     String keyUser;
     User nearestUser;
 
-    // [START declare_database_ref]
     private DatabaseReference mDatabase;
-   // [END declare_database_ref]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_user_img);
 
-        // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        // [END initialize_database_ref]
 
         phoneEditText = (EditText) findViewById(R.id.input_phone);
 

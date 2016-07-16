@@ -1,5 +1,6 @@
 package app.pickage.com.pickage.UserActivities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -58,6 +59,8 @@ public class FeedbackUser extends AppCompatActivity {
                 Toast.makeText(FeedbackUser.this,
                         String.valueOf(ratingBar.getRating()),
                         Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(FeedbackUser.this, UserCurrentLocation.class);
+                startActivity(i);
             }
         });
     }

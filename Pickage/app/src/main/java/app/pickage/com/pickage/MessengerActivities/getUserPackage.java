@@ -93,7 +93,7 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
             case R.id.btnDeclinePackage:
                 Toast.makeText(GetUserPackage.this,
                         String.valueOf("Please contact with the sender."),
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
                 mDatabase.child("packages").child(keyPackage).child("packageStatus").setValue("DECLINE");
                 Intent i = new Intent(GetUserPackage.this, MessengerMainActivity.class);
                 startActivity(i);

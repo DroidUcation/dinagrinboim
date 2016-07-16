@@ -12,13 +12,11 @@ import app.pickage.com.pickage.AppConst;
 import app.pickage.com.pickage.PackageActivities.Package;
 import app.pickage.com.pickage.R;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -29,7 +27,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -58,6 +55,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     double longPackage;
     String fromName;
     String toName;
+    int progress = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,7 +95,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
     }
 
     private void setPayment() {
-        if (fromName.split(",")[1].contains(toName.split(",")[1]))
+        if (fromName.split(",").length> 1 && fromName.split(",")[1].contains(toName.split(",")[1]))
             editPayment.setText("30");
         else
             editPayment.setText("60");
@@ -191,15 +189,23 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
                     intent.putExtra("PACKAGE_KEY", packageKey);
                     startService(intent);
                     progressbar.setVisibility(View.VISIBLE);
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        Log.w("App","Progress thread cannot sleep");
-                    }
-                    Toast.makeText(FillPackageDetails.this,
-                            String.valueOf("Unfortunately, There is no available messengers in your area./n Please try later... "),
-                            Toast.LENGTH_SHORT).show();
 
+                    new CountDownTimer(10000, 1000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            //the progressBar will be invisible after 60 000 miliseconds ( 1 minute)
+                            progressbar.setVisibility(View.INVISIBLE);
+                            Toast.makeText(FillPackageDetails.this,
+                                String.valueOf("Unfortunately, There are no available messengers.\n Please try later... "),
+                                Toast.LENGTH_LONG).show();
+                        }
+
+                    }.start();
                 }
                 break;
             case R.id.addOriginContactNumPhone:

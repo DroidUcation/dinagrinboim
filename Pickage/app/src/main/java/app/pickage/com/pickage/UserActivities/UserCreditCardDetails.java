@@ -43,11 +43,11 @@ public class UserCreditCardDetails extends AppCompatActivity{
     public void creditCardDetailsBtnNext(View view) {
         Intent grtIntent = getIntent();
         keyUser = grtIntent.getStringExtra("USER_KEY");
-        mDatabase.child("users").child(keyUser).child("pUsercreditCardNumber").setValue(creditCardNumber.getText().toString());
-        mDatabase.child("users").child(keyUser).child("pUsercreditCardType").setValue(creditCardType.getText().toString());
-        mDatabase.child("users").child(keyUser).child("pUsercreditCardName").setValue(creditCardName.getText().toString());
-        mDatabase.child("users").child(keyUser).child("pUsercreditCardDate").setValue(creditCardDate.getText().toString());
-        mDatabase.child("users").child(keyUser).child("pUsercreditCardCSV").setValue(creditCardCSV.getText().toString());
+        mDatabase.child("users").child(keyUser).child("creditCardNumber").setValue(creditCardNumber.getText().toString());
+        mDatabase.child("users").child(keyUser).child("creditCardType").setValue(creditCardType.getText().toString());
+        mDatabase.child("users").child(keyUser).child("creditCardName").setValue(creditCardName.getText().toString());
+        mDatabase.child("users").child(keyUser).child("creditCardDate").setValue(creditCardDate.getText().toString());
+        mDatabase.child("users").child(keyUser).child("creditCardCSV").setValue(creditCardCSV.getText().toString());
         Intent intent = new Intent(UserCreditCardDetails.this, LoginActivity.class);
         startActivity(intent);
     }

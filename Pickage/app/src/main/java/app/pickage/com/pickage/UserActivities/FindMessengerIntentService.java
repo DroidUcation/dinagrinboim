@@ -35,6 +35,7 @@ public class FindMessengerIntentService extends IntentService {
     double longPackage;
     String keyPackage;
     Messenger nearestMessenger;
+    String messengerKey;
 
     public FindMessengerIntentService() {
         super("FindMessengerIntentService");
@@ -71,6 +72,7 @@ public class FindMessengerIntentService extends IntentService {
                                     nearestMessenger = messenger;
                                 }
                             }
+                            messengerKey = tempKey;
                             mDatabase.child("packages").child(keyPackage).child("pMessengerID").setValue(tempKey);
                         }
                     }
@@ -89,6 +91,7 @@ public class FindMessengerIntentService extends IntentService {
                     switch (status) {
                         case "ACCEPT":
                             Intent findMessengerIntent = new Intent(getBaseContext(), FindingMessenger.class);
+                            findMessengerIntent.putExtra("M_KEY", messengerKey);
                             findMessengerIntent.putExtra("M_NAME", nearestMessenger.getMessengerName());
                             findMessengerIntent.putExtra("M_PHONE", nearestMessenger.getMessengerPhone());
                             findMessengerIntent.putExtra("M_CAR", nearestMessenger.getMessengerCarType());

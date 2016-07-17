@@ -190,7 +190,7 @@ public class FillPackageDetails extends AppCompatActivity implements View.OnClic
                     startService(intent);
                     progressbar.setVisibility(View.VISIBLE);
 
-                    new CountDownTimer(10000, 1000) {
+                    new CountDownTimer(60000, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
 

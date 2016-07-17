@@ -15,7 +15,7 @@
         android:src="@drawable/user12"/>
 
     <LinearLayout
-        android:id="@+id/messngerDetails"
+        android:id="@+id/messengerDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -130,7 +130,7 @@
         android:id="@+id/messengerTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/messngerDetails"
+        android:layout_below="@id/messengerDetails"
         android:background="@color/iron"
         android:orientation="horizontal">
 

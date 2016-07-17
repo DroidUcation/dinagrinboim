@@ -47,6 +47,7 @@ public class MessengerNewPackageIntentService extends IntentService {
                             getUserPackageIntent.putExtra("FROM_LONG", pPackage.getPkgOriginLong());
                             getUserPackageIntent.putExtra("TO_NAME", pPackage.getDestinationPackage());
                             getUserPackageIntent.putExtra("TO_CONTACT", pPackage.getDestinationContact());
+                            getUserPackageIntent.putExtra("USER_KEY", pPackage.getpUserID());
                             getUserPackageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             getApplication().startActivity(getUserPackageIntent);
                         }

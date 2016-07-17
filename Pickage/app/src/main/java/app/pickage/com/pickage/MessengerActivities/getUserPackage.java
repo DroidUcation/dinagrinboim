@@ -6,12 +6,16 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,8 +25,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import app.pickage.com.pickage.R;
 import app.pickage.com.pickage.UserActivities.FindingMessenger;
@@ -36,6 +44,9 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
     double mLong;
 
     private GoogleMap mMap;
+    private StorageReference storageRef;
+
+    ImageView userImgPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +56,9 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
         btnGetPackage.setOnClickListener(this);
         Button btnDeclinePackage = (Button) findViewById(R.id.btnDeclinePackage);
         btnDeclinePackage.setOnClickListener(this);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        storageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://packme-ea467.appspot.com/");
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.packageFrom);
@@ -63,6 +76,25 @@ public class GetUserPackage extends AppCompatActivity implements View.OnClickLis
         editDestinationPackageForMess.setText(data.getStringExtra("TO_NAME"));
         EditText editDestinationContactForMess = (EditText) findViewById(R.id.editDestinationContactForMess);
         editDestinationContactForMess.setText(data.getStringExtra("TO_CONTACT"));
+
+        userImgPhoto = (ImageView) findViewById(R.id.userImgPhoto);
+        StorageReference messengerRef = storageRef.child("images/users/"+ data.getStringExtra("USER_KEY") +".jpg");
+
+        final long ONE_MEGABYTE = 1024 * 1024;
+        messengerRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 4;
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
+                userImgPhoto.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
     }
 
     @Override

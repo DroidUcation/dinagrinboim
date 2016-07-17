@@ -32,7 +32,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import app.pickage.com.pickage.R;
@@ -43,7 +42,6 @@ public class UploadUserImg extends AppCompatActivity {
     EditText phoneEditText;
     ImageView viewImage;
     String keyUser;
-    User nearestUser;
 
     private DatabaseReference mDatabase;
     private StorageReference storageRef;
@@ -89,10 +87,15 @@ public class UploadUserImg extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
+                if (tempFileuri == null) {
+                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                    tempFileuri = Uri.fromFile(f);
+                }
                 Picasso.with(this).load(tempFileuri).into(viewImage);
 //                this.grabImage(viewImage);
             } else if (requestCode == 2) {
                 Uri selectedImage = data.getData();
+                tempFileuri = data.getData();
                 String[] filePath = {MediaStore.Images.Media.DATA};
                 Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
                 c.moveToFirst();
@@ -110,15 +113,18 @@ public class UploadUserImg extends AppCompatActivity {
     }
 
     private void uploadImgToFireBase() {
-        StorageReference userRef = storageRef.child("images/users/" + keyUser + ".jpg");
-        viewImage.setDrawingCacheEnabled(true);
-        viewImage.buildDrawingCache();
-        Bitmap bitmap = viewImage.getDrawingCache();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
-        byte[] data = baos.toByteArray();
+//        StorageReference userRef = storageRef.child("images/users/" + keyUser + ".jpg");
+//        viewImage.setDrawingCacheEnabled(true);
+//        viewImage.buildDrawingCache();
+//        Bitmap bitmap = viewImage.getDrawingCache();
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
+//        byte[] data = baos.toByteArray();
+//        UploadTask uploadTask = userRef.putBytes(data);
 
-        UploadTask uploadTask = userRef.putBytes(data);
+        Uri file = tempFileuri;
+        StorageReference userRef = storageRef.child("images/users/" + keyUser + ".jpg");
+        UploadTask uploadTask = userRef.putFile(file);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -220,6 +226,7 @@ public class UploadUserImg extends AppCompatActivity {
             // permissions this app might request
         }
     }
+
 
 
 }

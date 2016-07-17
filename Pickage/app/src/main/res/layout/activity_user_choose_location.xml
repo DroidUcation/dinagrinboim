@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.pickage.com.pickage.UserActivities.UserChooseLocation"
+    tools:context="app.pickage.com.pickage.useractivities.UserChooseLocation"
     android:background="@drawable/alphabkimg">
 
     <fragment

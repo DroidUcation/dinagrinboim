@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.ContentProvider;
+package app.pickage.com.pickage.contentprovider;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -13,8 +13,8 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import app.pickage.com.pickage.DBHelpers.DBContract;
-import app.pickage.com.pickage.DBHelpers.DBHelper;
+import app.pickage.com.pickage.dbhelpers.DBContract;
+import app.pickage.com.pickage.dbhelpers.DBHelper;
 
 /**
  * Created by Din&Yeudit on 30/05/2016.

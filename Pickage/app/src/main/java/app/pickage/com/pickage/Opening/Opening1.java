@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.Opening;
+package app.pickage.com.pickage.opening;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

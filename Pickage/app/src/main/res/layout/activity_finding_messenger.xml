@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivities.FindingMessenger">
+    tools:context=".useractivities.FindingMessenger">
 
     <ImageView
         android:id="@+id/messengerImgPhoto"
@@ -147,5 +147,5 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="app.pickage.com.pickage.UserActivities.FindingMessenger"/>
+        tools:context="app.pickage.com.pickage.useractivities.FindingMessenger"/>
 </RelativeLayout>

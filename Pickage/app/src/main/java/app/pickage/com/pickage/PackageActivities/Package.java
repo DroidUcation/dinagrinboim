@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.PackageActivities;
+package app.pickage.com.pickage.packageactivities;
 
 /**
  * Created by Din&Yeudit on 05/06/2016.

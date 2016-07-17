@@ -1,59 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.pickage.com.pickage">
+          package="app.pickage.com.pickage">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
 
     <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true" />
+            android:glEsVersion="0x00020000"
+            android:required="true"/>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!--
  The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
     -->
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:launchMode="standard"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:launchMode="standard"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <provider
-            android:name=".ContentProvider.UserContentProvider"
-            android:authorities="app.pickage.com.pickage.ContentProvider.UserContentProvider" />
+                android:name=".contentprovider.UserContentProvider"
+                android:authorities="app.pickage.com.pickage.contentprovider.UserContentProvider"/>
         <provider
-            android:name=".ContentProvider.MessengerContentProvider"
-            android:authorities="app.pickage.com.pickage.ContentProvider.MessengerContentProvider" />
+                android:name=".contentprovider.MessengerContentProvider"
+                android:authorities="app.pickage.com.pickage.contentprovider.MessengerContentProvider"/>
         <provider
-            android:name=".ContentProvider.PackageContentProvider"
-            android:authorities="app.pickage.com.pickage.ContentProvider.PackageContentProvider" />
+                android:name=".contentprovider.PackageContentProvider"
+                android:authorities="app.pickage.com.pickage.contentprovider.PackageContentProvider"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -64,35 +66,35 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBc_Hyv_2-Z78gTkblJjCLl6lafO9tcW8E" />
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyBc_Hyv_2-Z78gTkblJjCLl6lafO9tcW8E"/>
 
         <activity
-            android:name=".UserActivities.LoginActivity"
-            android:label="Login" />
+                android:name=".useractivities.LoginActivity"
+                android:label="Login"/>
         <activity
-            android:name=".UserActivities.SignUpActivity"
-            android:label="Sign Up" />
+                android:name=".useractivities.SignUpActivity"
+                android:label="Sign Up"/>
         <activity
-            android:name=".UserActivities.UserCreditCardDetails"
-            android:label="Credit card details" />
-        <activity android:name=".UserActivities.UserCurrentLocation">
+                android:name=".useractivities.UserCreditCardDetails"
+                android:label="Credit card details"/>
+        <activity android:name=".useractivities.UserCurrentLocation">
         </activity>
-        <activity android:name=".UserActivities.UserChooseLocation">
+        <activity android:name=".useractivities.UserChooseLocation">
         </activity>
-        <activity android:name=".UserActivities.FillPackageDetails"></activity>
+        <activity android:name=".useractivities.FillPackageDetails"></activity>
         <activity
-            android:name=".UserActivities.FeedbackUser"
-            android:label="Feedback" />
+                android:name=".useractivities.FeedbackUser"
+                android:label="Feedback"/>
         <activity
-            android:name=".UserActivities.FindingMessenger"
-            android:label="Messenger is coming your way" />
-        <activity android:name=".UserActivities.UploadUserImg" />
-        <activity android:name=".MessengerActivities.UploadMessImg" />
-        <activity android:name=".MessengerActivities.GetUserPackage" />
-        <activity android:name=".MessengerActivities.MessengerDestinationPath" />
-        <activity android:name=".MessengerActivities.MessengerMainActivity"/>
-        <service android:name=".UserActivities.FindMessengerIntentService" />
-        <service android:name=".MessengerActivities.MessengerNewPackageIntentService" />
+                android:name=".useractivities.FindingMessenger"
+                android:label="Messenger is coming your way"/>
+        <activity android:name=".useractivities.UploadUserImg"/>
+        <activity android:name=".messengeractivities.UploadMessImg"/>
+        <activity android:name=".messengeractivities.GetUserPackage"/>
+        <activity android:name=".messengeractivities.MessengerDestinationPath"/>
+        <activity android:name=".messengeractivities.MessengerMainActivity"/>
+        <service android:name=".useractivities.FindMessengerIntentService"/>
+        <service android:name=".messengeractivities.MessengerNewPackageIntentService"/>
     </application>
 </manifest>

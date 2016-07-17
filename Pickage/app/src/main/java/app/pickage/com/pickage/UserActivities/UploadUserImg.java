@@ -1,50 +1,53 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import com.squareup.picasso.Picasso;
+
+import android.Manifest;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 import app.pickage.com.pickage.R;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
 public class UploadUserImg extends AppCompatActivity {
 
+    private static final int READ_STORAGE_PERMISSIONS_CODE = 12;
     EditText phoneEditText;
     ImageView viewImage;
-    Button b;
     String keyUser;
     User nearestUser;
 
     private DatabaseReference mDatabase;
     private StorageReference storageRef;
+    private Uri tempFileuri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,105 +58,43 @@ public class UploadUserImg extends AppCompatActivity {
         storageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://packme-ea467.appspot.com/");// + this.getString(R.string.google_storage_bucket));
 
         phoneEditText = (EditText) findViewById(R.id.input_phone);
-
-        b=(Button)findViewById(R.id.btnSelectPhoto);
-        viewImage=(ImageView)findViewById(R.id.viewImage);
+        viewImage = (ImageView) findViewById(R.id.viewImage);
         Intent intent = getIntent();
         keyUser = intent.getStringExtra("USER_KEY");
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectImage();
-            }
-        });
     }
 
-    public void ContinueBTN(View view){
+    public void ContinueBTN(View view) {
         mDatabase.child("users").child(keyUser).child("userPhone").setValue(phoneEditText.getText().toString());
         Intent i = new Intent(UploadUserImg.this, UserCreditCardDetails.class);
         i.putExtra("USER_KEY", keyUser);
         startActivity(i);
     }
 
-    private void selectImage() {
 
-        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(UploadUserImg.this);
-        builder.setTitle("Add Photo!");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Take Photo")) {
-//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-//                    startActivityForResult(intent, 1);
-                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                        startActivityForResult(takePictureIntent, 1);
-                    }
-                } else if (options[item].equals("Choose from Gallery")) {
-                    Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, 2);
-                } else if (options[item].equals("Cancel")) {
-                    dialog.dismiss();
-                }
-            }
-        });
-        builder.show();
+    public void grabImage(ImageView imageView) {
+        this.getContentResolver().notifyChange(tempFileuri, null);
+        ContentResolver cr = this.getContentResolver();
+        Bitmap bitmap;
+        try {
+            bitmap = android.provider.MediaStore.Images.Media.getBitmap(cr, tempFileuri);
+            imageView.setImageBitmap(bitmap);
+        } catch (Exception e) {
+            Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT).show();
+            Log.d("TAG", "Failed to load", e);
+        }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
-//                File f = new File(Environment.getExternalStorageDirectory().toString());
-//                for (File temp : f.listFiles()) {
-//                    if (temp.getName().equals("temp.jpg")) {
-//                        f = temp;
-//                        break;
-//                    }
-//                }
-//                try {
-//                    Bitmap bitmap;
-//                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-//
-//                    bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
-//                            bitmapOptions);
-//
-//                    viewImage.setImageBitmap(bitmap);
-//
-//                    String path = android.os.Environment
-//                            .getExternalStorageDirectory()
-//                            + File.separator
-//                            + "Phoenix" + File.separator + "default";
-//                    f.delete();
-//                    OutputStream outFile = null;
-//                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
-//                    try {
-//                        outFile = new FileOutputStream(file);
-//                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
-//                        outFile.flush();
-//                        outFile.close();
-//                    } catch (FileNotFoundException e) {
-//                        e.printStackTrace();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-                Bundle extras = data.getExtras();
-                Bitmap imageBitmap = (Bitmap) extras.get("data");
-                viewImage.setImageBitmap(imageBitmap);
+                Picasso.with(this).load(tempFileuri).into(viewImage);
+//                this.grabImage(viewImage);
             } else if (requestCode == 2) {
                 Uri selectedImage = data.getData();
-                String[] filePath = { MediaStore.Images.Media.DATA };
-                Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
+                String[] filePath = {MediaStore.Images.Media.DATA};
+                Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
                 c.moveToFirst();
                 int columnIndex = c.getColumnIndex(filePath[0]);
                 String picturePath = c.getString(columnIndex);
@@ -165,10 +106,11 @@ public class UploadUserImg extends AppCompatActivity {
             }
             uploadImgToFireBase();
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void uploadImgToFireBase(){
-        StorageReference userRef = storageRef.child("images/users/"+ keyUser +".jpg");
+    private void uploadImgToFireBase() {
+        StorageReference userRef = storageRef.child("images/users/" + keyUser + ".jpg");
         viewImage.setDrawingCacheEnabled(true);
         viewImage.buildDrawingCache();
         Bitmap bitmap = viewImage.getDrawingCache();
@@ -190,4 +132,94 @@ public class UploadUserImg extends AppCompatActivity {
             }
         });
     }
+
+    public void selectImages(View view) {
+
+        if (isStoragePermissionGranted()) {
+
+            //Creating the instance of PopupMenu
+            PopupMenu popup = new PopupMenu(this, viewImage);
+            //Inflating the Popup using xml file
+            popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+            //registering popup with OnMenuItemClickListener
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                public boolean onMenuItemClick(MenuItem item) {
+
+                    if (item.getTitle().equals("Take Photo")) {
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                        tempFileuri = Uri.fromFile(f);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, tempFileuri);
+                        startActivityForResult(intent, 1);
+                    } else if (item.getTitle().equals("Choose from Gallery")) {
+                        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(intent, 2);
+                    }
+                    return true;
+                }
+            });
+
+            popup.show();//showing popup menu
+        }
+    }
+
+    public boolean isStoragePermissionGranted() {
+// Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        READ_STORAGE_PERMISSIONS_CODE);
+
+                // READ_STORAGE_PERMISSIONS_CODE is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case READ_STORAGE_PERMISSIONS_CODE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay!
+                    selectImages(null);
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+
 }

@@ -1,4 +1,16 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -16,18 +28,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
@@ -75,7 +75,7 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
         toTxt = (TextView) findViewById(R.id.to_text_view);
         toTxt.setOnClickListener(this);
         toTxt.setText("Add destination");
-        ((Button)findViewById(R.id.btn_continue_location)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_continue_location)).setOnClickListener(this);
 
     }
 
@@ -132,38 +132,40 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     }
 
     private void GetLocation() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED) {
-            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            if (mLastLocation == null) {
-                LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
-                if (service.isProviderEnabled(LocationManager.GPS_PROVIDER))
-                    LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-                else
-                    buildAlertMessageNoGps();
-            } else {
-                if (fromMarker == null) {
-                    fromMarker = drawLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), "You are here!");
-                    Geocoder geocoder;
-                    List<Address> addresses;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        geocoder = new Geocoder(this, Locale.forLanguageTag("en-us"));
-                    } else{
-                        geocoder = new Geocoder(this, Locale.getDefault());
-                    }
-
-                    try {
-                        addresses = geocoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 1);
-                        if (addresses.size() > 0) {
-                            String address = addresses.get(0).getAddressLine(0);
-                            String city = addresses.get(0).getLocality();
-                            String state = addresses.get(0).getAdminArea();
-                            String country = addresses.get(0).getCountryName();
-                            String postalCode = addresses.get(0).getPostalCode();
-                            String knownName = addresses.get(0).getFeatureName();
-                            fromTxt.setText(address + "," + city);
+        if (mGoogleApiClient.isConnected()) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED) {
+                mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+                if (mLastLocation == null) {
+                    LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+                    if (service.isProviderEnabled(LocationManager.GPS_PROVIDER))
+                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+                    else
+                        buildAlertMessageNoGps();
+                } else {
+                    if (fromMarker == null) {
+                        fromMarker = drawLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), "You are here!");
+                        Geocoder geocoder;
+                        List<Address> addresses;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            geocoder = new Geocoder(this, Locale.forLanguageTag("en-us"));
+                        } else {
+                            geocoder = new Geocoder(this, Locale.getDefault());
                         }
-                    } catch (IOException e) {
-                        e.printStackTrace();
+
+                        try {
+                            addresses = geocoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 1);
+                            if (addresses.size() > 0) {
+                                String address = addresses.get(0).getAddressLine(0);
+                                String city = addresses.get(0).getLocality();
+                                String state = addresses.get(0).getAdminArea();
+                                String country = addresses.get(0).getCountryName();
+                                String postalCode = addresses.get(0).getPostalCode();
+                                String knownName = addresses.get(0).getFeatureName();
+                                fromTxt.setText(address + "," + city);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -179,8 +181,8 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     }
 
     private void removeLocation(Marker marker) {
-       if (marker != null)
-           marker.remove();
+        if (marker != null)
+            marker.remove();
     }
 
     @Override
@@ -237,7 +239,7 @@ public class UserCurrentLocation extends FragmentActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         Intent chooseLocationIntent = new Intent(UserCurrentLocation.this, UserChooseLocation.class);
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.from_text_view:
                 startActivityForResult(chooseLocationIntent, FROM_REQUEST);
                 break;

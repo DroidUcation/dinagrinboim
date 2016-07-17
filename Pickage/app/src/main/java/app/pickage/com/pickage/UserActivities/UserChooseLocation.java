@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.DBHelpers;
+package app.pickage.com.pickage.dbhelpers;
 
 import android.provider.BaseColumns;
 

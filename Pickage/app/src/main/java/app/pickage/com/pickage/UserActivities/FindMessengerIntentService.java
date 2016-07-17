@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -19,8 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.pickage.com.pickage.MessengerActivities.GetUserPackage;
-import app.pickage.com.pickage.MessengerActivities.Messenger;
+import app.pickage.com.pickage.messengeractivities.GetUserPackage;
+import app.pickage.com.pickage.messengeractivities.Messenger;
 import app.pickage.com.pickage.R;
 
 /**

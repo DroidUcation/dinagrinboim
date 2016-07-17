@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.MessengerActivities;
+package app.pickage.com.pickage.messengeractivities;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import app.pickage.com.pickage.AppConst;
-import app.pickage.com.pickage.PackageActivities.Package;
+import app.pickage.com.pickage.packageactivities.Package;
 
 /**
  * Created by Din&Yeudit 12/07/2016.

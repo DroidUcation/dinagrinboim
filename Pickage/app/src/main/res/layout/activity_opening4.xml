@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="app.pickage.com.pickage.Opening.Opening4"
+    tools:context="app.pickage.com.pickage.opening.Opening4"
     style="@style/relativeLayout_style">
 
     <ImageView

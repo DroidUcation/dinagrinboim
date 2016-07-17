@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

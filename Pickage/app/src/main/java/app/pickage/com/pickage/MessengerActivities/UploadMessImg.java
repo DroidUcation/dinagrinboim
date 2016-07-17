@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.MessengerActivities;
+package app.pickage.com.pickage.messengeractivities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -26,15 +25,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 import app.pickage.com.pickage.R;
-import app.pickage.com.pickage.UserActivities.LoginActivity;
-import app.pickage.com.pickage.UserActivities.User;
+import app.pickage.com.pickage.useractivities.LoginActivity;
+import app.pickage.com.pickage.useractivities.User;
 
 public class UploadMessImg extends AppCompatActivity {
 

@@ -1,11 +1,11 @@
-package app.pickage.com.pickage.Opening;
+package app.pickage.com.pickage.opening;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 import app.pickage.com.pickage.R;
 
 public class Opening3 extends Fragment {

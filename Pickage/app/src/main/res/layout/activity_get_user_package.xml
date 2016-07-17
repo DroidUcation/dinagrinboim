@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MessengerActivities.GetUserPackage">
+    tools:context=".messengeractivities.GetUserPackage">
 
     <ImageView
         android:id="@+id/userImgPhoto"
@@ -169,7 +169,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="app.pickage.com.pickage.UserActivities.UserCurrentLocation"/>
+        tools:context="app.pickage.com.pickage.useractivities.UserCurrentLocation"/>
 
     <LinearLayout
         android:layout_width="fill_parent"

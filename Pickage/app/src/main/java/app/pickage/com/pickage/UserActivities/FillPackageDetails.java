@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import app.pickage.com.pickage.AppConst;
-import app.pickage.com.pickage.PackageActivities.Package;
+import app.pickage.com.pickage.packageactivities.Package;
 import app.pickage.com.pickage.R;
 
 import java.util.Calendar;

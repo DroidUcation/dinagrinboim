@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import app.pickage.com.pickage.MessengerActivities.MessengerMainActivity;
+import app.pickage.com.pickage.messengeractivities.MessengerMainActivity;
 import app.pickage.com.pickage.R;
 
 public class LoginActivity extends AppCompatActivity {

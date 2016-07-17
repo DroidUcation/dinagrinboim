@@ -7,14 +7,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import app.pickage.com.pickage.Opening.Opening;
-import app.pickage.com.pickage.Opening.Opening1;
-import app.pickage.com.pickage.Opening.Opening2;
-import app.pickage.com.pickage.Opening.Opening3;
-import app.pickage.com.pickage.Opening.Opening4;
-import app.pickage.com.pickage.Opening.Opening5;
-
-import app.pickage.com.pickage.R;
+import app.pickage.com.pickage.opening.Opening;
+import app.pickage.com.pickage.opening.Opening1;
+import app.pickage.com.pickage.opening.Opening2;
+import app.pickage.com.pickage.opening.Opening3;
+import app.pickage.com.pickage.opening.Opening4;
+import app.pickage.com.pickage.opening.Opening5;
 
 public class MainActivity extends FragmentActivity {
 

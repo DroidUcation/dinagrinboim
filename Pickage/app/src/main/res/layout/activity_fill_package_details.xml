@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/alphabkimg"
-    tools:context="app.pickage.com.pickage.UserActivities.FillPackageDetails">
+    tools:context="app.pickage.com.pickage.useractivities.FillPackageDetails">
 
     <ProgressBar
         android:id="@+id/login_progress"

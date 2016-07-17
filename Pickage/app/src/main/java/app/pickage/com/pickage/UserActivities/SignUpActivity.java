@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.UserActivities;
+package app.pickage.com.pickage.useractivities;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.pickage.com.pickage.AppConst;
-import app.pickage.com.pickage.ContentProvider.MessengerContentProvider;
-import app.pickage.com.pickage.ContentProvider.UserContentProvider;
-import app.pickage.com.pickage.DBHelpers.DBContract;
-import app.pickage.com.pickage.MessengerActivities.Messenger;
-import app.pickage.com.pickage.MessengerActivities.UploadMessImg;
+import app.pickage.com.pickage.contentprovider.MessengerContentProvider;
+import app.pickage.com.pickage.contentprovider.UserContentProvider;
+import app.pickage.com.pickage.dbhelpers.DBContract;
+import app.pickage.com.pickage.messengeractivities.Messenger;
+import app.pickage.com.pickage.messengeractivities.UploadMessImg;
 import app.pickage.com.pickage.R;
 
 public class SignUpActivity extends AppCompatActivity {

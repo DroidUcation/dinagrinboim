@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.MessengerActivities;
+package app.pickage.com.pickage.messengeractivities;
 
 import android.Manifest;
 import android.content.Intent;

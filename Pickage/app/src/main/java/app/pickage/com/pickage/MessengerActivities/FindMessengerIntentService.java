@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.MessengerActivities;
+package app.pickage.com.pickage.messengeractivities;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -20,8 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.pickage.com.pickage.R;
-import app.pickage.com.pickage.UserActivities.FeedbackUser;
-import app.pickage.com.pickage.UserActivities.FindingMessenger;
+import app.pickage.com.pickage.useractivities.FeedbackUser;
+import app.pickage.com.pickage.useractivities.FindingMessenger;
 
 /**
  * Created by Yeudit&Dina

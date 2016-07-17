@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.MessengerActivities;
+package app.pickage.com.pickage.messengeractivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

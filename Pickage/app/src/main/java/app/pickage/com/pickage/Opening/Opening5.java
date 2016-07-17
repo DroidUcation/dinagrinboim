@@ -1,4 +1,4 @@
-package app.pickage.com.pickage.Opening;
+package app.pickage.com.pickage.opening;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import app.pickage.com.pickage.R;
-import app.pickage.com.pickage.UserActivities.LoginActivity;
+import app.pickage.com.pickage.useractivities.LoginActivity;
 
 public class Opening5 extends Fragment implements View.OnClickListener {
 

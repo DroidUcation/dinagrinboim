@@ -126,7 +126,7 @@ public class SignUpActivity extends AppCompatActivity {
             String messengerKey = mDatabase.child("messengers").push().getKey();
             mDatabase.child("messengers").child(messengerKey).setValue(messenger);
             AppConst.myKey = messengerKey;
-            insertMessenger();
+//            insertMessenger();
 
         if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){
             Intent i = new Intent(SignUpActivity.this, UploadMessImg.class);

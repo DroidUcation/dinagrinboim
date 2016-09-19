@@ -44,7 +44,7 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         android:onClick="selectImages"
-        android:layout_below="@id/btnSelectPhoto"
+        android:layout_below="@id/phone"
         android:layout_marginBottom="15dp"
         android:src="@drawable/user12" />
 

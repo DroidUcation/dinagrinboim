@@ -32,6 +32,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import app.pickage.com.pickage.R;
@@ -68,7 +69,6 @@ public class UploadUserImg extends AppCompatActivity {
         startActivity(i);
     }
 
-
     public void grabImage(ImageView imageView) {
         this.getContentResolver().notifyChange(tempFileuri, null);
         ContentResolver cr = this.getContentResolver();
@@ -82,7 +82,6 @@ public class UploadUserImg extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
@@ -95,7 +94,7 @@ public class UploadUserImg extends AppCompatActivity {
 //                this.grabImage(viewImage);
             } else if (requestCode == 2) {
                 Uri selectedImage = data.getData();
-                tempFileuri = data.getData();
+//                tempFileuri = data.getData();
                 String[] filePath = {MediaStore.Images.Media.DATA};
                 Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
                 c.moveToFirst();
@@ -113,18 +112,20 @@ public class UploadUserImg extends AppCompatActivity {
     }
 
     private void uploadImgToFireBase() {
-//        StorageReference userRef = storageRef.child("images/users/" + keyUser + ".jpg");
-//        viewImage.setDrawingCacheEnabled(true);
-//        viewImage.buildDrawingCache();
-//        Bitmap bitmap = viewImage.getDrawingCache();
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
-//        byte[] data = baos.toByteArray();
-//        UploadTask uploadTask = userRef.putBytes(data);
-
-        Uri file = tempFileuri;
+        UploadTask uploadTask;
         StorageReference userRef = storageRef.child("images/users/" + keyUser + ".jpg");
-        UploadTask uploadTask = userRef.putFile(file);
+        if (tempFileuri == null) {
+            viewImage.setDrawingCacheEnabled(true);
+            viewImage.buildDrawingCache();
+            Bitmap bitmap = viewImage.getDrawingCache();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
+            byte[] data = baos.toByteArray();
+            uploadTask = userRef.putBytes(data);
+        } else {
+            Uri file = tempFileuri;
+            uploadTask = userRef.putFile(file);
+        }
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -143,12 +144,9 @@ public class UploadUserImg extends AppCompatActivity {
 
         if (isStoragePermissionGranted()) {
 
-            //Creating the instance of PopupMenu
             PopupMenu popup = new PopupMenu(this, viewImage);
-            //Inflating the Popup using xml file
             popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
 
-            //registering popup with OnMenuItemClickListener
             popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 public boolean onMenuItemClick(MenuItem item) {
 
@@ -165,7 +163,6 @@ public class UploadUserImg extends AppCompatActivity {
                     return true;
                 }
             });
-
             popup.show();//showing popup menu
         }
     }
@@ -180,21 +177,10 @@ public class UploadUserImg extends AppCompatActivity {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
-                // Show an expanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
             } else {
-
-                // No explanation needed, we can request the permission.
-
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         READ_STORAGE_PERMISSIONS_CODE);
-
-                // READ_STORAGE_PERMISSIONS_CODE is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
             return false;
         } else {
@@ -210,23 +196,10 @@ public class UploadUserImg extends AppCompatActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    // permission was granted, yay!
                     selectImages(null);
                 } else {
-
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
                 }
                 return;
             }
-
-
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
-    }
-
-
-
-}
+    }}
